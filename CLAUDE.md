@@ -75,7 +75,7 @@ Everything is controlled by variables at the top of `styles.css`.
 
 ## Current state
 
-Built and reviewed: Home, Approach, Launch, Grow, Contact, Privacy (draft), 404.
+Built and reviewed: Home, Approach, Launch, Grow, Contact, Privacy, 404.
 Also `netlify.toml`, `robots.txt`, `nav.js`.
 
 `resources.html` and 6 articles under `/resources/` are migrated from the old Squarespace
@@ -93,8 +93,10 @@ not "fix" copy on those pages unless asked.
 - [ ] Blog post dates (`resources.html` and each article) are placeholders spaced a week
       apart from 21 July 2026 backward — not real publish dates. Update when George confirms.
 - [ ] Blog post images were deliberately left out during migration — add back later.
-- [ ] Privacy policy is a **draft skeleton with placeholders**. Must be replaced with
-      reviewed copy before launch.
+- [ ] Privacy policy content is filled in — merged from the reviewed copy live on the
+      Squarespace site (data collected, retention, rights) with corrected technical facts
+      for the new stack (Netlify/Netlify Forms instead of Squarespace, no analytics/cookies
+      currently in use). George should still give it a final read before launch.
 - [ ] Grow FAQ answers were written from inference — the originals were collapsed in the
       screenshots. Need verifying against the live Squarespace page.
 - [ ] Contact page "I'm looking to…" dropdown options are partly inferred.

@@ -13,7 +13,7 @@ approach.html   Approach
 launch.html     Launch (service + onboarding form)
 grow.html       Grow (service + FAQ)
 contact.html    Contact (enquiry form)
-privacy.html    Privacy policy  — DRAFT, needs review
+privacy.html    Privacy policy
 404.html        Not found
 resources.html  Resources / blog index — TO BUILD
 styles.css      All styling for the whole site
@@ -67,7 +67,8 @@ Each form has a honeypot field (`bot-field`) for spam.
 
 - [x] Add `/assets/` — headshot is in (cropped from `IMG_7253.jpeg`); og-image and favicon are
       placeholders (plain blush background, monogram) — swap for real ones when George has them
-- [ ] Replace the draft privacy policy with reviewed copy
+- [ ] Privacy policy content is filled in (merged from the live Squarespace copy) — George
+      to give it a final read before launch
 - [ ] Build `resources.html` and migrate blog posts
 - [ ] Export all live URLs from Search Console; add 301s to `netlify.toml`
 - [x] Create `sitemap.xml` — covers the five live pages, add more as they're built
