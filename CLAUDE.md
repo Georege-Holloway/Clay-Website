@@ -78,16 +78,21 @@ Everything is controlled by variables at the top of `styles.css`.
 Built and reviewed: Home, Approach, Launch, Grow, Contact, Privacy (draft), 404.
 Also `netlify.toml`, `robots.txt`, `nav.js`.
 
+`resources.html` and 6 articles under `/resources/` are migrated from the old Squarespace
+blog — copy is faithful, but dates are placeholders and images were left out (see below).
+
 Home has had light improvements applied. The other pages are faithful copies of the
 Squarespace originals — an improvement pass is planned but **has not happened yet**, so do
 not "fix" copy on those pages unless asked.
 
 ### Known outstanding work
 
-- [ ] `resources.html` — blog index plus individual article pages. Not yet built.
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,
       ink monogram) so nothing 404s. Swap for real versions when George has them.
       `george-holloway.jpg` is in, cropped from `IMG_7253.jpeg` — reselect the crop if needed.
+- [ ] Blog post dates (`resources.html` and each article) are placeholders spaced a week
+      apart from 21 July 2026 backward — not real publish dates. Update when George confirms.
+- [ ] Blog post images were deliberately left out during migration — add back later.
 - [ ] Privacy policy is a **draft skeleton with placeholders**. Must be replaced with
       reviewed copy before launch.
 - [ ] Grow FAQ answers were written from inference — the originals were collapsed in the
