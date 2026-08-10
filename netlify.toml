@@ -32,7 +32,43 @@
   status = 301
   force = true
 
-# --- OLD SQUARESPACE URLS GO BELOW ---
+[[redirects]]
+  from = "/resources/blog-post-title-three-y3peb-4lwnz-5pkhf-8sd5m-89hg9-y2gxt-tbn6f"
+  to = "/resources/local-seo-for-therapists"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources/blog-post-title-three-y3peb-4lwnz-5pkhf-8sd5m-89hg9-y2gxt"
+  to = "/resources/why-good-therapy-isnt-enough"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources/blog-post-title-three-y3peb-4lwnz-5pkhf-8sd5m-89hg9"
+  to = "/resources/gdpr-for-therapists"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources/Blog%20Post%20Title%20One-3zaa9-zlxng-67tfc-7bk5t"
+  to = "/resources/free-practice-setup-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources/blog-post-title-two-t5my5-k4xmd-67jzh-mbrt9"
+  to = "/resources/setting-up-a-therapy-practice-mistakes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources/blog-post-title-three-y3peb-4lwnz-5pkhf-8sd5m"
+  to = "/resources/how-clients-find-a-therapist-online"
+  status = 301
+  force = true
+
+# --- REMAINING OLD SQUARESPACE URLS GO BELOW ---
 # Export the full list from Search Console, then add one block per URL:
 #
 # [[redirects]]
