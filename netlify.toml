@@ -1,0 +1,53 @@
+[build]
+  publish = "."
+
+# Clean URLs: /approach instead of /approach.html
+[[redirects]]
+  from = "/approach.html"
+  to = "/approach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/launch.html"
+  to = "/launch"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/grow.html"
+  to = "/grow"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+# --- OLD SQUARESPACE URLS GO BELOW ---
+# Export the full list from Search Console, then add one block per URL:
+#
+# [[redirects]]
+#   from = "/old-blog-post-slug"
+#   to = "/resources/new-slug"
+#   status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
