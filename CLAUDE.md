@@ -63,13 +63,23 @@ Everything is controlled by variables at the top of `styles.css`.
 - **Display face:** Fraunces, tuned via `--display-vf` to approximate P22 Mackinac
   (the licensed Adobe font Squarespace was serving). `SOFT` controls terminal roundness,
   `opsz` controls thick/thin contrast. **Do not switch to a paid font.**
-- **Body face:** DM Sans.
-- **Palette:** `--blush` #e0c8bc, `--stone` #eae9e6, `--paper` #f4f3f1, `--ink` #0d0d0d.
-  Pages alternate full-bleed colour bands.
+- **Body face:** DM Sans. (Aug 2026: a Caprasimo/Figtree swap was explored via a design
+  mockup and explicitly rejected — George confirmed keeping Fraunces/DM Sans. Don't
+  revisit without asking.)
+- **Palette ("Warm Classic" refresh, Aug 2026):** `--blush` #e0c8bc, `--blush-light`
+  #ecdcd3, `--stone` #eae9e6, `--paper` #efe4cf, `--bg` #f5ead8 (page background),
+  `--ink` #201e1d, `--ink-soft` #3a3734, `--footer` #2e2b25. Pages alternate full-bleed
+  colour bands on a cream (not white) body background.
+- **Cards:** every `.card`/`.path`/`.post`/`.faq`/`.form--panel`/`.split__body` has a
+  `1.5px solid var(--ink)` border and `var(--radius-card)` (28px) radius. Buttons are
+  fully pill-shaped (`var(--radius-pill)`, 999px). This replaced the previous
+  borderless/sharp-cornered look.
 - **Scale is the point.** Large display type in a wide container with generous vertical
   rhythm is the site's whole personality. Do not shrink headings or narrow the shell to
   "tidy things up". Constrain *line length* for paragraphs (`--measure`), not layout.
 - Nav and footer run full-bleed (`.shell--edge`); content sections use `.shell` (1560px).
+- Nav has no separate "Contact" link — the "Contact us" pill CTA covers it, so it was
+  removed from `.nav__links` to avoid duplication (Aug 2026).
 
 ---
 
