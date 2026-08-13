@@ -39,6 +39,12 @@
   force = true
 
 [[redirects]]
+  from = "/thanks.html"
+  to = "/thanks"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/resources/blog-post-title-three-y3peb-4lwnz-5pkhf-8sd5m-89hg9-y2gxt-tbn6f"
   to = "/resources/local-seo-for-therapists"
   status = 301
