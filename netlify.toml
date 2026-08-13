@@ -15,6 +15,12 @@
   force = true
 
 [[redirects]]
+  from = "/launch-old"
+  to = "/launch"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/grow.html"
   to = "/grow"
   status = 301
