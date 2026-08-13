@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="alternate icon" href="/assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Intentionally excluded from search, nav and sitemap — direct-link only,
+     sent to people after their intro call. Not the temporary preview-URL
+     noindex used elsewhere; this one stays even after the DNS switch. -->
+<meta name="robots" content="noindex">
+
+<title>Launch Onboarding Form | Clay Consulting</title>
+<meta name="description" content="Onboarding form for Clay Launch clients.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="shell shell--edge nav__inner">
+    <a class="nav__brand" href="/">Clay Consulting</a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/approach">Approach</a></li>
+      <li><a href="/launch">Launch</a></li>
+      <li><a href="/grow">Grow</a></li>
+      <li><a href="/resources">Resources</a></li>
+    </ul>
+    <a class="btn btn--ghost nav__cta" href="/contact">Contact us</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section section--stone">
+    <div class="shell">
+      <h2 class="h-section">Ready to get started?</h2>
+      <p class="lede"><strong>Fill in the details in the form below and we'll take it from there.</strong><br><br>There are no right or wrong answers — the more you share, the better your site will reflect you. Most people complete this in around ten minutes. Once we receive your form, we'll be in touch within one working day to organise a free call and confirm next steps.</p>
+
+      <form class="form form--panel" name="launch-onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="launch-onboarding">
+        <p class="hp"><label>Don't fill this in: <input name="bot-field"></label></p>
+
+        <fieldset class="field">
+          <legend class="field__legend">Name</legend>
+          <div class="field-row">
+            <div>
+              <label for="first-name">First Name <span class="req">(required)</span></label>
+              <input type="text" id="first-name" name="First Name" required>
+            </div>
+            <div>
+              <label for="last-name">Last Name <span class="req">(required)</span></label>
+              <input type="text" id="last-name" name="Last Name" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="email">Email <span class="req">(required)</span></label>
+          <input type="email" id="email" name="Email" required>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="Phone">
+        </div>
+
+        <div class="field">
+          <label for="title">Title and Qualifications <span class="req">(required)</span></label>
+          <p class="field__help">This will appear under your name on your website.</p>
+          <input type="text" id="title" name="Title and Qualifications" placeholder="e.g. PG Dip, Integrative Psychotherapist, Trainee" required>
+        </div>
+
+        <div class="field">
+          <label for="location">Location <span class="req">(required)</span></label>
+          <p class="field__help">Town or city — used on your website and for local search so clients nearby can find you.</p>
+          <input type="text" id="location" name="Location" placeholder="e.g. Bristol, London NW3, Edinburgh" required>
+        </div>
+
+        <fieldset class="field">
+          <legend class="field__legend">How you work</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="How you work" value="In Person"> In Person</label>
+            <label><input type="checkbox" name="How you work" value="Online"> Online</label>
+            <label><input type="checkbox" name="How you work" value="Both"> Both</label>
+            <label><input type="checkbox" name="How you work" value="N/A"> N/A</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="home-content">'Home' Page Content <span class="req">(required)</span></label>
+          <textarea id="home-content" name="Home Page Content" placeholder="Write freely — bullet points or a paragraph or two is plenty. We'll shape it into page copy for you." required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="about-content">'About' Page Content <span class="req">(required)</span></label>
+          <p class="field__help">Your About page is often the first thing a potential client reads before deciding whether to get in touch, so it's worth giving this section a little thought. We'll use what you write here to shape your page copy, and we can refine it together afterwards. You might think about: What drew you to therapy work? What does your approach feel like from the client's side? Is there anything about your own background or experience that shapes the way you work? You don't need to answer all of these — write whatever feels true.</p>
+          <textarea id="about-content" name="About Page Content" placeholder="Write freely — bullet points or a paragraph or two is plenty. We'll shape it into page copy for you." required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="preferences">Website Preferences <span class="req">(required)</span></label>
+          <p class="field__help">Describe the look and feel you have in mind — or share references if you have them. If you're not sure, leave this blank and we'll make a suggestion based on your profile.</p>
+          <textarea id="preferences" name="Website Preferences" placeholder="e.g. calm and minimal, warm earthy tones, clean and professional, soft greens and neutrals, similar to [website URL]..."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="anything-else">Anything Else</label>
+          <p class="field__help">Anything not covered above — pages you'd like, things you definitely don't want, questions about the process.</p>
+          <textarea id="anything-else" name="Anything Else"></textarea>
+        </div>
+
+        <div class="form__submit form__submit--centred">
+          <button type="submit" class="btn">Submit</button>
+        </div>
+      </form>
+
+      <p class="form__legal form__legal--centred">By submitting this form you agree to our <a href="/privacy">Privacy Policy</a>. We'll only use the information you share here to build your website and communicate with you about the project.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell shell--edge">
+    <div class="footer__top">
+      <p class="footer__brand">Clay Consulting</p>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h2>About</h2>
+          <ul>
+            <li><a href="/approach">Approach</a></li>
+            <li><a href="/resources">Resources</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h2>Get in touch</h2>
+          <ul>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="mailto:hello@clayconsulting.co.uk">hello@clayconsulting.co.uk</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy">Privacy policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="footer__rule">
+    <p class="footer__tagline">Where practices take shape</p>
+    <p class="footer__legal">Clay Consulting Group Ltd &middot; Registered in England &amp; Wales</p>
+  </div>
+</footer>
+
+<script src="/nav.js"></script>
+
+</body>
+</html>
