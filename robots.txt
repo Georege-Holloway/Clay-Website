@@ -1,4 +1,50 @@
 User-agent: *
 Allow: /
+Disallow: /drafts/
+
+# AI crawlers, explicitly allowed
+User-agent: GPTBot
+Allow: /
+Disallow: /drafts/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /drafts/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /drafts/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /drafts/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /drafts/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /drafts/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /drafts/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /drafts/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /drafts/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /drafts/
+
+User-agent: CCBot
+Allow: /
+Disallow: /drafts/
 
 Sitemap: https://www.clayconsulting.co.uk/sitemap.xml
