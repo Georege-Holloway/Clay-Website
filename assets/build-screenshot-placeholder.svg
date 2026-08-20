@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#eae9e6"/>
+  <rect x="20" y="20" width="760" height="560" rx="16" fill="none" stroke="#201e1d" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="400" y="290" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#201e1d">Build editor</text>
+  <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#3a3734">Screenshot coming soon</text>
+</svg>
