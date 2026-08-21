@@ -228,8 +228,9 @@ fieldset{border:0;padding:0;margin:0}
 .contact__intro h1{font-size:clamp(2.75rem,5.6vw,4.75rem);font-weight:600;letter-spacing:-.018em;max-width:12ch}
 .contact__intro h1.is-wide{max-width:34ch;font-size:clamp(2.25rem,4vw,3.25rem);text-align:left}
 .contact__intro p{margin-top:clamp(1.75rem,3vw,2.5rem);max-width:44ch;color:var(--ink-soft)}
-.fork-links{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:clamp(1.5rem,3vw,2rem)}
+.fork-links{display:grid;grid-template-columns:1fr 1fr;gap:.4rem .75rem;margin-top:clamp(1.5rem,3vw,2rem)}
 .fork-links p{margin-top:0}
+.fork-links__q{color:var(--ink-soft)}
 .contact .field input,.contact .field textarea,.contact .field select{background:transparent}
 
 /* ---------- faq ---------- */
