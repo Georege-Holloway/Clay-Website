@@ -138,7 +138,7 @@ Forms use Netlify Forms (`data-netlify="true"`) with honeypot fields. No backend
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=10`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=14`.
 
 ---
 
