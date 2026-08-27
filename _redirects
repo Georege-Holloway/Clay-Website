@@ -1,4 +1,7 @@
 # Legacy Squarespace URLs → current locations (Aug 2026 migration)
 /gdpr-for-therapists              /resources/gdpr-for-therapists          301
-/private-practice-setup-guide     /resources/free-practice-setup-guide    301
+/private-practice-setup-guide     /resources/how-to-set-up-a-therapy-practice-uk  301
 /s/clay_practice_setup_guide.pdf  /assets/clay_practice_setup_guide.pdf   301
+
+# Setup-guide page rebuild (Aug 2026)
+/resources/free-practice-setup-guide  /resources/how-to-set-up-a-therapy-practice-uk  301

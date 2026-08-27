@@ -91,6 +91,15 @@ Also `netlify.toml`, `robots.txt`, `nav.js`.
 `resources.html` and 6 articles under `/resources/` are migrated from the old Squarespace
 blog — copy is faithful, but dates are placeholders and images were left out (see below).
 
+`/resources/how-to-set-up-a-therapy-practice-uk` (Aug 2026) replaced the old
+`free-practice-setup-guide` gate page — full SEO/content rebuild, real numbers, no email
+gate, no FAQPage schema (deliberate; see spec). It has genuinely real ICO/MTD/directory
+figures, dated `2026-08-27`. Retention copy says "a minimum of six years" for adults,
+matching BACP's own published minimum (the source PDF said seven; six is correct). The
+professional body fee range quoted (£86–£216) has the £216 upper bound confirmed
+(BACP Accredited); the £86 lower bound could not be independently sourced. `_redirects`
+now sends both old legacy paths straight to this new URL.
+
 Home has had light improvements applied. The other pages are faithful copies of the
 Squarespace originals — an improvement pass is planned but **has not happened yet**, so do
 not "fix" copy on those pages unless asked.
@@ -138,7 +147,7 @@ Forms use Netlify Forms (`data-netlify="true"`) with honeypot fields. No backend
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=14`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=15`.
 
 ---
 
