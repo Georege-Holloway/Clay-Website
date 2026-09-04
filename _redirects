@@ -5,3 +5,7 @@
 
 # Setup-guide page rebuild (Aug 2026)
 /resources/free-practice-setup-guide  /resources/how-to-set-up-a-therapy-practice-uk  301
+
+# Services page merge: Launch and Grow retired as separate products (Aug 2026)
+/launch  /services  301
+/grow    /services  301

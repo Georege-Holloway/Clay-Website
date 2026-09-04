@@ -280,6 +280,11 @@ fieldset{border:0;padding:0;margin:0}
 .toc__title{margin:0 0 .9rem;font-weight:600}
 .toc ol{margin:0;padding-left:1.35rem;display:grid;gap:.55rem}
 
+/* ---------- service pathway diagram ---------- */
+.pathway{max-width:var(--shell);margin:0 auto;padding-inline:var(--pad);padding-block:clamp(1rem,3vw,2rem) 0}
+.pathway__diagram{width:100%;height:auto;display:block}
+.pathway__diagram--mobile{display:none}
+
 /* ---------- closing cta ---------- */
 .closing{text-align:center}
 .closing p{max-width:60ch;margin-inline:auto;color:var(--ink-soft);font-size:1.125rem}
@@ -337,6 +342,8 @@ fieldset{border:0;padding:0;margin:0}
   .contact__intro h1{max-width:none}
   .fork-links{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
+  .pathway__diagram--desktop{display:none}
+  .pathway__diagram--mobile{display:block}
 }
 
 @media (prefers-reduced-motion:reduce){

@@ -11,13 +11,22 @@ counsellors and therapy organisations. Tagline: *Moulding the business side of t
 Founded by George Holloway, who spent over a decade in commercial marketing (most recently
 Senior Growth Manager at Amazon) and is training as a psychotherapist at CCPE (graduating 2027).
 
-Two services:
+**Aug 2026: "Launch" and "Grow" retired as tiered product names.** Clay is now positioned as a
+consultancy with three sequential offers, all on one page, `/services`:
 
-- **Launch** — website, SEO and Google Business Profile for newly qualifying practitioners.
-  £99 setup + £25/month. There is also an affiliate rate for institutional partners
-  (£0 setup + £10/month) which is deliberately **not** published on the site.
-- **Grow** — a structured Practice Health Check for established practices and organisations.
-  Scoped per engagement, roughly £700–£1,000. Price is deliberately not published.
+- **A free 15-minute call** — no cost, 15 minutes, a fit check.
+- **A strategy session** — £120, one hour, a written objective and next actions.
+- **A Practice Health Check** — scoped per engagement, no published number. Credits the £120
+  session fee in full if started within three months of one. May recommend a rebuilt website as
+  a follow-on, but that is never sold as a standalone priced product any more.
+
+Free single-page websites are still handled by **Build** (`/build`, unaffected by this change).
+`/launch` and `/grow` now 301 to `/services` (`_redirects` + `netlify.toml`). Do not reintroduce
+"Launch" or "Grow" as product names anywhere.
+
+**Known gap:** the Home page (`index.html`) still names "Launch" and "Grow" in its body copy and
+links directly to `/launch`/`/grow` (which redirect, so nothing breaks, but the wording is stale).
+Home was explicitly out of scope for the Services rewrite — update it in a follow-up task.
 
 Primary audience: newly qualified therapists with little income and low confidence about the
 business side. Secondary and strategically important: training organisations who might refer
@@ -85,7 +94,7 @@ Everything is controlled by variables at the top of `styles.css`.
 
 ## Current state
 
-Built and reviewed: Home, Approach, Launch, Grow, Contact, Privacy, 404.
+Built and reviewed: Home, Approach, Services, Build, Contact, Privacy, 404.
 Also `netlify.toml`, `robots.txt`, `nav.js`.
 
 `resources.html` and 6 articles under `/resources/` are migrated from the old Squarespace
@@ -147,7 +156,7 @@ Forms use Netlify Forms (`data-netlify="true"`) with honeypot fields. No backend
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=15`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=16`.
 
 ---
 
