@@ -94,7 +94,20 @@ Everything is controlled by variables at the top of `styles.css`.
 
 ## Current state
 
-Built and reviewed: Home, Approach, Services, Build, Contact, Privacy, 404.
+Built and reviewed: Home, Approach, Services, Contact, Privacy, 404.
+
+**Sep 2026: Home rewritten.** Split hero (heading + intro + photo of George, `assets/george-holloway.jpg`,
+CTA to `/contact`), a condensed three-card "pathway" summary linking to `/services`, then the
+existing clinic-door/what-we-cover/who-we-are/why-this-matters/closing sections, all reworded to
+first person and to drop the Launch/Grow references. No "trained" in reference to CCPE anywhere on
+the site — George has not graduated (course completes end of 2027, full UKCP registration mid-2028)
+— always "training" / "currently training".
+
+**Nav simplified to five items:** Home, Services, Approach, Resources, Contact. **`Build` removed
+from the sitewide nav** (not deleted as a page — `/build` still exists and is still linked to from
+Services and the setup-guide article — it's just no longer a top-level nav item, since it's a
+pre-launch/waitlist-only feature). This was explicit in the Home-page handover, not a Home-page-only
+change; every page's nav was swept.
 Also `netlify.toml`, `robots.txt`, `nav.js`.
 
 `resources.html` and 6 articles under `/resources/` are migrated from the old Squarespace
