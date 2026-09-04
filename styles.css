@@ -104,8 +104,11 @@ p{text-wrap:pretty}
 .section{padding-block:var(--y)}
 .section--tight{padding-block:var(--y-tight)}
 .section--flush-top{padding-top:0}
+.section--flush-bottom{padding-bottom:0}
 .section--top-tight{padding-top:calc(var(--y) / 2)}
 .section--bottom-tight{padding-bottom:calc(var(--y) / 2)}
+.section--top-tighter{padding-top:calc(var(--y) / 4)}
+.section--bottom-tighter{padding-bottom:calc(var(--y) / 4)}
 .section--blush{background:var(--blush)}
 .section--stone{background:var(--stone)}
 .section--paper{background:var(--paper)}
@@ -367,7 +370,7 @@ fieldset{border:0;padding:0;margin:0}
 .hero2-cols p:last-child{font-size:1.03125rem;color:var(--ink-soft)}
 
 /* ---- services: comparison grid (desktop) ---- */
-.compare{border-top:1.5px solid var(--ink);margin-top:clamp(2rem,4vw,2.75rem)}
+.compare{border-top:1.5px solid var(--ink)}
 .compare__row{display:grid;grid-template-columns:.62fr 1fr 1fr 1fr}
 .compare__row + .compare__row{border-top:1px solid var(--rule)}
 .compare__label{padding:1.25rem 1rem 1.25rem 0;font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);display:flex;align-items:center}
@@ -384,7 +387,7 @@ fieldset{border:0;padding:0;margin:0}
 .compare__cta .btn{font-size:.75rem;padding:.85rem 1.5rem}
 
 /* ---- services: comparison cards (mobile) ---- */
-.compare--mobile{display:none;margin-top:clamp(2rem,4vw,2.75rem)}
+.compare--mobile{display:none}
 .compare-card{background:var(--surface);border-radius:var(--radius-card);padding:1.75rem;margin-bottom:1.25rem}
 .compare-card:last-child{margin-bottom:0}
 .compare-card--session{background:var(--terracotta-tint)}
