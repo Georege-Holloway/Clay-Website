@@ -72,23 +72,36 @@ Everything is controlled by variables at the top of `styles.css`.
 - **Display face:** Fraunces, tuned via `--display-vf` to approximate P22 Mackinac
   (the licensed Adobe font Squarespace was serving). `SOFT` controls terminal roundness,
   `opsz` controls thick/thin contrast. **Do not switch to a paid font.**
-- **Body face:** DM Sans. (Aug 2026: a Caprasimo/Figtree swap was explored via a design
-  mockup and explicitly rejected — George confirmed keeping Fraunces/DM Sans. Don't
-  revisit without asking.)
-- **Palette ("Warm Classic" refresh, Aug 2026):** `--blush` #e0c8bc, `--blush-light`
-  #ecdcd3, `--stone` #eae9e6, `--paper` #efe4cf, `--bg` #f5ead8 (page background),
-  `--ink` #201e1d, `--ink-soft` #3a3734, `--footer` #2e2b25. Pages alternate full-bleed
-  colour bands on a cream (not white) body background.
-- **Cards:** every `.card`/`.path`/`.post`/`.faq`/`.form--panel`/`.split__body` has a
-  `1.5px solid var(--ink)` border and `var(--radius-card)` (28px) radius. Buttons are
-  fully pill-shaped (`var(--radius-pill)`, 999px). This replaced the previous
-  borderless/sharp-cornered look.
+- **Body face:** Figtree (Sep 2026). Replaces DM Sans site-wide — a July/Aug 2026 note
+  said a Figtree swap had been explicitly rejected; that decision was superseded by the
+  Sep 2026 design_handoff_2026 redesign, which explicitly asked for it. If a future brief
+  wants to revert, confirm first — don't assume the old rejection still stands, and don't
+  assume this new choice is permanent either.
+- **Two palettes now coexist, on purpose.** The Sep 2026 redesign (Home + Services) uses
+  a cream ground with terracotta/sage accents and drops the blush/stone alternation. The
+  old "Warm Classic" variables (`--blush`, `--blush-light`, `--stone`, `--paper`,
+  `--accent-terracotta`, `--hair`) are kept defined in `styles.css` **only** because
+  `build.html`, `approach.html`, the resources articles, and contact/privacy/404/thanks
+  still use them via `.section--stone`/`.section--blush`/bordered `.card`. Don't reuse the
+  old variables in new work, and don't delete them until those pages get their own pass.
+  Current tokens: `--bg` #f5ead8 (shared page ground), `--surface` #fbf5ea, `--ink` #201e1d,
+  `--ink-soft` #4a453d, `--ink-muted` #6b6459, `--rule` #ddd0bc, `--terracotta` #c67139,
+  `--terracotta-deep` #8c4a1e, `--terracotta-tint` #f6ded0, `--sage` #7a8a5e, `--sage-tint`
+  #e8eddc, `--footer-bg`/`--footer-fg`.
+- **Cards, two systems:** old pages keep `.card`/`.path`/`.post`/`.faq`/`.form--panel`/
+  `.split__body` — `1.5px solid var(--ink)` border, `var(--radius-card)` radius (now
+  **24px**, was 28px — a sitewide change, since it's one shared variable). Home and
+  Services use new, separate classes instead (`.price-card`, `.cover-item`, `.compare*`,
+  `.compare-card`, `.detail-list`, `.faq2`) — `--surface` fill, no border, soft shadow.
+  Don't mix the two systems on the same page.
 - **Scale is the point.** Large display type in a wide container with generous vertical
   rhythm is the site's whole personality. Do not shrink headings or narrow the shell to
   "tidy things up". Constrain *line length* for paragraphs (`--measure`), not layout.
 - Nav and footer run full-bleed (`.shell--edge`); content sections use `.shell` (1560px).
-- Nav has no separate "Contact" link — the "Contact us" pill CTA covers it, so it was
-  removed from `.nav__links` to avoid duplication (Aug 2026).
+- Nav CTA (Sep 2026): accent-filled pill, labelled "Book a free call", pointing at
+  `/contact` on every page **except** `services.html` (that page's own CTAs carry it, per
+  the redesign brief — no `.nav__cta` in its header markup). Footer: brand + tagline now
+  grouped in one `.footer__brand-block`; the old `<hr class="footer__rule">` is gone.
 
 ---
 
@@ -102,6 +115,19 @@ existing clinic-door/what-we-cover/who-we-are/why-this-matters/closing sections,
 first person and to drop the Launch/Grow references. No "trained" in reference to CCPE anywhere on
 the site — George has not graduated (course completes end of 2027, full UKCP registration mid-2028)
 — always "training" / "currently training".
+
+**Sep 2026: Home + Services visually redesigned** (`design_handoff_2026` package: `README.md` +
+`addendum.md`). Copy unchanged except three explicitly-authorised restructurings: the "4 in 10"
+stat pulled out as a display figure on Home, the three "What we cover" paragraphs trimmed of their
+leading clause, and Services' three long prose sections compressed into a comparison grid (desktop)
+/ stacked cards (mobile) with the full prose kept verbatim in "In detail" accordions below. The SVG
+pathway diagram on Services is gone, replaced by the grid + a credit-terms callout. Home's "Why this
+matters" panel is shipping **text-only** — a photo was promised separately and hasn't arrived; flag
+it and drop it in (`.why-panel--text-only` → `.why-panel`) once supplied, per the design brief's own
+instruction not to ship a placeholder box. `approach.html`, `resources.html`, `contact.html`,
+`privacy.html`, `404.html`, `thanks.html`, `build.html` and the resources articles were explicitly
+left out of this pass and now look inconsistent with Home/Services — that's expected, and is its own
+future task, not a bug.
 
 **Nav simplified to five items:** Home, Services, Approach, Resources, Contact. **`Build` removed
 from the sitewide nav** (not deleted as a page — `/build` still exists and is still linked to from
@@ -169,7 +195,7 @@ Forms use Netlify Forms (`data-netlify="true"`) with honeypot fields. No backend
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=16`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=17`.
 
 ---
 
