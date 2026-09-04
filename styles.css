@@ -104,6 +104,7 @@ p{text-wrap:pretty}
 .section{padding-block:var(--y)}
 .section--tight{padding-block:var(--y-tight)}
 .section--flush-top{padding-top:0}
+.section--top-tight{padding-top:calc(var(--y) / 2)}
 .section--blush{background:var(--blush)}
 .section--stone{background:var(--stone)}
 .section--paper{background:var(--paper)}
