@@ -7,14 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Get in Touch | Clay Consulting</title>
-<meta name="description" content="Tell us where you're at and what you're hoping to build. We'll be back in touch within a working day.">
+<meta name="description" content="Tell me a bit about your practice and I'll get back to you with some times for a free 15-minute call.">
 <link rel="canonical" href="https://www.clayconsulting.co.uk/contact">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Clay Consulting">
 <meta property="og:url" content="https://www.clayconsulting.co.uk/contact">
 <meta property="og:title" content="Contact Clay Consulting">
-<meta property="og:description" content="Tell us where you're at and what you're hoping to build. We'll be back in touch within a working day.">
+<meta property="og:description" content="Tell me a bit about your practice and I'll get back to you with some times for a free 15-minute call.">
 <meta property="og:image" content="https://www.clayconsulting.co.uk/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -54,8 +54,8 @@
       <div class="contact__grid">
 
         <div class="contact__intro">
-          <h1>Let&rsquo;s begin the conversation.</h1>
-          <p>Tell us where you're at and what you're hoping to build. We'll be back in touch within a working day.</p>
+          <h1>Let&rsquo;s talk it through.</h1>
+          <p>Tell me a bit about your practice and I'll get back to you with some times for a free 15-minute call.</p>
         </div>
 
         <form class="form form--panel" name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
@@ -87,32 +87,24 @@
           </div>
 
           <div class="field">
-            <label for="looking-to">I'm looking to&hellip; <span class="req">(required)</span></label>
-            <select id="looking-to" name="I'm looking to" required>
+            <label for="practitioner-type">Are you a sole practitioner, or writing on behalf of an organisation? <span class="req">(required)</span></label>
+            <select id="practitioner-type" name="Sole practitioner or organisation" required>
               <option value="" disabled selected>Please select</option>
-              <option>Launch my therapy practice</option>
-              <option>Grow an established practice</option>
-              <option>Talk about a therapy organisation or training provider</option>
-              <option>Something else</option>
+              <option>Sole practitioner</option>
+              <option>An organisation</option>
             </select>
           </div>
 
           <div class="field">
-            <label for="more">Tell us a bit more <span class="req">(required)</span></label>
-            <p class="field__help">Tell us where you're at, what you're hoping to build, and anything else that might help us help you.</p>
-            <textarea id="more" class="is-short" name="Tell us a bit more" required></textarea>
+            <label for="practice-context">What's going on in your practice right now? <span class="req">(required)</span></label>
+            <p class="field__help">A line or two is fine &mdash; this just helps me prepare for the call.</p>
+            <textarea id="practice-context" class="is-short" name="What's going on in your practice right now" required></textarea>
           </div>
 
           <div class="field">
-            <label for="heard">How did you hear about us? <span class="req">(required)</span></label>
-            <select id="heard" name="How did you hear about us" required>
-              <option value="" disabled selected>Please select</option>
-              <option>Google/Search Engine</option>
-              <option>Social Media</option>
-              <option>Recommended by colleague</option>
-              <option>Through my training course</option>
-              <option>Other</option>
-            </select>
+            <label for="times">A few times that generally work for you <span class="req">(required)</span></label>
+            <p class="field__help">So I can suggest a slot without too much back and forth.</p>
+            <textarea id="times" class="is-short" name="Times that work for you" required></textarea>
           </div>
 
           <div class="form__submit">
