@@ -220,6 +220,16 @@ separate follow-up if wanted. **Not verified end-to-end**: the embed script init
 (`window.Cal.loaded`, namespace registered) but no popup calendar rendered in local sandboxed
 testing — needs a real click-through test once deployed, per the handover's own post-deploy checklist.
 
+**Sep 2026, follow-up polish:** both `.contact-title` headings (the "Book a call" h1 and "Other
+enquiries" h2) and the whole-section centring came in as a fully-formed replacement file, but with
+its CSS as an inline `<style>` block in the page `<head>` — a hard violation of this repo's "no
+per-page style blocks, everything lives in `styles.css`" rule (see below). Moved into `styles.css`
+instead of copied verbatim, and one rule was dropped rather than ported: the "Book a call" intro
+paragraph had `white-space:nowrap`, which would have forced an 85-character sentence onto one line
+and reliably overflowed on mobile — confirmed by rough character-width math before it was ever
+written to disk, not discovered after. The two `.contact-title` headings keep `white-space:nowrap`
+(tested down to a 320px viewport with no overflow), since they're much shorter.
+
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning

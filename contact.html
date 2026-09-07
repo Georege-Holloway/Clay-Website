@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/styles.css?v=23">
+<link rel="stylesheet" href="/styles.css?v=24">
 </head>
 <body>
 
@@ -52,7 +52,7 @@
   <section class="contact contact--book">
     <div class="shell">
       <div class="contact__intro">
-        <h1>Let&rsquo;s talk it through.</h1>
+        <h1 class="contact-title">Let&rsquo;s talk it through.</h1>
         <p>Book a free 15-minute call and pick a time that suits you &mdash; no back and forth needed.</p>
       </div>
       <button
@@ -70,7 +70,7 @@
       <div class="contact__grid">
 
         <div class="contact__intro">
-          <h2>Other enquiries</h2>
+          <h2 class="contact-title">Other enquiries</h2>
           <p>Not ready to book yet, or got a question first? Send a message and I'll get back to you within one working day.</p>
         </div>
 
@@ -160,6 +160,7 @@
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
   Cal("init", "15min", {origin:"https://cal.com"});
+  // Event: clay-consulting-ws6xph/15min
   Cal.ns["15min"]("ui", {"styles":{"branding":{"brandColor":"#2C2C2A"}},"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 
