@@ -358,6 +358,16 @@ fieldset{border:0;padding:0;margin:0}
 .price-card--accent .price-card__num,.price-card--accent p{color:#fff}
 .price-card--accent .price-card__price span{color:rgba(255,255,255,.82)}
 
+/* ---- home: pathway connector diagram (free call -> two options) ---- */
+.pathway__top{display:flex;justify-content:center;margin-bottom:.5rem}
+.pathway__top .price-card{max-width:340px;text-align:center}
+.pathway__connector{display:block;width:100%;max-width:760px;height:56px;margin:0 auto}
+
+#pathway .section-head,#pathway .price-cards,#pathway .price-card,#pathway .note-wrap{text-align:center}
+#pathway .price-cards{justify-content:center}
+#pathway .note{white-space:nowrap;font-size:clamp(.75rem,2vw,1rem)}
+#pathway .note-wrap .text-link{display:inline-block;margin-top:.75rem}
+
 /* ---- home: pull-quote band ---- */
 .quote-band{background:var(--sage);color:#f4f7ea;padding-block:clamp(1.75rem,3.5vw,2.5625rem)}
 
@@ -494,6 +504,7 @@ details[open] .chev{transform:rotate(-135deg)}
   .split,.faq,.contact__grid{grid-template-columns:1fr}
   .contact__intro h1{max-width:none}
   .contact--enquiry .contact__intro p{white-space:normal}
+  #pathway .note{white-space:normal}
   .fork-links{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
 
@@ -510,6 +521,11 @@ details[open] .chev{transform:rotate(-135deg)}
   .faq2__grid{columns:1}
   .twocol{grid-template-columns:1fr;gap:2.5rem}
   .section-head__row{flex-direction:column;align-items:flex-start;gap:.5rem}
+}
+
+@media (max-width:680px){
+  .pathway__connector{display:none}
+  .pathway__top{margin-bottom:1.25rem}
 }
 
 @media (prefers-reduced-motion:reduce){

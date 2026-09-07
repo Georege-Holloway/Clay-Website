@@ -233,7 +233,18 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=23`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=26`.
+
+**Sep 2026: pathway connector diagram added to Home's `#pathway` section.** A "Free 15-minute
+call" card (`.pathway__top`) sits above the two peer cards, joined by a small decorative SVG fork
+(`.pathway__connector`, hidden below 680px — a dedicated breakpoint, not the sitewide 860px one,
+tuned to when `.price-cards` itself wraps to one column). The credited-fee note and the "See how it
+works →" link are now grouped in `.note-wrap` below all three cards, replacing the link that used to
+sit up in the section header. Source file (again) shipped its CSS as an inline `<style>` block and
+(again) had a `white-space:nowrap` on the ~107-character note sentence with no mobile fallback —
+moved the CSS into `styles.css` and added the same kind of mobile override used for `/contact`'s
+enquiry paragraph (`#pathway .note{white-space:normal}` below 860px), confirmed by testing rather
+than assumed safe.
 
 ---
 
