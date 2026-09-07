@@ -251,12 +251,13 @@ fieldset{border:0;padding:0;margin:0}
 /* ---- contact page: Cal.com booking + enquiry sections ---- */
 .contact--book,.contact--enquiry{text-align:center}
 .contact__intro h1.contact-title,.contact__intro h2.contact-title{
-  font-size:clamp(1.5rem,4vw,2.25rem);max-width:none;white-space:nowrap;
+  font-size:clamp(2.25rem,6vw,3.5rem);max-width:none;white-space:nowrap;
 }
 .contact--book .contact__intro p{max-width:none}
 .contact--book .btn{margin-top:2.25rem;display:inline-block}
-.contact--enquiry .contact__grid{display:flex;flex-direction:column;align-items:center}
-.contact--enquiry .form{width:100%;max-width:520px;margin-inline:auto;text-align:left}
+.contact--enquiry .contact__grid{display:flex;flex-direction:column;align-items:center;gap:1.25rem}
+.contact--enquiry .contact__intro p{max-width:none;white-space:nowrap}
+.contact--enquiry .form{width:100%;max-width:640px;margin-inline:auto;text-align:left}
 .fork-links{display:grid;grid-template-columns:1fr 1fr;gap:.4rem .75rem;margin-top:clamp(1.5rem,3vw,2rem)}
 .fork-links p{margin-top:0}
 .fork-links__q{color:var(--ink-soft)}
@@ -492,6 +493,7 @@ details[open] .chev{transform:rotate(-135deg)}
   .thesis,.quote{max-width:none}
   .split,.faq,.contact__grid{grid-template-columns:1fr}
   .contact__intro h1{max-width:none}
+  .contact--enquiry .contact__intro p{white-space:normal}
   .fork-links{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
 
