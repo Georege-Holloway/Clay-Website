@@ -110,11 +110,23 @@ Everything is controlled by variables at the top of `styles.css`.
 Built and reviewed: Home, Approach, Services, Contact, Privacy, 404.
 
 **Sep 2026: Home rewritten.** Split hero (heading + intro + photo of George, `assets/george-holloway.jpg`,
-CTA to `/contact`), a condensed three-card "pathway" summary linking to `/services`, then the
+CTA to `/contact`), a condensed "pathway" summary linking to `/services`, then the
 existing clinic-door/what-we-cover/who-we-are/why-this-matters/closing sections, all reworded to
 first person and to drop the Launch/Grow references. No "trained" in reference to CCPE anywhere on
 the site — George has not graduated (course completes end of 2027, full UKCP registration mid-2028)
 — always "training" / "currently training".
+
+**Sep 2026 (later revision): "pathway" model corrected from three peer options to one universal
+free call + two peer options.** The free 15-minute call is not a peer choice alongside Strategy
+session and Health Check — it's the universal first step, and Strategy session / Health Check are
+peer options after it, neither more "advanced" than the other. On Home this means **two** price
+cards only (Strategy session, Health Check), no numbering (`price-card__num` removed), no accent/
+ranking fill on either (`price-card--accent` removed) — a credited-fee note sits below both as a
+`.note`, not a third card. On Services, the hero gained a lede sentence stating this framing
+explicitly, and the credit-terms callout was reworded to drop "they run in sequence" (which
+contradicted the peer framing). The three-column comparison grid on Services (Free call / Strategy
+session / Health Check) was deliberately left as three columns — neither revision handover asked for
+that layout to change, only the surrounding copy.
 
 **Sep 2026: Home + Services visually redesigned** (`design_handoff_2026` package: `README.md` +
 `addendum.md`). Copy unchanged except three explicitly-authorised restructurings: the "4 in 10"
