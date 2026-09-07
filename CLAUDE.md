@@ -202,12 +202,28 @@ GitHub → Netlify, auto-deploy on push to `main`. Domain at 123 Reg.
 **Critical:** Titan email runs on this domain's MX records. When DNS is switched, change
 only A/CNAME records for the website. Touching MX breaks george@clayconsulting.co.uk.
 
-Forms use Netlify Forms (`data-netlify="true"`) with honeypot fields. No backend.
+Forms use Netlify Forms (`data-netlify="true"`) with honeypot fields, except the "Book a call"
+section of `/contact` (see below), which has no form at all. No backend.
+
+**Sep 2026: Cal.com booking added to `/contact`.** The page now has two sections: `.contact--book`
+(a single button, Cal.com "element click" pop-up embed, event `clay-consulting-ws6xph/15min`,
+namespace `15min` — no Netlify form) and `.contact--enquiry` (the shortened Netlify form for people
+not ready to book: name, email, phone, one open "Message" field). The practitioner-type,
+practice-context and preferred-times fields from the previous contact-form rewrite are gone — that
+context is now a Cal.com booking question instead. Both sections reuse `.contact`/`.contact__intro`/
+`.contact__grid`; two new modifiers, `.contact--book` and `.contact--enquiry`, tighten and
+differentiate the padding between them (added because the two sections otherwise doubled up on
+`.contact`'s padding and blended into one oversized block with no visual separation — confirmed by
+testing locally before deciding it needed a fix, not just a flag). The nav's "Book a free call"
+button still links to plain `/contact`, not the Cal.com pop-up directly — that's a deliberate,
+separate follow-up if wanted. **Not verified end-to-end**: the embed script initialises correctly
+(`window.Cal.loaded`, namespace registered) but no popup calendar rendered in local sandboxed
+testing — needs a real click-through test once deployed, per the handover's own post-deploy checklist.
 
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=17`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=23`.
 
 ---
 

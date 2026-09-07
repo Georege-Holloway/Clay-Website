@@ -7,14 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Get in Touch | Clay Consulting</title>
-<meta name="description" content="Tell me a bit about your practice and I'll get back to you with some times for a free 15-minute call.">
+<meta name="description" content="Book a free 15-minute call directly, or get in touch with any other questions about working together.">
 <link rel="canonical" href="https://www.clayconsulting.co.uk/contact">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Clay Consulting">
 <meta property="og:url" content="https://www.clayconsulting.co.uk/contact">
 <meta property="og:title" content="Contact Clay Consulting">
-<meta property="og:description" content="Tell me a bit about your practice and I'll get back to you with some times for a free 15-minute call.">
+<meta property="og:description" content="Book a free 15-minute call directly, or get in touch with any other questions about working together.">
 <meta property="og:image" content="https://www.clayconsulting.co.uk/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/styles.css?v=22">
+<link rel="stylesheet" href="/styles.css?v=23">
 </head>
 <body>
 
@@ -49,13 +49,29 @@
 
 <main id="main">
 
-  <section class="contact">
+  <section class="contact contact--book">
+    <div class="shell">
+      <div class="contact__intro">
+        <h1>Let&rsquo;s talk it through.</h1>
+        <p>Book a free 15-minute call and pick a time that suits you &mdash; no back and forth needed.</p>
+      </div>
+      <button
+        type="button"
+        class="btn btn--accent"
+        data-cal-namespace="15min"
+        data-cal-link="clay-consulting-ws6xph/15min"
+        data-cal-config='{"layout":"month_view"}'
+      >Book my free call</button>
+    </div>
+  </section>
+
+  <section class="contact contact--enquiry">
     <div class="shell">
       <div class="contact__grid">
 
         <div class="contact__intro">
-          <h1>Let&rsquo;s talk it through.</h1>
-          <p>Tell me a bit about your practice and I'll get back to you with some times for a free 15-minute call.</p>
+          <h2>Other enquiries</h2>
+          <p>Not ready to book yet, or got a question first? Send a message and I'll get back to you within one working day.</p>
         </div>
 
         <form class="form form--panel" name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
@@ -87,24 +103,8 @@
           </div>
 
           <div class="field">
-            <label for="practitioner-type">Are you a sole practitioner, or writing on behalf of an organisation? <span class="req">(required)</span></label>
-            <select id="practitioner-type" name="Sole practitioner or organisation" required>
-              <option value="" disabled selected>Please select</option>
-              <option>Sole practitioner</option>
-              <option>An organisation</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="practice-context">What's going on in your practice right now? <span class="req">(required)</span></label>
-            <p class="field__help">A line or two is fine &mdash; this just helps me prepare for the call.</p>
-            <textarea id="practice-context" class="is-short" name="What's going on in your practice right now" required></textarea>
-          </div>
-
-          <div class="field">
-            <label for="times">A few times that generally work for you <span class="req">(required)</span></label>
-            <p class="field__help">So I can suggest a slot without too much back and forth.</p>
-            <textarea id="times" class="is-short" name="Times that work for you" required></textarea>
+            <label for="message">What's your question? <span class="req">(required)</span></label>
+            <textarea id="message" class="is-short" name="Message" required></textarea>
           </div>
 
           <div class="form__submit">
@@ -155,6 +155,13 @@
 </footer>
 
 <script src="/nav.js"></script>
+
+<!-- Cal.com pop-up embed (element click) -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "15min", {origin:"https://cal.com"});
+  Cal.ns["15min"]("ui", {"styles":{"branding":{"brandColor":"#2C2C2A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
 
 </body>
 </html>
