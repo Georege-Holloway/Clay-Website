@@ -235,6 +235,22 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
 visitors keep serving their old cached copy indefinitely. Current version: `v=26`.
 
+**Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
+"marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
+names, even though a product name and a verb aren't the same thing. Restored on Home only:
+title/description now lead with "Marketing & Business Strategy", "Who we are"'s opening line and
+the "Visibility" pillar both use "grow"/"marketing" again as plain verbs/nouns, never as capitalised
+product names. Home's `ProfessionalService` JSON-LD description now matches the "Who we are" opening
+sentence verbatim, and a `Service` block (Strategy session £120, Health Check scoped) was added to
+the homepage's own JSON-LD — previously only `/services` carried one. Added `/llms.txt` at root: a
+plain-text summary of the business, the three offers, and links to the five live pages, opening with
+the same sentence as the JSON-LD description and the "Who we are" block, for consistency across every
+surface a model or crawler might read. `sitemap.xml`'s `lastmod` dates were stale (all Aug
+2026, despite every page having actually changed in September) — corrected to each page's real last-
+commit date. Redirects, robots.txt and canonicals were all independently audited and already correct;
+nothing needed fixing there. Submitting the sitemap and requesting indexing in Google Search Console
+is still a manual step for George — this repo work can't do that part.
+
 **Sep 2026: pathway connector diagram added to Home's `#pathway` section.** A "Free 15-minute
 call" card (`.pathway__top`) sits above the two peer cards, joined by a small decorative SVG fork
 (`.pathway__connector`, hidden below 680px — a dedicated breakpoint, not the sitewide 860px one,
