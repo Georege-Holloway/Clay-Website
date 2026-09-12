@@ -222,11 +222,45 @@ handover's own copy snapshot for "How we work" was stale on two points and NOT c
 over: it proposed reverting the intro line to a "two ways to work with me" framing (the
 current three-peer-card framing is correct and unchanged) and re-adding a £120-credit note
 between Growth Sessions and a Growth Blueprint (removed deliberately in the Sep 2026 rename
-— they're peer services with no credit between them; don't reintroduce that note). This is
-a structure-only pass — a follow-up will redesign individual sections' visual treatment,
-using an old "Clay website redesign options.zip" mockup as layout/geometry reference only
-(it still shows Launch/Grow as separate pages and proposes Caprasimo as the heading font,
-both superseded — don't carry over its colours, fonts, or information architecture).
+— they're peer services with no credit between them; don't reintroduce that note). This was
+a structure-only pass; individual sections' visual treatment was redesigned in a
+follow-up (see below).
+
+**Sep 2026: Home section redesigns.** Note for next time — `Clay website redesign
+options.zip` (in the parent folder, referenced early in this task) turned out to be a
+**stale** package: Warm Classic tokens, Caprasimo font, Launch/Grow as separate pages, all
+long superseded. The actual reference was three mockup screenshots the user pasted directly
+into chat, labelled 1A / 1B / "2a hero" by them. Section changes, all on `index.html` only:
+- **Hero → "2a hero":** replaced the split photo+text hero (`.hero2`, now unused but kept
+  in `styles.css` in case another page wants that pattern) with a centred, text-only
+  layout (`.hero3`): the large logo lockup (`assets/clay-logo-hero.png`, cropped and
+  chroma-keyed from the same brand sheet as the nav/footer logo — see below) sits above the
+  H1, then lede, then both CTAs, centred. George's photo and the eyebrow/credibility line
+  are gone from Home's hero (the photo is still used on Approach and now also on the new
+  "Who we are" section below).
+- **Who we are → "1B":** two-column `.split-feature` — small-caps `.eyebrow` label
+  ("WHO WE ARE"), blurb, "More on how I work →" link on the left; George's photo
+  (`.washed`, same treatment as the old hero) on the right.
+- **What we cover → "1B":** two-column `.cover-split` — heading on the left
+  (`.h2-flat`, freed up since "How we work"'s heading moved to `.h-section`); on the right,
+  the three items as a vertical list reusing `.process-list`/`.process-item` (the same
+  numbered-circle component built for the Growth Blueprint's "How it runs" steps) instead
+  of the old 3-column `.cover-grid`. Copy unchanged.
+- **How we work:** kept exactly as-is per instruction — only its heading changed from
+  `.h2-flat` to `.h-section` (matching every other section title's size) and the lede
+  gained `margin-inline:auto` so it actually centres under the ancestor's
+  `text-align:center` (it wasn't before — the paragraph's own `max-width` meant
+  text-align alone left it visually left-aligned).
+- **Why this matters:** `.why-panel--text-only` lost its `max-width:70ch` cap so the panel
+  now spans the full `.shell` width ("stretch to the edges"); the text itself is wrapped in
+  a new `.why-panel__body{max-width:62ch}` so paragraphs don't stretch full-width and
+  become hard to read. **Still needs a real photo** to complete the mockup's two-column
+  `.why-panel` (image left, stat+text right) — per this repo's own established rule, don't
+  ship a placeholder box for it. George to supply something in the spirit of the mockups'
+  own suggested captions ("desk, notebook, or practice space", "hands, chair, window
+  light") — a calm, real photo, not stock-looking. Swap `why-panel--text-only` back to the
+  plain `.why-panel` grid and add a `.why-panel__figure` once supplied.
+- **Final CTA:** unchanged, per instruction.
 
 **Sep 2026: text wordmark replaced with the real logo, sitewide.** George supplied
 `Clay Consulting Logo.zip` — two full brand-sheet exports (`clay-logo-light.png` /
@@ -238,10 +272,13 @@ nav background) and `assets/clay-logo-footer.png` (cream text + sage dash, for t
 footer) were cropped from those sheets and chroma-keyed to transparent PNGs — both
 280×97, sized in CSS via `.nav__brand img{height:32px}` / `.footer__brand img{height:36px}`.
 Every page's `<a class="nav__brand">` and `<p class="footer__brand">` now hold an `<img
-alt="Clay Consulting">` instead of the text string. The pill badge and circular monogram
-from the brand sheet weren't used for anything — the monogram in particular would be a
-good candidate for `/assets/favicon.svg`/`.png`, which are still placeholders (see below),
-if George wants to revisit that.
+alt="Clay Consulting">` instead of the text string. The large hero wordmark+tagline variant
+was cropped the same way as `assets/clay-logo-hero.png` (925×479 native, sized via
+`.hero3__logo{width:min(380px,60%)}`) once Home's hero was redesigned to use it as its
+centrepiece — see the Home section-redesigns entry above. The pill badge and circular
+monogram from the brand sheet still aren't used for anything — the monogram in particular
+would be a good candidate for `/assets/favicon.svg`/`.png`, which are still placeholders
+(see below), if George wants to revisit that.
 
 ### Known outstanding work
 

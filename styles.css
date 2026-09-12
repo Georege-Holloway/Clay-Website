@@ -393,6 +393,7 @@ a.price-card{display:block;text-decoration:none}
 .pathway__connector{display:block;width:100%;max-width:760px;height:56px;margin:0 auto}
 
 #pathway .section-head,#pathway .price-cards,#pathway .price-card,#pathway .note-wrap{text-align:center}
+#pathway .section-head__lede{margin-inline:auto}
 #pathway .price-cards{justify-content:center}
 #pathway .note{white-space:nowrap;font-size:clamp(.75rem,2vw,1rem)}
 #pathway .note-wrap .text-link{display:inline-block;margin-top:.75rem}
@@ -416,7 +417,8 @@ a.price-card{display:block;text-decoration:none}
 
 /* ---- home: why this matters panel ---- */
 .why-panel{background:var(--surface);border-radius:var(--radius-card);padding:clamp(2rem,4vw,3.5rem);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
-.why-panel--text-only{grid-template-columns:1fr;max-width:70ch;margin-inline:auto;text-align:left}
+.why-panel--text-only{grid-template-columns:1fr;text-align:left}
+.why-panel__body{max-width:62ch}
 .why-panel__figure{border-radius:var(--radius-card);overflow:hidden;min-height:300px;background:var(--rule)}
 .why-panel__figure img{display:block;width:100%;height:100%;object-fit:cover}
 .why-panel h2{font-size:clamp(1.75rem,3vw,2.125rem);margin-bottom:1.25rem}
@@ -428,6 +430,19 @@ a.price-card{display:block;text-decoration:none}
 .hero2-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);margin-top:clamp(2rem,4vw,2.75rem)}
 .hero2-cols p:first-child{font-size:1.15625rem}
 .hero2-cols p:last-child{font-size:1.03125rem;color:var(--ink-soft)}
+
+/* ---- home: centred hero (Sep 2026 redesign) ---- */
+.hero3{text-align:center;max-width:50rem;margin-inline:auto}
+.hero3__logo{width:min(380px,60%);margin:0 auto clamp(2rem,4vw,2.75rem)}
+.hero3 h1{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:600;letter-spacing:-.02em;line-height:1.05;margin-bottom:1.5rem}
+.hero3__lede{font-size:1.1875rem;line-height:1.55;max-width:44ch;margin:0 auto 2rem}
+.hero3__actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.5rem}
+
+/* ---- home: split feature (who we are) ---- */
+.split-feature{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,4vw,4rem);align-items:center}
+
+/* ---- home: cover split (what we cover) ---- */
+.cover-split{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
 
 /* ---- services: comparison grid (desktop) ---- */
 .compare{border-top:1.5px solid var(--ink)}
@@ -568,6 +583,8 @@ details[open] .chev{transform:rotate(-135deg)}
   .faq2__grid{columns:1}
   .twocol{grid-template-columns:1fr;gap:2.5rem}
   .section-head__row{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .split-feature{grid-template-columns:1fr}
+  .cover-split{grid-template-columns:1fr}
 }
 
 @media (max-width:680px){
