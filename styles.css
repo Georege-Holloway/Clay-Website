@@ -117,7 +117,8 @@ p{text-wrap:pretty}
 /* ---------- nav ---------- */
 .nav{background:var(--bg);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:50}
 .nav__inner{display:flex;align-items:center;gap:2.5rem;min-height:84px}
-.nav__brand{font-size:1.4375rem;font-weight:600;letter-spacing:-.01em;text-decoration:none;margin-right:auto}
+.nav__brand{font-size:1.4375rem;font-weight:600;letter-spacing:-.01em;text-decoration:none;margin-right:auto;display:flex;align-items:center}
+.nav__brand img{display:block;height:32px;width:auto}
 .nav__links{display:flex;gap:1.9rem;list-style:none;margin:0;padding:0;font-size:.9375rem}
 .nav__links a{text-decoration:none;font-weight:500;padding-block:.4rem;border-bottom:2px solid transparent}
 .nav__links a:hover{text-decoration:underline;text-underline-offset:6px}
@@ -500,7 +501,8 @@ details[open] .chev{transform:rotate(-135deg)}
 .footer a{color:var(--footer-fg)}
 .footer__top{display:flex;flex-wrap:wrap;gap:3rem 4rem;justify-content:space-between;align-items:flex-start}
 .footer__brand-block{max-width:22rem}
-.footer__brand{font-size:1.625rem;font-weight:600;letter-spacing:-.01em}
+.footer__brand{font-size:1.625rem;font-weight:600;letter-spacing:-.01em;line-height:0}
+.footer__brand img{height:36px;width:auto}
 .footer__cols{display:flex;flex-wrap:wrap;gap:clamp(3rem,6vw,4rem)}
 .footer__col h2{font-family:var(--body);font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;font-weight:500;margin-bottom:1.1rem;opacity:.55;line-height:1.4}
 .footer__col ul{list-style:none;margin:0;padding:0;display:grid;gap:.65rem;font-size:1rem}

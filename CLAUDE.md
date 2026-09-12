@@ -210,10 +210,26 @@ Home has had light improvements applied. The other pages are faithful copies of 
 Squarespace originals — an improvement pass is planned but **has not happened yet**, so do
 not "fix" copy on those pages unless asked.
 
+**Sep 2026: text wordmark replaced with the real logo, sitewide.** George supplied
+`Clay Consulting Logo.zip` — two full brand-sheet exports (`clay-logo-light.png` /
+`clay-logo-dark.png`, each a flat-background canvas showing four lockup variants: a large
+hero wordmark+tagline, a compact horizontal "— Clay" mark, a pill badge, and a circular "C"
+monogram), not pre-cut transparent assets. George chose the compact horizontal mark for
+the nav/footer. `assets/clay-logo-header.png` (black text + terracotta dash, for the light
+nav background) and `assets/clay-logo-footer.png` (cream text + sage dash, for the dark
+footer) were cropped from those sheets and chroma-keyed to transparent PNGs — both
+280×97, sized in CSS via `.nav__brand img{height:32px}` / `.footer__brand img{height:36px}`.
+Every page's `<a class="nav__brand">` and `<p class="footer__brand">` now hold an `<img
+alt="Clay Consulting">` instead of the text string. The pill badge and circular monogram
+from the brand sheet weren't used for anything — the monogram in particular would be a
+good candidate for `/assets/favicon.svg`/`.png`, which are still placeholders (see below),
+if George wants to revisit that.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,
-      ink monogram) so nothing 404s. Swap for real versions when George has them.
+      ink monogram) so nothing 404s. Swap for real versions when George has them — the new
+      logo sheet's circular "C" monogram (see above) could be the source for the favicon.
       `george-holloway.jpg` is in, cropped from `IMG_7253.jpeg` — reselect the crop if needed.
 - [ ] Blog post dates (`resources.html` and each article) are placeholders spaced a week
       apart from 21 July 2026 backward — not real publish dates. Update when George confirms.
