@@ -7,5 +7,11 @@
 /resources/free-practice-setup-guide  /resources/how-to-set-up-a-therapy-practice-uk  301
 
 # Services page merge: Launch and Grow retired as separate products (Aug 2026)
+# /launch: OPEN per Sep 2026 Site Restructure Handover §8 — George to confirm whether
+# this should point to /services (current), Home, or 404. Left as /services until confirmed.
 /launch  /services  301
-/grow    /services  301
+
+# Sep 2026 Site Restructure: /grow retargeted from /services to the page that replaced
+# the Health Check it used to point to. /grow has accumulated search/generative-search
+# equity, so it must keep 301ing rather than 404 (handover §8).
+/grow    /growth-blueprint  301

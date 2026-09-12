@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Marketing &amp; Business Strategy for Therapists | Clay Consulting</title>
-<meta name="description" content="Helping UK therapists and counsellors grow a private practice. Strategy sessions and practice Health Checks, run by a therapist in training.">
+<meta name="description" content="Helping UK therapists and counsellors grow a private practice. Growth Sessions and Growth Blueprints, run by a therapist in training.">
 <link rel="canonical" href="https://www.clayconsulting.co.uk/">
 
 <meta property="og:type" content="website">
@@ -47,13 +47,13 @@
   "provider": { "@type": "Organization", "name": "Clay Consulting Group Ltd" },
   "areaServed": "GB",
   "offers": [
-    { "@type": "Offer", "name": "Strategy session", "price": "120", "priceCurrency": "GBP", "description": "One hour, on a video call." },
-    { "@type": "Offer", "name": "Practice Health Check", "priceSpecification": { "@type": "PriceSpecification", "description": "Scoped and agreed per engagement" } }
+    { "@type": "Offer", "name": "Growth Session", "price": "120", "priceCurrency": "GBP", "description": "One hour, on a video call." },
+    { "@type": "Offer", "name": "Growth Blueprint", "priceSpecification": { "@type": "PriceSpecification", "description": "Scoped and agreed per engagement" } }
   ]
 }
 </script>
 
-<link rel="stylesheet" href="/styles.css?v=26">
+<link rel="stylesheet" href="/styles.css?v=27">
 </head>
 <body>
 
@@ -67,7 +67,16 @@
     </button>
     <ul class="nav__links" id="nav-links">
       <li><a href="/" aria-current="page">Home</a></li>
-      <li><a href="/services">Services</a></li>
+      <li class="nav__item">
+        <a href="/services">Services</a>
+        <button type="button" class="nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="services-dropdown" aria-label="Show Services menu">
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <ul class="nav__dropdown" id="services-dropdown">
+          <li><a href="/growth-sessions">Growth Sessions</a></li>
+          <li><a href="/growth-blueprint">Growth Blueprint</a></li>
+        </ul>
+      </li>
       <li><a href="/approach">Approach</a></li>
       <li><a href="/resources">Resources</a></li>
       <li class="nav__links-contact"><a href="/contact">Contact</a></li>
@@ -104,37 +113,29 @@
   <section class="section section--top-tight section--bottom-tight" id="pathway">
     <div class="shell">
       <div class="section-head">
-        <h2 class="h2-flat">The pathway</h2>
-        <p class="section-head__lede">A free 15-minute call to work out what's needed. From there, two ways to work with me.</p>
+        <h2 class="h2-flat">Ways to work together</h2>
+        <p class="section-head__lede">A free 15-minute call to work out what's needed &mdash; or go straight to whichever makes sense.</p>
       </div>
 
-      <div class="pathway__top">
-        <div class="price-card">
+      <div class="price-cards">
+        <a class="price-card" href="/contact">
           <h3>Free 15-minute call</h3>
           <p>A quick conversation to work out whether I can help, and which option makes sense.</p>
           <p class="price-card__price">Free <span>&middot; 15 minutes</span></p>
-        </div>
-      </div>
-
-      <svg class="pathway__connector" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M50,0 L50,16 M50,16 L25,40 M50,16 L75,40" fill="none" stroke="#D3B08C" stroke-width="1.5"/>
-      </svg>
-
-      <div class="price-cards">
-        <div class="price-card">
-          <h3>Strategy session</h3>
-          <p>A clear objective and what to do about it. Stands on its own &mdash; plenty of people take the session and stop there.</p>
-          <p class="price-card__price">£120 <span>&middot; one hour</span></p>
-        </div>
-        <div class="price-card">
-          <h3>Health Check</h3>
-          <p>Includes the objective-setting work, then goes further: a full audit of your website, visibility and competitors, with a written report.</p>
+        </a>
+        <a class="price-card" href="/growth-sessions">
+          <h3>Growth Sessions</h3>
+          <p>A regular hour to work through the business side of your practice. Monthly, weekly, or one-off.</p>
+          <p class="price-card__price">£120 <span>&middot; per session</span></p>
+        </a>
+        <a class="price-card" href="/growth-blueprint">
+          <h3>Growth Blueprint</h3>
+          <p>A full strategic review of your website, visibility and competitors, delivered as a written report with prioritised recommendations.</p>
           <p class="price-card__price">Scoped <span>&middot; per engagement</span></p>
-        </div>
+        </a>
       </div>
 
       <div class="note-wrap">
-        <p class="note">Already had a session? The £120 comes off your Health Check in full, if you go ahead within three months.</p>
         <a class="text-link" href="/services">See how it works &rarr;</a>
       </div>
     </div>

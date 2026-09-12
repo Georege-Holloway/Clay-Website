@@ -24,6 +24,50 @@ Free single-page websites are still handled by **Build** (`/build`, unaffected b
 `/launch` and `/grow` now 301 to `/services` (`_redirects` + `netlify.toml`). Do not reintroduce
 "Launch" or "Grow" as product names anywhere.
 
+**Sep 2026: "Strategy session" and "Health Check" renamed and unbundled — supersedes the Aug 2026
+positioning above.** Two problems drove this: "Health Check" undersold a full strategic review, and
+the two products cannibalised each other (the £120 session fee credited in full against a Health
+Check told buyers they were the same product at two prices). Fix: three named products, no credit
+between them, each standing alone.
+
+- **Strategy session → Growth Sessions** (plural — the service, not a single unit). Still £120,
+  still one hour, but repositioned as a recurring thinking-partner service (monthly, weekly or
+  one-off, no contract) rather than a single fixed-scope session. Own page: `/growth-sessions`.
+- **Health Check → Growth Blueprint**. Same full strategic review (website, search visibility,
+  directories, GBP, competitors), same scoped/no-published-price model. Own page:
+  `/growth-blueprint`.
+- **The £120 credit is gone entirely.** Growth Sessions and a Growth Blueprint are peer services,
+  not a ladder — copy must never imply one leads to the other. Don't reintroduce "Health Check",
+  "Strategy session" (as a product name) or any £120-comes-off wording anywhere on the site.
+- **Growth Check** — a new free 12-question quiz/lead tool, built but **not published**:
+  `growth-check.html` exists on disk with `noindex, nofollow`, is excluded from `sitemap.xml`, has
+  no nav entry and no inbound internal links from any live page — reachable by direct URL only.
+  Three items are still open before it can go live: email-gating decision, how Neil's separate quiz
+  build integrates (in-page/embed/link-out — currently a placeholder block), and the final question
+  count. The file has a comment at the top listing all five things to reverse when it does go live.
+- **Nav gained a dropdown.** Services is still a direct link to `/services`; a separate
+  `.nav__dropdown-toggle` button (reusing the `.chev` accordion chevron, state driven by
+  `aria-expanded`) reveals Growth Sessions / Growth Blueprint. Desktop also opens on `:hover`
+  **only** (not `:focus-within` — that caused a real bug: Escape closes the menu and returns focus
+  to the toggle per `nav.js`, and the toggle sits inside `.nav__item`, so `:focus-within` alone
+  would keep the panel visually open right after Escape "closed" it). Mobile expands inline within
+  the existing mobile-nav accordion pattern. `nav.js` also handles Escape-to-close-and-refocus and
+  ArrowUp/ArrowDown between the two dropdown links. **Do not add Growth Check to this dropdown**
+  while it's unpublished.
+- **Services thinned into a hub.** The old "In detail" accordion section and the "What happens
+  afterwards" / "Who this is not for" two-column section are gone from `/services` — that content
+  now lives on the two detail pages. The visible FAQ trimmed from 8 questions to 3 genuinely
+  cross-cutting ones; product-specific FAQs moved to their own pages.
+- **`/grow` now redirects to `/growth-blueprint`**, not `/services` (`_redirects` +
+  `netlify.toml`'s `/grow.html` block) — it carries real search/generative-search equity and must
+  keep 301ing rather than 404. **`/launch` is unresolved** — still points to `/services` for now;
+  George has not confirmed whether it should redirect to `/growth-blueprint`, Home, or 404 once
+  Launch is properly retired as a product line. Don't change it without confirming first.
+- Two `approach.html` "How we work" cards ("One team, one bill, one place" and "Your practice, in
+  your name") still describe a done-for-you managed-service model that doesn't cleanly match this
+  three-product advisory structure. Flagged for George, not rewritten — the Sep 2026 handover was
+  explicit that these needed his review rather than an assumed rewrite.
+
 **Known gap:** the Home page (`index.html`) still names "Launch" and "Grow" in its body copy and
 links directly to `/launch`/`/grow` (which redirect, so nothing breaks, but the wording is stale).
 Home was explicitly out of scope for the Services rewrite — update it in a follow-up task.
@@ -107,7 +151,9 @@ Everything is controlled by variables at the top of `styles.css`.
 
 ## Current state
 
-Built and reviewed: Home, Approach, Services, Contact, Privacy, 404.
+Built and reviewed: Home, Approach, Services, Contact, Privacy, 404, Growth Sessions, Growth
+Blueprint. Growth Check is built but deliberately unpublished (see the Sep 2026 restructure
+note above).
 
 **Sep 2026: Home rewritten.** Split hero (heading + intro + photo of George, `assets/george-holloway.jpg`,
 CTA to `/contact`), a condensed "pathway" summary linking to `/services`, then the
@@ -233,7 +279,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=26`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=27`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

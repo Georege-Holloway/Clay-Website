@@ -125,6 +125,33 @@ p{text-wrap:pretty}
 .nav__toggle{display:none}
 .nav__links-contact{display:none}
 
+/* ---- nav: Services dropdown ---- */
+.nav__item{display:flex;align-items:center;gap:.35rem;position:relative}
+.nav__dropdown-toggle{
+  display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;
+  padding:0;margin:0;background:none;border:0;cursor:pointer;color:inherit;
+  -webkit-appearance:none;appearance:none;
+}
+.nav__dropdown-toggle .chev{width:8px;height:8px;border-color:currentColor;transform:rotate(45deg)}
+.nav__dropdown-toggle[aria-expanded="true"] .chev{transform:rotate(-135deg)}
+.nav__dropdown{
+  display:none;position:absolute;top:100%;left:0;margin-top:.6rem;padding:.5rem 0;min-width:11rem;
+  list-style:none;background:var(--bg);border:1px solid var(--rule);border-radius:12px;
+  box-shadow:0 8px 24px rgba(46,43,37,.12);z-index:10;
+}
+.nav__dropdown-toggle[aria-expanded="true"] + .nav__dropdown{display:block}
+@media (min-width:861px){
+  /* Mouse-hover affordance only — deliberately NOT :focus-within. Escape closes the
+     dropdown by setting aria-expanded="false" and returning focus to the toggle button
+     (nav.js), and the toggle sits inside .nav__item; if :focus-within also opened it,
+     that focus-return would keep the dropdown visually open right after Escape closed
+     it. Keyboard/JS state is aria-expanded alone; hover is the separate, mouse-only path. */
+  .nav__item:hover .nav__dropdown{display:block}
+}
+.nav__dropdown li{padding:0}
+.nav__dropdown a{display:block;padding:.6rem 1.1rem;white-space:nowrap;border-bottom:0!important}
+.nav__dropdown a:hover,.nav__dropdown a:focus-visible{background:var(--surface)}
+
 /* ---------- buttons ---------- */
 .btn{
   display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;
@@ -354,6 +381,7 @@ fieldset{border:0;padding:0;margin:0}
 .price-card p{color:var(--ink-soft);margin:0;font-size:1rem;line-height:1.5}
 .price-card__price{margin-top:1.5rem;font-family:var(--display);font-size:2rem;font-weight:500}
 .price-card__price span{font-family:var(--body);font-size:.9375rem;color:var(--ink-soft);font-weight:400;letter-spacing:0;text-transform:none}
+a.price-card{display:block;text-decoration:none}
 .price-card--accent{background:var(--terracotta);color:#fff;box-shadow:0 8px 24px rgba(46,43,37,.12)}
 .price-card--accent .price-card__num,.price-card--accent p{color:#fff}
 .price-card--accent .price-card__price span{color:rgba(255,255,255,.82)}
@@ -374,8 +402,16 @@ fieldset{border:0;padding:0;margin:0}
 /* ---- home: what we cover ---- */
 .cover-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(2rem,4vw,2.75rem)}
 .cover-item__num{width:54px;height:54px;border-radius:50%;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.1875rem;margin-bottom:1.375rem}
-.cover-item h3{font-size:1.5rem;margin-bottom:.6rem}
-.cover-item p{color:var(--ink-soft);margin:0;font-size:1rem}
+.cover-item h3,.process-item h3{font-size:1.5rem;margin-bottom:.6rem}
+.cover-item p,.process-item p{color:var(--ink-soft);margin:0;font-size:1rem}
+
+/* ---- numbered process list (reuses the cover-item circle badge) ---- */
+.process-list{display:grid;gap:clamp(1.5rem,3vw,2rem);margin-top:clamp(2rem,4vw,2.75rem)}
+.process-item{display:grid;grid-template-columns:54px 1fr;gap:1.25rem;align-items:start}
+.process-item .cover-item__num{margin-bottom:0}
+
+/* ---- centred CTA row (growth-sessions / growth-blueprint / services) ---- */
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.5rem;text-align:center;margin-top:2rem}
 
 /* ---- home: why this matters panel ---- */
 .why-panel{background:var(--surface);border-radius:var(--radius-card);padding:clamp(2rem,4vw,3.5rem);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
@@ -500,6 +536,15 @@ details[open] .chev{transform:rotate(-135deg)}
   .nav.is-open .nav__toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav__cta{display:none}
   .nav__links-contact{display:block}
+  .nav__item{flex-wrap:wrap;justify-content:space-between}
+  .nav__item a{flex:1}
+  .nav__dropdown-toggle{width:2rem;height:2rem}
+  .nav__dropdown{
+    display:none;position:static;width:100%;margin:0;padding:0 0 .5rem;
+    border:0;box-shadow:none;background:none;
+  }
+  .nav__dropdown-toggle[aria-expanded="true"] + .nav__dropdown{display:block}
+  .nav__dropdown a{padding:.6rem 0 .6rem 1.25rem;color:var(--ink-muted)}
   .thesis,.quote{max-width:none}
   .split,.faq,.contact__grid{grid-template-columns:1fr}
   .contact__intro h1{max-width:none}

@@ -28,7 +28,7 @@
 
 [[redirects]]
   from = "/grow.html"
-  to = "/services"
+  to = "/growth-blueprint"
   status = 301
   force = true
 

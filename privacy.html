@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=26">
+<link rel="stylesheet" href="/styles.css?v=27">
 </head>
 <body>
 
@@ -27,7 +27,16 @@
     </button>
     <ul class="nav__links" id="nav-links">
       <li><a href="/">Home</a></li>
-      <li><a href="/services">Services</a></li>
+      <li class="nav__item">
+        <a href="/services">Services</a>
+        <button type="button" class="nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="services-dropdown" aria-label="Show Services menu">
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <ul class="nav__dropdown" id="services-dropdown">
+          <li><a href="/growth-sessions">Growth Sessions</a></li>
+          <li><a href="/growth-blueprint">Growth Blueprint</a></li>
+        </ul>
+      </li>
       <li><a href="/approach">Approach</a></li>
       <li><a href="/resources">Resources</a></li>
       <li class="nav__links-contact"><a href="/contact">Contact</a></li>
