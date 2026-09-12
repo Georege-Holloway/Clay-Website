@@ -210,6 +210,24 @@ Home has had light improvements applied. The other pages are faithful copies of 
 Squarespace originals — an improvement pass is planned but **has not happened yet**, so do
 not "fix" copy on those pages unless asked.
 
+**Sep 2026: Homepage sections reordered — content unchanged.** Per the Homepage Restructure
+Handover, `index.html`'s section order is now Hero → Problem ("Most therapy training ends at
+the clinic door") → Who we are → What we cover → How we work (the `#pathway` price-cards
+section) → *(testimonials marker — see below)* → Why this matters → Final CTA. Previously
+"How we work" sat right after the hero and "Who we are" sat after "What we cover" — pure
+reorder, no copy touched, no section restyled. A future testimonials section (pending a
+quote from Aaron) slots in between "How we work" and "Why this matters" — there's an HTML
+comment marking the spot; don't build a placeholder until real content exists. The
+handover's own copy snapshot for "How we work" was stale on two points and NOT carried
+over: it proposed reverting the intro line to a "two ways to work with me" framing (the
+current three-peer-card framing is correct and unchanged) and re-adding a £120-credit note
+between Growth Sessions and a Growth Blueprint (removed deliberately in the Sep 2026 rename
+— they're peer services with no credit between them; don't reintroduce that note). This is
+a structure-only pass — a follow-up will redesign individual sections' visual treatment,
+using an old "Clay website redesign options.zip" mockup as layout/geometry reference only
+(it still shows Launch/Grow as separate pages and proposes Caprasimo as the heading font,
+both superseded — don't carry over its colours, fonts, or information architecture).
+
 **Sep 2026: text wordmark replaced with the real logo, sitewide.** George supplied
 `Clay Consulting Logo.zip` — two full brand-sheet exports (`clay-logo-light.png` /
 `clay-logo-dark.png`, each a flat-background canvas showing four lockup variants: a large
