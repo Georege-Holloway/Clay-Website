@@ -262,6 +262,26 @@ into chat, labelled 1A / 1B / "2a hero" by them. Section changes, all on `index.
   plain `.why-panel` grid and add a `.why-panel__figure` once supplied.
 - **Final CTA:** unchanged, per instruction.
 
+**Sep 2026: Growth Blueprint given a fixed, published price — £1,200 flat, sitewide.**
+Supersedes every earlier "scoped per engagement, no fixed price" note above — this was a
+deliberate reversal George made directly (asked for by name, after being warned it
+contradicted the FAQ copy explaining why there was no fixed price). £1,200 was chosen over
+£1,199/£1,195 on the grounds that a "£X99" ending reads as retail/impulse pricing, which
+cuts against the brand's plain, no-upsell voice. Flat means flat: it does not vary by
+practice size or organisation — updated everywhere accordingly:
+- `growth-blueprint.html`: hero price line, `Service` JSON-LD (now `price`/`priceCurrency`
+  instead of a priceless `PriceSpecification`), the "How much does a Growth Blueprint
+  cost?" FAQ (both visible and `FAQPage` JSON-LD, rewritten — it used to argue *for* having
+  no number), and the "Proposal" step in "How it runs" (dropped "price" from what the
+  proposal sets out, since it's no longer determined per engagement — scope and what's out
+  of scope still are).
+- `services.html` and `index.html`: comparison table/price-card "Scoped" → "£1,200", plus
+  their own `Service` JSON-LD offers updated the same way as growth-blueprint.html's.
+- `llms.txt`: "(scoped and agreed per engagement, no fixed price)" → "(£1,200, flat fee)".
+Do not reintroduce "scoped"/"no fixed price" language for the Blueprint anywhere without
+George explicitly asking — grep for "scoped" and "per engagement" before adding any new
+Blueprint copy.
+
 **Sep 2026: text wordmark replaced with the real logo, sitewide.** George supplied
 `Clay Consulting Logo.zip` — two full brand-sheet exports (`clay-logo-light.png` /
 `clay-logo-dark.png`, each a flat-background canvas showing four lockup variants: a large
