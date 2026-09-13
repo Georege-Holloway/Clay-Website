@@ -381,6 +381,33 @@ only one was still live: the other — Blueprint's "resources are free in the me
 supposedly self-linking — was already pointing at `/resources` before this task started,
 so the handover's claim there was stale; flagged rather than silently no-op'd.
 
+**Sep 2026 (13th), follow-up fixes:** George caught three real bugs from the pass above —
+- **`.gp-sticky` removed entirely** (HTML, CSS, mobile overrides). It duplicated the hero's
+  own price/CTA content and, being `position:sticky` right under the equally-sticky nav,
+  visually congested the top of the viewport on scroll. Its content wasn't lost: both
+  hero `.gp-hero__actions` blocks now carry the secondary "Free 15-minute call" button
+  alongside the primary CTA, so nothing the sticky bar offered is gone, it's just not
+  pinned. Needed a same-turn addendum: the secondary button uses `.btn--outline`, which
+  is dark-on-transparent by default and invisible against the dark `.gp-hero` background
+  — added `.gp-hero .btn--outline{border-color:#fff;color:#fff}`.
+- **`.gp-card` and `.gp-side` were invisible against their own section backgrounds.**
+  `.gp-tint--cream` and the un-tinted default state of both components all resolved to
+  the same `--surface` token, so "How often"'s three cards (Growth Sessions) and two of
+  the four `.gp-side` callouts (one per page) had no visible boundary at all — just
+  paragraphs of uneven length sitting directly on the page background, which is what
+  actually read as "formatting issues" rather than a deliberately plain layout. Fixed
+  `.gp-card` to a flat `#fff` (matches this repo's established "cards invert on tinted
+  bands" convention, e.g. `.section--stone .card{background:#fff}`) and added
+  `.gp-tint--cream .gp-side{background:#fff}` alongside the existing peach-band override.
+- **"Why me for this" (Growth Sessions) had a real alignment bug**, not just a design
+  choice: its intro heading+paragraph were wrapped in `.article` (68ch measure,
+  `margin-inline:auto` — i.e. centred and narrower than the shell), sitting directly above
+  `.process-list--row` and `.gp-callout`, both full shell width with no such centring. The
+  intro visibly started indented relative to everything below it. New `.gp-intro`
+  class (60ch cap, no auto-centring, left flush) replaces `.article` here specifically —
+  don't reach for `.article` when a narrow block sits above a full-width grid; the mismatch
+  is exactly this bug.
+
 **Sep 2026: text wordmark replaced with the real logo, sitewide.** George supplied
 `Clay Consulting Logo.zip` — two full brand-sheet exports (`clay-logo-light.png` /
 `clay-logo-dark.png`, each a flat-background canvas showing four lockup variants: a large

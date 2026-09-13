@@ -475,16 +475,9 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-hero .price-card__price span{color:var(--sage-tint)}
 .gp-hero .hero2-cols p{color:rgba(255,255,255,.82)}
 .gp-hero .hero2-cols p:first-child{color:#fff}
-.gp-hero__actions{margin-top:clamp(1.5rem,3vw,2rem)}
-
-/* ---- sticky price/CTA bar ---- */
-.gp-sticky{position:sticky;top:84px;z-index:40;background:color-mix(in srgb,var(--surface) 94%,transparent);border-bottom:1px solid var(--rule);backdrop-filter:blur(6px)}
-.gp-sticky__inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
-.gp-sticky__price{font-size:.9375rem}
-.gp-sticky__price strong{font-family:var(--display);font-size:1.1875rem;font-weight:500;margin-right:.4rem}
-.gp-sticky__price span{color:var(--ink-muted)}
-.gp-sticky__actions{display:flex;flex-wrap:wrap;gap:.75rem}
-.gp-sticky__actions .btn{font-size:.6875rem;padding:.75rem 1.375rem}
+.gp-hero__actions{margin-top:clamp(1.5rem,3vw,2rem);display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem}
+.gp-hero .btn--outline{border-color:#fff;color:#fff}
+.gp-hero .btn--outline:hover{background:#fff;color:var(--sage-deep)}
 
 /* ---- tinted section bands ---- */
 .gp-tint--peach{background:var(--terracotta-tint)}
@@ -493,7 +486,13 @@ details[open] .chev{transform:rotate(-135deg)}
 /* ---- two-column split with a small side callout (How it works / single objective) ---- */
 .gp-split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.5rem);align-items:start}
 .gp-side{background:var(--surface);border-radius:var(--radius-card);padding:1.75rem;font-weight:600;font-size:1.0625rem;align-self:start}
-.gp-tint--peach .gp-side{background:#fff}
+.gp-tint--peach .gp-side,.gp-tint--cream .gp-side{background:#fff}
+
+/* ---- left-aligned intro before a full-width grid (Why me for this) — deliberately
+   not .article, which centres its measure and would sit indented relative to the
+   full-width grid directly below it ---- */
+.gp-intro{max-width:60ch;margin-bottom:clamp(1.5rem,3vw,2rem)}
+.gp-intro p{color:var(--ink-soft);font-size:1.125rem}
 
 /* ---- numbered / labelled row list (What people bring / What gets looked at) ---- */
 .gp-table{border-top:1px solid var(--rule);margin-top:clamp(1.5rem,3vw,2rem)}
@@ -504,7 +503,7 @@ details[open] .chev{transform:rotate(-135deg)}
 
 /* ---- three-card row (How often) ---- */
 .gp-cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:clamp(2rem,4vw,2.75rem)}
-.gp-card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(1.5rem,2.4vw,2rem)}
+.gp-card{background:#fff;border-radius:var(--radius-card);padding:clamp(1.5rem,2.4vw,2rem);box-shadow:0 2px 8px rgba(46,43,37,.06)}
 .gp-card__tag{display:inline-block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--terracotta-deep);background:var(--terracotta-tint);padding:.3rem .75rem;border-radius:var(--radius-pill);margin-bottom:1rem}
 .gp-card h3{font-size:1.375rem;margin-bottom:.6rem}
 .gp-card p{color:var(--ink-soft);margin:0;font-size:1rem}
@@ -605,8 +604,6 @@ details[open] .chev{transform:rotate(-135deg)}
   .hero3 h1{white-space:normal}
 
   /* ---- growth-sessions / growth-blueprint redesign, mobile ---- */
-  .gp-sticky{top:68px}
-  .gp-sticky__inner{justify-content:center;text-align:center}
   .gp-split{grid-template-columns:1fr}
   .gp-table__row,.gp-table__row--labelled{grid-template-columns:2.25rem 1fr}
   .gp-cards-3{grid-template-columns:1fr}
