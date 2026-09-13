@@ -361,7 +361,7 @@ fieldset{border:0;padding:0;margin:0}
 .washed img{display:block;width:100%;height:100%;object-fit:cover}
 .accent-circle{position:absolute;top:-26px;right:-26px;width:190px;height:190px;border-radius:50%;background:var(--sage-tint);z-index:-1}
 
-.h2-flat{font-size:clamp(1.75rem,3.4vw,2.375rem);font-weight:600;line-height:1.15;text-align:left;margin:0}
+.h2-flat{font-size:clamp(2.75rem,4.4vw,3.375rem);font-weight:600;line-height:1.15;text-align:left;margin:0}
 
 /* ---- home: hero ---- */
 .hero2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,4vw,4rem);align-items:center}
@@ -376,13 +376,13 @@ fieldset{border:0;padding:0;margin:0}
 .section-head__lede{color:var(--ink-soft);font-size:1.0625rem;margin-top:.6rem;max-width:56ch}
 
 .price-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.375rem;margin-top:clamp(2rem,4vw,2.75rem)}
-.price-card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(1.75rem,2.6vw,2.25rem);box-shadow:0 2px 8px rgba(46,43,37,.06)}
+.price-card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(1.75rem,2.6vw,2.25rem);box-shadow:0 2px 8px rgba(46,43,37,.06);display:flex;flex-direction:column}
 .price-card__num{font-family:var(--display);color:var(--terracotta-deep);font-size:.95rem;margin-bottom:.9rem}
 .price-card h3{font-size:clamp(1.375rem,1.8vw,1.5625rem);margin-bottom:.6rem}
 .price-card p{color:var(--ink-soft);margin:0;font-size:1rem;line-height:1.5}
-.price-card__price{margin-top:1.5rem;font-family:var(--display);font-size:2rem;font-weight:500}
+.price-card p.price-card__price{margin-top:auto;padding-top:1.5rem;font-family:var(--display);font-size:2rem;font-weight:500}
 .price-card__price span{font-family:var(--body);font-size:.9375rem;color:var(--ink-soft);font-weight:400;letter-spacing:0;text-transform:none}
-a.price-card{display:block;text-decoration:none}
+.price-card .text-link{display:inline-block;margin-top:.75rem}
 .price-card--accent{background:var(--terracotta);color:#fff;box-shadow:0 8px 24px rgba(46,43,37,.12)}
 .price-card--accent .price-card__num,.price-card--accent p{color:#fff}
 .price-card--accent .price-card__price span{color:rgba(255,255,255,.82)}
