@@ -354,6 +354,7 @@ fieldset{border:0;padding:0;margin:0}
 .price-card__price{font-family:var(--display);font-size:2rem;font-weight:500}
 .price-card__price span{font-family:var(--body);font-size:.9375rem;color:var(--ink-soft);font-weight:400;letter-spacing:0;text-transform:none}
 
+#pathway{scroll-margin-top:100px}
 #pathway .section-head{text-align:center}
 #pathway .section-head__lede{margin-inline:auto}
 
@@ -459,6 +460,79 @@ details[open] .chev{transform:rotate(-135deg)}
 .twocol h2{font-size:1.875rem;font-weight:500;margin-bottom:1rem}
 .twocol p{color:var(--ink-soft)}
 
+/* =========================================================
+   Growth Sessions / Growth Blueprint redesign (Sep 2026).
+   New, gp-prefixed classes scoped to these two pages only —
+   nothing here is reused elsewhere, per the handover's own
+   instruction to scope new styling to these two files.
+   ========================================================= */
+
+/* ---- dark hero band ---- */
+.gp-hero{background:var(--sage-deep);color:var(--surface)}
+.gp-hero__tag{font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--sage-tint);margin-bottom:1rem}
+.gp-hero h1{color:#fff;font-size:clamp(2.25rem,4.6vw,3.5rem);font-weight:600;letter-spacing:-.02em;line-height:1.08;max-width:20ch;margin-bottom:1.25rem}
+.gp-hero .price-card__price{color:#fff}
+.gp-hero .price-card__price span{color:var(--sage-tint)}
+.gp-hero .hero2-cols p{color:rgba(255,255,255,.82)}
+.gp-hero .hero2-cols p:first-child{color:#fff}
+.gp-hero__actions{margin-top:clamp(1.5rem,3vw,2rem)}
+
+/* ---- sticky price/CTA bar ---- */
+.gp-sticky{position:sticky;top:84px;z-index:40;background:color-mix(in srgb,var(--surface) 94%,transparent);border-bottom:1px solid var(--rule);backdrop-filter:blur(6px)}
+.gp-sticky__inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
+.gp-sticky__price{font-size:.9375rem}
+.gp-sticky__price strong{font-family:var(--display);font-size:1.1875rem;font-weight:500;margin-right:.4rem}
+.gp-sticky__price span{color:var(--ink-muted)}
+.gp-sticky__actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.gp-sticky__actions .btn{font-size:.6875rem;padding:.75rem 1.375rem}
+
+/* ---- tinted section bands ---- */
+.gp-tint--peach{background:var(--terracotta-tint)}
+.gp-tint--cream{background:var(--surface)}
+
+/* ---- two-column split with a small side callout (How it works / single objective) ---- */
+.gp-split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.5rem);align-items:start}
+.gp-side{background:var(--surface);border-radius:var(--radius-card);padding:1.75rem;font-weight:600;font-size:1.0625rem;align-self:start}
+.gp-tint--peach .gp-side{background:#fff}
+
+/* ---- numbered / labelled row list (What people bring / What gets looked at) ---- */
+.gp-table{border-top:1px solid var(--rule);margin-top:clamp(1.5rem,3vw,2rem)}
+.gp-table__row{display:grid;grid-template-columns:2.75rem 1fr;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.gp-table__row--labelled{grid-template-columns:minmax(140px,13rem) 1fr}
+.gp-table__num,.gp-table__label{font-family:var(--display);color:var(--terracotta-deep);font-size:1.0625rem;font-weight:500}
+.gp-table__row p{margin:0;color:var(--ink-soft)}
+
+/* ---- three-card row (How often) ---- */
+.gp-cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:clamp(2rem,4vw,2.75rem)}
+.gp-card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(1.5rem,2.4vw,2rem)}
+.gp-card__tag{display:inline-block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--terracotta-deep);background:var(--terracotta-tint);padding:.3rem .75rem;border-radius:var(--radius-pill);margin-bottom:1rem}
+.gp-card h3{font-size:1.375rem;margin-bottom:.6rem}
+.gp-card p{color:var(--ink-soft);margin:0;font-size:1rem}
+
+/* ---- horizontal variant of the numbered process list (Why me for this) ---- */
+.process-list--row{grid-template-columns:repeat(3,1fr)}
+
+/* ---- labelled callout (Guidance, not supervision) ---- */
+.gp-callout{background:var(--sage-tint);border-radius:var(--radius-card);padding:1.75rem;margin-top:clamp(2rem,4vw,2.75rem)}
+.gp-callout__label{display:block;font-weight:600;margin-bottom:.5rem}
+.gp-callout p:last-child{color:var(--ink-soft);margin:0}
+
+/* ---- cross-link cards (Sessions vs Blueprint) ---- */
+.gp-cross{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:clamp(2rem,4vw,2.75rem)}
+.gp-cross__card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(1.5rem,2.4vw,2rem)}
+.gp-cross__card h3{font-size:1.375rem;margin-bottom:.75rem}
+.gp-cross__card p{color:var(--ink-soft);margin:0}
+
+/* ---- Now / Next / Later tags (What you receive) ---- */
+.gp-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.gp-tags span{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--terracotta-deep);background:var(--terracotta-tint);padding:.4rem .9rem;border-radius:var(--radius-pill)}
+
+/* ---- solid terracotta closing CTA band ---- */
+.gp-cta-band{background:var(--terracotta);color:#fff}
+.gp-cta-band p{color:rgba(255,255,255,.85)}
+.gp-cta-band .text-link{color:#fff;text-decoration-color:rgba(255,255,255,.6)}
+.gp-cta-band .text-link:hover{color:#fff;text-decoration-color:#fff}
+
 /* ---------- 404 ---------- */
 .notfound{text-align:center;padding-block:clamp(6rem,14vw,12rem)}
 .notfound h1{font-size:clamp(3rem,8vw,7rem);font-weight:600}
@@ -529,6 +603,15 @@ details[open] .chev{transform:rotate(-135deg)}
   .split-feature{grid-template-columns:1fr}
   .cover-split{grid-template-columns:1fr}
   .hero3 h1{white-space:normal}
+
+  /* ---- growth-sessions / growth-blueprint redesign, mobile ---- */
+  .gp-sticky{top:68px}
+  .gp-sticky__inner{justify-content:center;text-align:center}
+  .gp-split{grid-template-columns:1fr}
+  .gp-table__row,.gp-table__row--labelled{grid-template-columns:2.25rem 1fr}
+  .gp-cards-3{grid-template-columns:1fr}
+  .process-list--row{grid-template-columns:1fr}
+  .gp-cross{grid-template-columns:1fr}
 }
 
 @media (prefers-reduced-motion:reduce){

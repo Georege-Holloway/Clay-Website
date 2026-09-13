@@ -334,6 +334,53 @@ superseding an earlier homepage-reorder-only handover):
   make everything that referenced its classes safe — check for other unrelated elements
   reusing the same class name standalone before assuming a class is fully retired.
 
+**Sep 2026 (13th): Growth Sessions / Growth Blueprint rebuilt from a design export.**
+Source was a Claude Design export (`Growth sessions page redesign.zip`) — a self-decoding
+preview bundle, not production markup, so the actual build reused the site's existing
+static HTML/CSS conventions rather than any of the export's own runtime/custom elements.
+Typography: the export used Caprasimo/Figtree; George confirmed keeping Fraunces (the
+site standard, already paired with Figtree) rather than a two-page-only type change.
+New, `gp-`-prefixed classes added to `styles.css`, explicitly scoped to these two pages
+(per the handover's own instruction) rather than folded into shared components:
+- **`.gp-hero`** — dark hero band (reuses `--sage-deep`, already defined but previously
+  unused in any HTML) replacing the plain cream hero background. No hero photo: the
+  export's `<image-slot placeholder="Abstract photograph">` had no real asset behind it,
+  so — same call as the Home "Why this matters" panel — shipped text-only rather than a
+  placeholder box. Add one later by giving `.gp-hero .shell` a two-column split.
+- **`.gp-sticky`** — a new component: a `position:sticky` price/CTA bar sitting directly
+  under the nav (`top:84px` desktop / `68px` mobile, matching nav height), translucent
+  `--surface` background via `color-mix()`.
+- **`.gp-tint--peach`/`.gp-tint--cream`** — section background alternation (reuses
+  `--terracotta-tint`/`--surface` — not the export's own slightly-different hex tints,
+  to stay inside the site's existing palette rather than adding near-duplicate tokens).
+- **`.gp-table`** — the numbered ("What people bring") and labelled ("What gets looked
+  at") two-column row lists, replacing plain `<ul>`s.
+- **`.gp-cards-3`** — Growth Sessions' "How often" (Monthly/Weekly/single session), three
+  cards where there used to be plain paragraphs.
+- **`.process-list--row`** — a horizontal-grid modifier on the *existing* `.process-list`/
+  `.process-item`/`.cover-item__num` component (used vertically elsewhere, e.g. the
+  Blueprint's own "How it runs"), reused here for Sessions' "Why me for this" three-step
+  instead of inventing a parallel numbered-badge component.
+- **`.gp-cross`** — the "Sessions or a Blueprint?" / "Who it's for, who it isn't" two-card
+  cross-link sections.
+- **`.gp-callout`**, **`.gp-tags`** — small labelled box ("Guidance, not supervision") and
+  pill tags (Now/Next/Later) respectively.
+- **`.gp-cta-band`** — solid terracotta closing-CTA section (as opposed to `.section--tint`,
+  which is the *light* terracotta-tint used elsewhere) — needed its own text-link/button
+  colour overrides for contrast (plain black `.btn`, not `.btn--accent`, since accent
+  *is* terracotta and would vanish into the band).
+Copy: every em dash in this handover's copy was already rewritten (colons/full
+stops/commas) before it reached this repo — carried over verbatim, including into both
+pages' `FAQPage` JSON-LD, which had been quietly left with the old em-dash phrasing.
+Testimonials again shipped off — an HTML comment marks the slot, no placeholder block.
+Both pages' "compare both options" links now point at `/#pathway` specifically (not just
+`/`), and `#pathway` got `scroll-margin-top:100px` so the anchor doesn't land under the
+sticky nav — refining a fix already made in the Services-retirement commit two tasks ago
+(that one pointed both links at plain `/`). Of the handover's two flagged "fixes to make,"
+only one was still live: the other — Blueprint's "resources are free in the meantime" line
+supposedly self-linking — was already pointing at `/resources` before this task started,
+so the handover's claim there was stale; flagged rather than silently no-op'd.
+
 **Sep 2026: text wordmark replaced with the real logo, sitewide.** George supplied
 `Clay Consulting Logo.zip` — two full brand-sheet exports (`clay-logo-light.png` /
 `clay-logo-dark.png`, each a flat-background canvas showing four lockup variants: a large
