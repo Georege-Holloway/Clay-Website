@@ -10,19 +10,19 @@
 
 [[redirects]]
   from = "/services.html"
-  to = "/services"
+  to = "/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/launch.html"
-  to = "/services"
+  to = "/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/launch-old"
-  to = "/services"
+  to = "/"
   status = 301
   force = true
 

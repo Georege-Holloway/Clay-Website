@@ -126,33 +126,6 @@ p{text-wrap:pretty}
 .nav__toggle{display:none}
 .nav__links-contact{display:none}
 
-/* ---- nav: Services dropdown ---- */
-.nav__item{display:flex;align-items:center;gap:.35rem;position:relative}
-.nav__dropdown-toggle{
-  display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;
-  padding:0;margin:0;background:none;border:0;cursor:pointer;color:inherit;
-  -webkit-appearance:none;appearance:none;
-}
-.nav__dropdown-toggle .chev{width:8px;height:8px;border-color:currentColor;transform:rotate(45deg)}
-.nav__dropdown-toggle[aria-expanded="true"] .chev{transform:rotate(-135deg)}
-.nav__dropdown{
-  display:none;position:absolute;top:100%;left:0;margin-top:.6rem;padding:.5rem 0;min-width:11rem;
-  list-style:none;background:var(--bg);border:1px solid var(--rule);border-radius:12px;
-  box-shadow:0 8px 24px rgba(46,43,37,.12);z-index:10;
-}
-.nav__dropdown-toggle[aria-expanded="true"] + .nav__dropdown{display:block}
-@media (min-width:861px){
-  /* Mouse-hover affordance only — deliberately NOT :focus-within. Escape closes the
-     dropdown by setting aria-expanded="false" and returning focus to the toggle button
-     (nav.js), and the toggle sits inside .nav__item; if :focus-within also opened it,
-     that focus-return would keep the dropdown visually open right after Escape closed
-     it. Keyboard/JS state is aria-expanded alone; hover is the separate, mouse-only path. */
-  .nav__item:hover .nav__dropdown{display:block}
-}
-.nav__dropdown li{padding:0}
-.nav__dropdown a{display:block;padding:.6rem 1.1rem;white-space:nowrap;border-bottom:0!important}
-.nav__dropdown a:hover,.nav__dropdown a:focus-visible{background:var(--surface)}
-
 /* ---------- buttons ---------- */
 .btn{
   display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;
@@ -375,34 +348,19 @@ fieldset{border:0;padding:0;margin:0}
 .section-head__row{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem}
 .section-head__lede{color:var(--ink-soft);font-size:1.0625rem;margin-top:.6rem;max-width:56ch}
 
-.price-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.375rem;margin-top:clamp(2rem,4vw,2.75rem)}
-.price-card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(1.75rem,2.6vw,2.25rem);box-shadow:0 2px 8px rgba(46,43,37,.06);display:flex;flex-direction:column}
-.price-card__num{font-family:var(--display);color:var(--terracotta-deep);font-size:.95rem;margin-bottom:.9rem}
-.price-card h3{font-size:clamp(1.375rem,1.8vw,1.5625rem);margin-bottom:.6rem}
-.price-card p{color:var(--ink-soft);margin:0;font-size:1rem;line-height:1.5}
-.price-card p.price-card__price{margin-top:auto;padding-top:1.5rem;font-family:var(--display);font-size:2rem;font-weight:500}
+/* ---- price line (standalone, used on growth-sessions.html / growth-blueprint.html
+   hero sections — the .price-card container it originally belonged to is gone, retired
+   along with Home's old price-cards layout in favour of the full comparison table) ---- */
+.price-card__price{font-family:var(--display);font-size:2rem;font-weight:500}
 .price-card__price span{font-family:var(--body);font-size:.9375rem;color:var(--ink-soft);font-weight:400;letter-spacing:0;text-transform:none}
-.price-card .text-link{display:inline-block;margin-top:.75rem}
-.price-card--accent{background:var(--terracotta);color:#fff;box-shadow:0 8px 24px rgba(46,43,37,.12)}
-.price-card--accent .price-card__num,.price-card--accent p{color:#fff}
-.price-card--accent .price-card__price span{color:rgba(255,255,255,.82)}
 
-/* ---- home: pathway connector diagram (free call -> two options) ---- */
-.pathway__top{display:flex;justify-content:center;margin-bottom:.5rem}
-.pathway__top .price-card{max-width:340px;text-align:center}
-.pathway__connector{display:block;width:100%;max-width:760px;height:56px;margin:0 auto}
-
-#pathway .section-head,#pathway .price-cards,#pathway .price-card,#pathway .note-wrap{text-align:center}
+#pathway .section-head{text-align:center}
 #pathway .section-head__lede{margin-inline:auto}
-#pathway .price-cards{justify-content:center}
-#pathway .note{white-space:nowrap;font-size:clamp(.75rem,2vw,1rem)}
-#pathway .note-wrap .text-link{display:inline-block;margin-top:.75rem}
 
 /* ---- home: pull-quote band ---- */
 .quote-band{background:var(--sage);color:#f4f7ea;padding-block:clamp(1.75rem,3.5vw,2.5625rem)}
 
 /* ---- home: what we cover ---- */
-.cover-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(2rem,4vw,2.75rem)}
 .cover-item__num{width:54px;height:54px;border-radius:50%;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.1875rem;margin-bottom:1.375rem}
 .cover-item h3,.process-item h3{font-size:1.5rem;margin-bottom:.6rem}
 .cover-item p,.process-item p{color:var(--ink-soft);margin:0;font-size:1rem}
@@ -553,20 +511,10 @@ details[open] .chev{transform:rotate(-135deg)}
   .nav.is-open .nav__toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav__cta{display:none}
   .nav__links-contact{display:block}
-  .nav__item{flex-wrap:wrap;justify-content:space-between}
-  .nav__item a{flex:1}
-  .nav__dropdown-toggle{width:2rem;height:2rem}
-  .nav__dropdown{
-    display:none;position:static;width:100%;margin:0;padding:0 0 .5rem;
-    border:0;box-shadow:none;background:none;
-  }
-  .nav__dropdown-toggle[aria-expanded="true"] + .nav__dropdown{display:block}
-  .nav__dropdown a{padding:.6rem 0 .6rem 1.25rem;color:var(--ink-muted)}
   .thesis,.quote{max-width:none}
   .split,.faq,.contact__grid{grid-template-columns:1fr}
   .contact__intro h1{max-width:none}
   .contact--enquiry .contact__intro p{white-space:normal}
-  #pathway .note{white-space:normal}
   .fork-links{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
 
@@ -576,7 +524,6 @@ details[open] .chev{transform:rotate(-135deg)}
   .hero2__intro{order:1}
   .accent-circle{display:none}
   .hero2-cols{grid-template-columns:1fr;gap:1.25rem}
-  .cover-grid{grid-template-columns:1fr}
   .why-panel,.why-panel--text-only{grid-template-columns:1fr}
   .compare{display:none}
   .compare--mobile{display:block}
@@ -586,11 +533,6 @@ details[open] .chev{transform:rotate(-135deg)}
   .split-feature{grid-template-columns:1fr}
   .cover-split{grid-template-columns:1fr}
   .hero3 h1{white-space:normal}
-}
-
-@media (max-width:680px){
-  .pathway__connector{display:none}
-  .pathway__top{margin-bottom:1.25rem}
 }
 
 @media (prefers-reduced-motion:reduce){

@@ -282,6 +282,58 @@ Do not reintroduce "scoped"/"no fixed price" language for the Blueprint anywhere
 George explicitly asking — grep for "scoped" and "per engagement" before adding any new
 Blueprint copy.
 
+**Sep 2026 (13th): Services page retired; nav flattened; its comparison table moved to
+Home.** Supersedes the "Nav gained a dropdown" entry above — the dropdown lasted about a
+day. Per the Homepage & Navigation Update handover (dated the same day, explicitly
+superseding an earlier homepage-reorder-only handover):
+- **`services.html` is deleted.** No unique content survived once its one comparison table
+  moved to Home and the nav pointed straight at the two service pages. `/services` and
+  `/services.html` both 301 to `/` (`_redirects` + `netlify.toml`) rather than 404, in case
+  of inbound links or AI-assistant citations. Removed from `sitemap.xml`.
+- **Nav dropdown removed, sitewide.** Every page's `<li class="nav__item">` (Services link +
+  `.nav__dropdown-toggle` button + `.nav__dropdown` submenu) became two plain top-level
+  `<li>`s: Growth Sessions, Growth Blueprint. Nav is now Home / Growth Sessions / Growth
+  Blueprint / Approach / Resources / Contact (Contact still button-only on desktop, as
+  before — unrelated pre-existing behaviour). The dropdown's CSS (`.nav__item`,
+  `.nav__dropdown-toggle`, `.nav__dropdown` and their mobile/hover rules) and JS
+  (everything in `nav.js` past the hamburger toggle) were both fully dead once no page
+  referenced them, so both were deleted rather than left as unused code — this was a
+  genuine retirement, not a visual-only change, so there was no reason to keep it around
+  "just in case." `.chev` itself stays — it's shared with the FAQ accordions.
+- **Home's "Ways to work together" section** now holds the full three-column comparison
+  table (`.compare` / `.compare--mobile`), reusing the exact markup/classes from the old
+  Services page verbatim — not the three simple price-cards from the Sep 2026 section
+  redesign pass. The "More on Growth Sessions/Blueprint →" links that sat below the table
+  on Services were deliberately not carried over (they'd duplicate the table's own
+  per-column CTAs), and neither was the old "See how it works →" link (pointed at the
+  now-gone `/services`).
+- **Home's hero** lost its secondary "See how it works →" CTA (same reason: pointed at
+  `/services`) — single CTA only now, "Book a free 15-minute call".
+- **"What we cover"'s Visibility line** reworded: "your website, your directory listings,
+  and increasingly what AI assistants say about you" → "and whether that turns into
+  enquiries, especially as search shifts toward AI assistants" (the old phrasing duplicated
+  the Growth Blueprint description and read as tied to the retired website-audit framing).
+- Every other body-copy link that pointed at `/services` (`build.html`'s "See how I work
+  with practices →", and a "compare both options on the Services overview →" line on both
+  `growth-sessions.html` and `growth-blueprint.html`) was repointed at `/` and reworded
+  ("...on the homepage →") rather than left dangling.
+- `/launch` in `_redirects` was pointing at `/services` as its interim default — retargeted
+  to `/` since `/services` no longer exists. The underlying question (should `/launch`
+  eventually go to Home, `/growth-blueprint`, or 404) is still open and still George's to
+  confirm — this only avoided a redirect chain through a page that's now gone.
+- Testimonials are still not built — same reason as ever (pending a quote from Aaron), same
+  HTML comment marking the slot between "Ways to work together" and "Why this matters".
+- **Bug caught and fixed while cleaning up dead CSS**: the `.price-card p.price-card__price`
+  selector introduced two commits ago (to fix a specificity bug where `.price-card p{margin:0}`
+  was overriding it) accidentally scoped the whole price-line style to `.price-card`
+  ancestors. That silently broke the standalone `<p class="price-card__price">` price line
+  on `growth-sessions.html`/`growth-blueprint.html` (unstyled, browser-default serif at
+  16px) the moment `.price-card` itself stopped being used anywhere. Fixed by restoring a
+  plain, unscoped `.price-card__price` rule now that the old scoping problem is moot (its
+  container is gone). Worth remembering: deleting the last user of a component doesn't
+  make everything that referenced its classes safe — check for other unrelated elements
+  reusing the same class name standalone before assuming a class is fully retired.
+
 **Sep 2026: text wordmark replaced with the real logo, sitewide.** George supplied
 `Clay Consulting Logo.zip` — two full brand-sheet exports (`clay-logo-light.png` /
 `clay-logo-dark.png`, each a flat-background canvas showing four lockup variants: a large
