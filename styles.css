@@ -603,9 +603,11 @@ details[open] .chev{transform:rotate(-135deg)}
   .cover-split{grid-template-columns:1fr}
   .hero3 h1{white-space:normal}
 
-  /* ---- growth-sessions / growth-blueprint redesign, mobile ---- */
+  /* ---- growth-sessions / growth-strategy redesign, mobile ---- */
   .gp-split{grid-template-columns:1fr}
-  .gp-table__row,.gp-table__row--labelled{grid-template-columns:2.25rem 1fr}
+  .gp-table__row{grid-template-columns:2.25rem 1fr}
+  .gp-table__row--labelled{grid-template-columns:1fr;gap:.35rem}
+  .gp-table__row--labelled .gp-table__label{font-size:.9375rem}
   .gp-cards-3{grid-template-columns:1fr}
   .process-list--row{grid-template-columns:1fr}
   .gp-cross{grid-template-columns:1fr}

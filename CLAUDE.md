@@ -426,6 +426,53 @@ monogram from the brand sheet still aren't used for anything — the monogram in
 would be a good candidate for `/assets/favicon.svg`/`.png`, which are still placeholders
 (see below), if George wants to revisit that.
 
+**Sep 2026 (14th): Growth Blueprint renamed to Growth Strategy, sitewide — better for
+ranking, per George.** Treated as a full URL migration, not just a copy change, since the
+old page had live traffic and search/generative-search equity to carry over:
+- `growth-blueprint.html` renamed to `growth-strategy.html` (`git mv`). New canonical URL
+  is `/growth-strategy` everywhere: nav, footer, JSON-LD, sitemap, llms.txt, and every
+  cross-link from `growth-sessions.html`, `growth-check.html`, `index.html` and the
+  resources articles.
+- **`/growth-blueprint` now 301s to `/growth-strategy`** (`_redirects`), mirroring the same
+  care already given to `/grow` and `/services` when they were retired. `netlify.toml`'s
+  own `/grow.html` rule was auto-updated to point at `/growth-strategy` too; no separate
+  `.html`-suffixed rule was needed for the renamed page itself.
+- The mechanical find-replace only handled the full "Growth Blueprint" phrase and
+  `/growth-blueprint` URLs. Every bare "Blueprint" callback noun needed manual, context-
+  sensitive rewording instead:
+  - `growth-strategy.html`'s "A blueprint, not the building" pun (relied on the word
+    "blueprint" and no longer maps to the product name) became **"The plan, not the
+    build"**, with its body now saying "the report" instead of "the Blueprint" — ties back
+    to the hero's own "a plan you can act on" line rather than trying to force a new pun.
+  - Other bare references in `growth-strategy.html` ("what the Blueprint is for", "a
+    Blueprint is the right fit", "a Blueprint won't tell you much", the FAQ's "A Blueprint
+    gives you evidence... start with the Blueprint", both visible and in the `FAQPage`
+    JSON-LD) became "the Strategy" / "a Growth Strategy" / "the Growth Strategy" as fit
+    each sentence. The two FAQ anchor IDs (`blueprint-cost`, `session-vs-blueprint`) were
+    renamed to `strategy-cost` / `session-vs-strategy` — confirmed nothing links to them.
+  - `growth-sessions.html`'s cross-link heading "Sessions or a Blueprint?" / "Or a
+    Blueprint?" became "Sessions or a Strategy?" / "Or a Strategy?".
+  - `index.html`'s comparison-table CTA "Book a Blueprint" (both desktop `.compare` and
+    mobile `.compare-card` versions) became **"Book a Strategy"**, matching the sibling
+    "Book a session" button's short form.
+- `sitemap.xml` `lastmod` bumped to 2026-09-14 for `/`, `/growth-sessions` and
+  `/growth-strategy` — the three pages actually touched today.
+- Re-ran the sitewide internal-link sweep after the rename: no new broken links (the one
+  pre-existing `/resources/free-practice-setup-guide` reference in `thanks.html` is
+  unrelated and already covered by its own 301).
+
+**Sep 2026 (14th): mobile bug in `.gp-table__row--labelled` fixed.** Its mobile rule was
+sharing the numbered variant's cramped `grid-template-columns:2.25rem 1fr` (fine for a
+2-digit number, not for a multi-word label like "Google Business Profile and reviews"),
+causing the label to wrap and visually overlap the adjacent description column — this is
+what showed up in George's "what gets looked at" mobile screenshot. Split into its own
+mobile rule: `.gp-table__row--labelled{grid-template-columns:1fr}` below 860px, stacking
+the label above its description instead of forcing them side by side; `.gp-table__row`
+(the numbered variant, used on Growth Sessions' "What people bring") is untouched and still
+gets its narrow `2.25rem 1fr` column. Confirmed via computed-style checks at 375px (labels
+now full-width, no overlap) and at 1400px (desktop `minmax(140px,13rem) 1fr` layout
+unaffected). `styles.css?v=41` → `v=42` bumped across all 18 pages that link it.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,
@@ -496,7 +543,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=27`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=42`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
