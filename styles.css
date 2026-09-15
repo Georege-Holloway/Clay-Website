@@ -478,6 +478,9 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-hero__actions{margin-top:clamp(1.5rem,3vw,2rem);display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem}
 .gp-hero .btn--outline{border-color:#fff;color:#fff}
 .gp-hero .btn--outline:hover{background:#fff;color:var(--sage-deep)}
+.gp-hero__grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,4vw,4rem);align-items:center}
+.gp-hero__grid .hero2-cols{grid-template-columns:1fr}
+.gp-hero__figure img{width:100%;height:auto;border-radius:var(--radius-card);display:block;box-shadow:0 1.5rem 3rem rgba(0,0,0,.25)}
 
 /* ---- tinted section bands ---- */
 .gp-tint--peach{background:var(--terracotta-tint)}
@@ -604,6 +607,7 @@ details[open] .chev{transform:rotate(-135deg)}
   .hero3 h1{white-space:normal}
 
   /* ---- growth-sessions / growth-strategy redesign, mobile ---- */
+  .gp-hero__grid{grid-template-columns:1fr}
   .gp-split{grid-template-columns:1fr}
   .gp-table__row{grid-template-columns:2.25rem 1fr}
   .gp-table__row--labelled{grid-template-columns:1fr;gap:.35rem}
