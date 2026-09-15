@@ -7,14 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Get in Touch | Clay Consulting</title>
-<meta name="description" content="Book a free 15-minute call directly, or get in touch with any other questions about working together.">
+<meta name="description" content="Book a free 30-minute call directly, or get in touch with any other questions about working together.">
 <link rel="canonical" href="https://www.clayconsulting.co.uk/contact">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Clay Consulting">
 <meta property="og:url" content="https://www.clayconsulting.co.uk/contact">
 <meta property="og:title" content="Contact Clay Consulting">
-<meta property="og:description" content="Book a free 15-minute call directly, or get in touch with any other questions about working together.">
+<meta property="og:description" content="Book a free 30-minute call directly, or get in touch with any other questions about working together.">
 <meta property="og:image" content="https://www.clayconsulting.co.uk/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -44,7 +44,7 @@
       <li><a href="/resources">Resources</a></li>
       <li class="nav__links-contact"><a href="/contact" aria-current="page">Contact</a></li>
     </ul>
-    <a class="btn btn--accent nav__cta" href="/contact">Book a free call</a>
+    <a class="btn btn--accent nav__cta" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book a free call</a>
   </div>
 </header>
 
@@ -54,13 +54,13 @@
     <div class="shell">
       <div class="contact__intro">
         <h1 class="contact-title">Let&rsquo;s talk it through.</h1>
-        <p>Book a free 15-minute call and pick a time that suits you.</p>
+        <p>Book a free 30-minute call and pick a time that suits you.</p>
       </div>
       <button
         type="button"
         class="btn btn--accent"
-        data-cal-namespace="15min"
-        data-cal-link="clay-consulting-ws6xph/15min"
+        data-cal-namespace="freecall"
+        data-cal-link="clay-consulting-ws6xph/30min"
         data-cal-config='{"layout":"month_view"}'
       >Book my free call</button>
     </div>
@@ -75,7 +75,7 @@
           <p>Not ready to book yet, or got a question first? Send a message and I'll get back to you within one working day.</p>
         </div>
 
-        <form class="form form--panel" name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="form form--panel" name="contact" method="POST" action="/thanks?src=contact" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <p class="hp"><label>Don't fill this in: <input name="bot-field"></label></p>
 
@@ -96,6 +96,16 @@
           <div class="field">
             <label for="email">Email <span class="req">(required)</span></label>
             <input type="email" id="email" name="Email" required>
+          </div>
+
+          <div class="field">
+            <label for="enquiry-type">What's this about? <span class="req">(required)</span></label>
+            <select id="enquiry-type" name="What's this about" required>
+              <option value="" disabled selected>Choose one</option>
+              <option value="A Growth Session">A Growth Session</option>
+              <option value="A Growth Strategy">A Growth Strategy</option>
+              <option value="Something else">Something else</option>
+            </select>
           </div>
 
           <div class="field">
@@ -135,7 +145,7 @@
           <h2>Get in touch</h2>
           <ul>
             <li><a href="/contact">Contact us</a></li>
-            <li><a href="mailto:hello@clayconsulting.co.uk">hello@clayconsulting.co.uk</a></li>
+            <li><a href="mailto:george@clayconsulting.co.uk">george@clayconsulting.co.uk</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -155,9 +165,23 @@
 <!-- Cal.com pop-up embed (element click) -->
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "15min", {origin:"https://cal.com"});
-  // Event: clay-consulting-ws6xph/15min
-  Cal.ns["15min"]("ui", {"styles":{"branding":{"brandColor":"#2C2C2A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+  Cal("init", "freecall", {origin:"https://cal.com"});
+  // Event: clay-consulting-ws6xph/30min
+  Cal.ns["freecall"]("ui", {"styles":{"branding":{"brandColor":"#2C2C2A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+
+<!-- Records the "What's this about?" choice for the contact_form_submit GA4 event,
+     read back on /thanks since the value itself doesn't survive the form redirect. -->
+<script>
+  (function () {
+    var form = document.querySelector('form[name="contact"]');
+    var topic = document.getElementById('enquiry-type');
+    if (form && topic) {
+      form.addEventListener('submit', function () {
+        try { sessionStorage.setItem('clay_contact_topic', topic.value); } catch (e) {}
+      });
+    }
+  })();
 </script>
 
 </body>

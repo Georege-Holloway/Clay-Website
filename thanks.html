@@ -36,7 +36,7 @@
       <li><a href="/resources">Resources</a></li>
       <li class="nav__links-contact"><a href="/contact">Contact</a></li>
     </ul>
-    <a class="btn btn--accent nav__cta" href="/contact">Book a free call</a>
+    <a class="btn btn--accent nav__cta" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book a free call</a>
   </div>
 </header>
 
@@ -73,7 +73,7 @@
           <h2>Get in touch</h2>
           <ul>
             <li><a href="/contact">Contact us</a></li>
-            <li><a href="mailto:hello@clayconsulting.co.uk">hello@clayconsulting.co.uk</a></li>
+            <li><a href="mailto:george@clayconsulting.co.uk">george@clayconsulting.co.uk</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -89,6 +89,30 @@
 </footer>
 
 <script src="/nav.js"></script>
+
+<!-- Cal.com pop-up embed (element click) -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "freecall", {origin:"https://cal.com"});
+  // Event: clay-consulting-ws6xph/30min
+  Cal.ns["freecall"]("ui", {"styles":{"branding":{"brandColor":"#2C2C2A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+
+<!-- Fires the form-submit GA4 event for whichever form redirected here. No-op until
+     GA4 is actually installed (see the note in nav.js). -->
+<script>
+  (function () {
+    if (typeof gtag !== 'function') return;
+    var src = new URLSearchParams(location.search).get('src');
+    if (src === 'strategy') {
+      gtag('event', 'strategy_enquiry_submit', {});
+    } else if (src === 'contact') {
+      var topic = '';
+      try { topic = sessionStorage.getItem('clay_contact_topic') || ''; sessionStorage.removeItem('clay_contact_topic'); } catch (e) {}
+      gtag('event', 'contact_form_submit', { enquiry_type: topic });
+    }
+  })();
+</script>
 
 </body>
 </html>

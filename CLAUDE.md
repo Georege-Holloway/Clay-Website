@@ -473,6 +473,88 @@ gets its narrow `2.25rem 1fr` column. Confirmed via computed-style checks at 375
 now full-width, no overlap) and at 1400px (desktop `minmax(140px,13rem) 1fr` layout
 unaffected). `styles.css?v=41` → `v=42` bumped across all 18 pages that link it.
 
+**Sep 2026 (15th): Growth Strategy hero gained a real report image.** George supplied
+`assets/growth-strategy-report-cover.png` (a mockup cover page of an example report).
+`growth-strategy.html`'s `.gp-hero` was split into a two-column `.gp-hero__grid` (new,
+`gp-`-scoped, same proportions as the site's existing split-hero pattern): headline,
+price, body copy and CTAs on the left, the image on the right with a drop-shadow so it
+lifts off the dark band. Stacks to one column below 860px. The lone paragraph inside
+`.hero2-cols` was left with half its row empty at the new narrower column width, so
+`.gp-hero__grid .hero2-cols{grid-template-columns:1fr}` scopes a fix to just this hero
+rather than touching the shared `.hero2-cols` component used elsewhere. `styles.css?v=42`
+→ `v=43`.
+
+**Sep 2026 (15th): enquiry routing rebuilt, per the Clay Consulting Enquiry Routing
+Handover.** Every CTA on the site used to link to `/contact`, which only offered a free
+call and a generic form, so "Book a Growth Session" and "Enquire about a Growth Strategy"
+both landed somewhere you could do neither. Fixed with one destination per intent, firing
+in place on the page that did the selling:
+- **Cal.com pop-ups, three namespaces.** `freecall` (`clay-consulting-ws6xph/30min`, the
+  free call, used everywhere) and `session` (`clay-consulting-ws6xph/growth-session`,
+  £120 via Stripe, `growth-sessions.html` only) coexist on Growth Sessions under separate
+  namespaces, per Cal.com's requirement for multiple embeds on one page. The retired
+  `15min` event and namespace are gone everywhere, including `/contact`'s own embed.
+  Every page now carries the loader + `freecall` init before `</body>`; the header
+  "Book a free call" button fires it in place, sitewide, keeping a plain `href="/contact"`
+  fallback for no-JS. The loader boilerplate is reused verbatim from `/contact`'s
+  already-live embed rather than re-pulled from the Cal.com dashboard, since this session
+  has no dashboard access; the IIFE itself is stable across event types, only the
+  `Cal("init", ...)` namespace and the `data-cal-link` event slug change.
+- **Growth Sessions**: primary CTA (hero pair and closing section) now fires the paid
+  `session` pop-up, matching this page's own "book a session directly" copy. Secondary
+  CTA reworded to "Not sure? Book a free 30-minute call", `.btn--outline` as before so it
+  reads as secondary. New payment/cancellation notice (reusing `.gp-callout`, no new CSS)
+  sits directly below the hero CTAs: 48+ hours before, full refund or one free
+  reschedule; inside 24 hours, no refund. Wording is the handover's own proposed text,
+  confirmed with George rather than shipped as a guess.
+- **Growth Strategy**: primary CTA reworded to "Start with a free 30-minute call" (both
+  CTA pair and closing section), since the page's own process already puts the free call
+  at step one. New secondary CTA, "Send details about your practice", anchors to a new
+  `#enquire` section: a Netlify form (`strategy-enquiry`, distinct from the `contact` form
+  so submissions separate in the Netlify dashboard) with first/last name, email, practice
+  website, time in practice, what's prompting this, and an optional catch-all field,
+  reusing the `.form.form--panel`/`.field` components verbatim. One real bug caught while
+  building it: the practice-website field was typed `type="url"`, which isn't in
+  `styles.css`'s shared input selector list, so it rendered unstyled and tiny; fixed by
+  using `type="text" inputmode="url"` instead of extending the shared selector, since the
+  handover asked not to touch `styles.css` globally.
+- **Home**: hero and closing CTAs now fire `freecall`. Comparison table's free-call row
+  fires `freecall` on both desktop and mobile; "Book a session" stays a plain link to
+  `/growth-sessions` deliberately (£120 asked from a comparison table before someone's
+  read what the hour is, is too cold); "Book a Blueprint"/"Book a Strategy" (the label
+  from the previous rename task) is now "Explore a Growth Strategy". Also fixed a
+  standing grammar bug in the meta description ("Growth Strategys") introduced by the
+  mechanical Blueprint→Strategy replace two tasks ago.
+- **Contact**: embed renamed to `freecall`/30min. Added a required "What's this about?"
+  select (A Growth Session / A Growth Strategy / Something else) above the free-text
+  question, existing form name kept so historical submissions stay together.
+- **Every page, 15 minutes → 30 minutes**: copy, meta descriptions, OG descriptions,
+  and the `growth-sessions.html` FAQ (visible and its `FAQPage` JSON-LD).
+- **Email standardised on `george@clayconsulting.co.uk`** sitewide (confirmed with
+  George; was split between `george@` inline on the growth pages and `hello@` in every
+  footer plus Home's `ProfessionalService` JSON-LD).
+- **GA4 event hooks added, but GA4 itself was not installed.** `nav.js` now fires
+  `book_call_open`/`book_session_open` on any `[data-cal-namespace]` click, and `/thanks`
+  fires `contact_form_submit` (with the enquiry-type value, round-tripped via
+  `sessionStorage` since it doesn't survive the form redirect) or `strategy_enquiry_submit`
+  based on a `?src=` param each form's `action` now carries. Every call is guarded on
+  `typeof gtag === 'function'`, so none of this actually sends anything: `privacy.html`
+  still correctly states the site uses no analytics, and installing GA4 for real needs a
+  measurement ID from George plus, per that same page, a cookie consent banner under UK
+  PECR. This wiring means no separate follow-up sweep is needed once that happens.
+- **Not done, and worth flagging rather than silently skipping:** the handover's QA
+  checklist asks to verify the live Cal.com pop-ups actually open, show the right
+  price/duration, and behave inside 375px, and to confirm `/growth-blueprint` and
+  `/services` 301 (they already did, correctly, from the previous rename task — the
+  handover's claim that they served full content was stale). None of the pop-up
+  interaction could be verified in this session's sandboxed browser, since it has no
+  route to `app.cal.com` (the script never loads, so clicks fall through to the `href`
+  fallback exactly as designed, but the actual modal was never seen). George needs to
+  click through both pop-ups on a real deploy before calling this done. The handover's
+  optional Cal.com booking-lifecycle-event tracking (open vs. actually booked) also
+  wasn't built, and `/health-check` wasn't added to the redirect rules since nothing in
+  this repo's history suggests that URL ever existed.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,

@@ -62,7 +62,7 @@
       <li><a href="/resources">Resources</a></li>
       <li class="nav__links-contact"><a href="/contact">Contact</a></li>
     </ul>
-    <a class="btn btn--accent nav__cta" href="/contact">Book a free call</a>
+    <a class="btn btn--accent nav__cta" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book a free call</a>
   </div>
 </header>
 
@@ -99,7 +99,7 @@
 
         <h2>What happens after</h2>
         <p>Nothing automatic. No sequence of emails, no call unless you ask for one.</p>
-        <p>If the result is useful on its own, take it and act on it. If you want to talk it through, <a href="/contact">book a free 15-minute call</a> &mdash; bring your result and we'll start from there rather than from scratch. If you already know you want ongoing support or a full review, the <a href="/growth-sessions">Growth Sessions</a> and <a href="/growth-strategy">Growth Strategy</a> are the two ways to work with me.</p>
+        <p>If the result is useful on its own, take it and act on it. If you want to talk it through, <a href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">book a free 30-minute call</a>, bring your result and we'll start from there rather than from scratch. If you already know you want ongoing support or a full review, the <a href="/growth-sessions">Growth Sessions</a> and <a href="/growth-strategy">Growth Strategy</a> are the two ways to work with me.</p>
 
       </div>
     </div>
@@ -155,7 +155,7 @@
           <h2>Get in touch</h2>
           <ul>
             <li><a href="/contact">Contact us</a></li>
-            <li><a href="mailto:hello@clayconsulting.co.uk">hello@clayconsulting.co.uk</a></li>
+            <li><a href="mailto:george@clayconsulting.co.uk">george@clayconsulting.co.uk</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -171,6 +171,14 @@
 </footer>
 
 <script src="/nav.js"></script>
+
+<!-- Cal.com pop-up embed (element click) -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "freecall", {origin:"https://cal.com"});
+  // Event: clay-consulting-ws6xph/30min
+  Cal.ns["freecall"]("ui", {"styles":{"branding":{"brandColor":"#2C2C2A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
 
 </body>
 </html>
