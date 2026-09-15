@@ -584,6 +584,23 @@ still broken after this, the next thing to check is the event slugs themselves
 (`clay-consulting-ws6xph/30min`, `clay-consulting-ws6xph/growth-session`) against what's
 live on Cal.com, since those came from the handover, not from pasted dashboard code.
 
+**Sep 2026 (15th), second same-day fix: the origin fix above wasn't the whole story.**
+Testing directly against the live site (this browser does have real internet access, so
+the sandboxed-local caveat above stopped applying once tested against the deployed URL
+rather than a local static server) showed the standalone "Book my free call" button on
+`/contact` reliably opens the calendar, but the header "Book a free call" link, present
+on every page, does not — even holding the page, config and namespace identical. That's
+a timing race, not a config error: every page's Cal.com loader script sat at the very
+bottom of `<body>`, after every image, font and other script, so on a fresh page load a
+click on the header CTA (the very first thing a visitor sees) could beat the script's own
+initialisation. **Moved the Cal.com loader to immediately after `<body>` opens, before
+the skip link, nav, or anything else** on all 18 pages, so it starts downloading and
+initialising before there's anything on screen to click. Nothing else about the loader
+changed. This is a plausible fix, empirically consistent with what was observed, but
+wasn't reproducible on demand even before the move (sometimes the header link worked,
+sometimes it silently did nothing, sometimes it navigated after a delay) — so George
+needs to click through it several times, not just once, before trusting it's solid.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,
