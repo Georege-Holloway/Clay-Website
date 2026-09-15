@@ -601,6 +601,26 @@ wasn't reproducible on demand even before the move (sometimes the header link wo
 sometimes it silently did nothing, sometimes it navigated after a delay) — so George
 needs to click through it several times, not just once, before trusting it's solid.
 
+**Sep 2026 (15th): Home's photo of George swapped for a new colour one; black and white
+is now Approach only.** George supplied `assets/IMG_7252.jpeg` (3024x4032, colour).
+Cropped to `assets/george-holloway-colour.jpg` (800x800, 50KB) framed to match the
+existing shot: head occupying ~53% of the square's height with similar headroom, so the
+layout and visual weight are unchanged. Two things were making Home read as black and
+white, and both had to go:
+- **The source file itself is black and white.** `assets/george-holloway.jpg` is a B&W
+  photograph, which is why both Home and Approach rendered grey. It stays exactly as it
+  is, still used by `approach.html` (`.split__media`, no filter of its own) — that page
+  is now the only place the B&W shot appears, which is what George asked for.
+- **`.washed` desaturated it further.** That class (`saturate(.6) contrast(.85)
+  brightness(1.1)`, `opacity:.94`) was applied to Home's photo only. Replaced with a new
+  **`.photo-frame`** (same 32px radius, `overflow:hidden` and `object-fit:cover`, no
+  filter, full opacity) so the new photo shows in true colour. `.washed` was used on
+  exactly one element sitewide and is genuinely dead now, so it was deleted rather than
+  left behind — the retired treatment is described here if it's ever wanted back.
+`styles.css?v=43` → `v=44`. The 1.2MB original is kept in `assets/` for re-cropping,
+matching what was already done with `IMG_7253.jpeg` for the B&W shot; both ship to
+Netlify unused, so they're worth moving out of `assets/` if page weight ever matters.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,
