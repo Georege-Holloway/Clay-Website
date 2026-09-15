@@ -555,6 +555,35 @@ in place on the page that did the selling:
   wasn't built, and `/health-check` wasn't added to the redirect rules since nothing in
   this repo's history suggests that URL ever existed.
 
+**Sep 2026 (15th), same-day fix: the Cal.com pop-ups above didn't actually open.** George
+confirmed live: every "book a call" button just navigated to `/contact` instead of firing
+a pop-up in place. Root cause was exactly the risk flagged above: the loader snippet was
+reused from `/contact`'s pre-existing (and, per its own commit history, never actually
+verified) 15-minute embed rather than pulled fresh from Cal.com's dashboard, and it had
+`origin:"https://cal.com"` where the dashboard's real generated code uses
+`origin:"https://app.cal.com"`. George pasted the current dashboard code for both events
+directly, which also surfaced two more differences: a missing
+`Cal.config.forwardQueryParams = true` line, and a `useSlotsViewOnSmallScreen` key
+Cal.com recommends in every trigger's `data-cal-config`. Fixed sitewide:
+- `origin` corrected to `https://app.cal.com` in every `Cal("init", ...)` call.
+- Namespaces renamed to match the dashboard's own naming exactly, rather than the
+  invented `freecall`/`session`: **`30min`** (free call, every page) and
+  **`growth-session`** (paid, `growth-sessions.html` only). `nav.js`'s GA4 hook and every
+  `data-cal-namespace`/`data-cal-config` attribute updated to match.
+- Added `Cal.config = Cal.config || {}; Cal.config.forwardQueryParams = true;` once per
+  page, and `"useSlotsViewOnSmallScreen":"true"` to every trigger's `data-cal-config`.
+- Dropped the invented `styles.branding.brandColor` customisation from the `"ui"` calls,
+  since it wasn't part of what the dashboard actually generates for either event and this
+  fix is about matching the verified source exactly, not layering opinion on top of it.
+  Worth revisiting as a deliberate, separate polish pass once booking itself is confirmed
+  working.
+Still not verified in this session: same sandboxed-browser limitation as before, no route
+to `app.cal.com` here. George needs to click through both pop-ups again after this
+deploys, on both event types and at 375px, before this is actually closed out. If it's
+still broken after this, the next thing to check is the event slugs themselves
+(`clay-consulting-ws6xph/30min`, `clay-consulting-ws6xph/growth-session`) against what's
+live on Cal.com, since those came from the handover, not from pasted dashboard code.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,

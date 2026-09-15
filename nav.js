@@ -16,9 +16,9 @@ document.addEventListener('click', function (e) {
   var trigger = e.target.closest('[data-cal-namespace]');
   if (!trigger || typeof gtag !== 'function') return;
   var namespace = trigger.getAttribute('data-cal-namespace');
-  if (namespace === 'freecall') {
+  if (namespace === '30min') {
     gtag('event', 'book_call_open', { page: location.pathname });
-  } else if (namespace === 'session') {
+  } else if (namespace === 'growth-session') {
     gtag('event', 'book_session_open', { page: location.pathname });
   }
 });

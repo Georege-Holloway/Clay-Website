@@ -73,7 +73,7 @@
       <li><a href="/resources">Resources</a></li>
       <li class="nav__links-contact"><a href="/contact">Contact</a></li>
     </ul>
-    <a class="btn btn--accent nav__cta" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book a free call</a>
+    <a class="btn btn--accent nav__cta" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a free call</a>
   </div>
 </header>
 
@@ -86,7 +86,7 @@
         <h1>Moulding the business side of therapy</h1>
         <p class="hero3__lede">Clay helps therapists, counsellors and therapy organisations build practices that work, commercially as well as clinically.</p>
         <div class="hero3__actions">
-          <a class="btn" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book a free 30-minute call</a>
+          <a class="btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a free 30-minute call</a>
         </div>
       </div>
     </div>
@@ -187,7 +187,7 @@
         </div>
         <div class="compare__row">
           <div class="compare__label"></div>
-          <div class="compare__cell compare__cta"><a class="btn" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book the call</a></div>
+          <div class="compare__cell compare__cta"><a class="btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book the call</a></div>
           <div class="compare__cell compare__cta"><a class="btn btn--accent" href="/growth-sessions">Book a session</a></div>
           <div class="compare__cell compare__cta"><a class="btn btn--accent" href="/growth-strategy">Explore a Growth Strategy</a></div>
         </div>
@@ -202,7 +202,7 @@
             <div><dt>Time</dt><dd>30 minutes</dd></div>
             <div><dt>Cost</dt><dd>Free</dd></div>
           </dl>
-          <a class="btn" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book the call</a>
+          <a class="btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book the call</a>
         </div>
         <div class="compare-card">
           <h3>Growth Sessions</h3>
@@ -249,7 +249,7 @@
     <div class="shell closing">
       <h2 class="h-section">Not sure where to start?</h2>
       <p>Most people aren't, until they've talked it through. A short call costs nothing and tells you what's actually worth doing.</p>
-      <a class="btn" href="/contact" data-cal-namespace="freecall" data-cal-link="clay-consulting-ws6xph/30min">Book a free 30-minute call</a>
+      <a class="btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a free 30-minute call</a>
     </div>
   </section>
 
@@ -294,9 +294,11 @@
 <!-- Cal.com pop-up embed (element click) -->
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "freecall", {origin:"https://cal.com"});
+  Cal("init", "30min", {origin:"https://app.cal.com"});
+  Cal.config = Cal.config || {};
+  Cal.config.forwardQueryParams = true;
   // Event: clay-consulting-ws6xph/30min
-  Cal.ns["freecall"]("ui", {"styles":{"branding":{"brandColor":"#2C2C2A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+  Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 
 </body>
