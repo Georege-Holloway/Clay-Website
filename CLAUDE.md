@@ -621,6 +621,39 @@ white, and both had to go:
 matching what was already done with `IMG_7253.jpeg` for the B&W shot; both ship to
 Netlify unused, so they're worth moving out of `assets/` if page weight ever matters.
 
+**Sep 2026 (16th): the booking pop-ups actually work now. The embed's own click binding
+was the culprit all along.** Two separate problems were tangled together, and only one of
+them was ever ours:
+- **Cal.com's side:** availability wouldn't render at all, in the embed *or* on Cal.com's
+  own hosted booking pages. Confirmed by loading `cal.com/clay-consulting-ws6xph/30min`
+  directly, with this site out of the picture entirely: same stuck loading skeletons,
+  while their own `slots/getSchedule` endpoint returned perfectly good slots. George
+  raised it with Cal.com support and they fixed it.
+- **Our side:** the embed script's **automatic binding of `[data-cal-link]` elements does
+  not reliably attach**. Everything it needs was correct and verified live: early loader,
+  right event slugs, `origin:"https://app.cal.com"`, both namespaces registered on
+  `window.Cal.ns`, correct `data-cal-*` attributes. Clicks still fell through to the
+  `href` and navigated to `/contact`. Calling the modal API by hand from the console on
+  that same page opened the pop-up immediately, every time, which isolated it to their
+  binding rather than to configuration.
+**Fix: `nav.js` now opens the pop-ups itself** instead of waiting for the embed to bind
+them. One delegated listener handles every trigger sitewide: it reads `data-cal-namespace`,
+`data-cal-link` and `data-cal-config` off the clicked element and calls
+`Cal.ns[namespace]("modal", {calLink, config})` — the same call the embed would have made.
+Details that matter if this is ever touched again:
+- It runs in the **capture phase** and calls `stopImmediatePropagation()`, so if the
+  embed's own binding does attach to some element, it can't fire too and open two modals.
+- It bails out *before* `preventDefault()` when `window.Cal.ns[namespace]` isn't there, so
+  the `href="/contact"` on every trigger still works as the no-JS fallback.
+- The GA4 events folded into the same handler, so there's one listener rather than two.
+- `nav.js` is served `max-age=0, must-revalidate`, so it needs no cache-busting query and
+  reaches returning visitors immediately, unlike `styles.css`.
+Verified against the live site with real clicks before shipping: the hero "Book a Growth
+Session" opens the £120/1h event with real slots, and "Not sure? Book a free 30-minute
+call" opens the free event, both on the same page, each firing exactly once with no
+navigation. **Don't go back to relying on `data-cal-link` auto-binding** — it looks
+correct and silently doesn't work.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,
