@@ -142,10 +142,13 @@ Everything is controlled by variables at the top of `styles.css`.
   rhythm is the site's whole personality. Do not shrink headings or narrow the shell to
   "tidy things up". Constrain *line length* for paragraphs (`--measure`), not layout.
 - Nav and footer run full-bleed (`.shell--edge`); content sections use `.shell` (1560px).
-- Nav CTA (Sep 2026): accent-filled pill, labelled "Book a free call", pointing at
-  `/contact` on every page **except** `services.html` (that page's own CTAs carry it, per
-  the redesign brief — no `.nav__cta` in its header markup). Footer: brand + tagline now
-  grouped in one `.footer__brand-block`; the old `<hr class="footer__rule">` is gone.
+- Nav CTA: accent-filled pill on every page, `.nav__cta`, hidden below 860px (where
+  `.nav__links-contact` shows a plain "Contact" link instead). **Labelled "Contact us",
+  a plain link to `/contact`** as of 16 Sep 2026 — it briefly fired the free-call
+  Cal.com pop-up in place, and George reverted it to a plain link. Earlier notes below
+  describing it as "Book a free call" or as a pop-up trigger are superseded. Footer:
+  brand + tagline grouped in one `.footer__brand-block`; the old
+  `<hr class="footer__rule">` is gone.
 
 ---
 
