@@ -700,9 +700,27 @@ cookies across ports, so stale `_ga` cookies from an earlier test on another por
 make it look like consent is leaking when it isn't. Clear cookies, not just the key.
 `privacy.html` rewritten to match reality: the automatic-collection list and the Cookies
 section now describe GA4 and the consent gate, Google is added to the processor list, and
-the policy date moved to September 2026. **Still missing from that processor list:
-Cal.com**, which handles names and emails for bookings. That was explicitly deferred to
-George by the enquiry-routing handover, and is still outstanding.
+the policy date moved to September 2026.
+
+**Sep 2026 (17th): Cal.com and the booking data added to the privacy policy**, closing the
+one thing the enquiry-routing handover had deferred. The field lists were **read off the
+live Cal.com booking forms rather than assumed**, which is worth repeating if the event
+types are ever reconfigured, because the two events ask for different things:
+- *Free 30 Min Call*: name, email, optional phone, whether you are a sole practitioner or
+  writing for an organisation, and what you would like to discuss.
+- *Growth Session*: name, email, optional phone, practice website, what you want to use
+  the hour for, how long you have been in practice, and additional notes.
+Both also capture the chosen slot and time zone. Added Cal.com to the processor list,
+extended the Google entry to cover Google Meet (the stated location on both events, so
+Google sees the joining link and calendar entry, not just analytics), and added bookings
+to the retention sentence. **Also corrected a stale claim while in there:** Stripe was
+described as "payment processing for clients on a subscription", from the retired
+Launch/Grow era. Stripe now takes the £120 card payment at the point of booking a Growth
+Session, and the current products carry no subscription at all. Reworded to describe that
+without asserting Stripe is used for nothing else, since that isn't verifiable from here.
+The existing "some providers are based outside the UK" paragraph already covers Cal.com,
+so no new transfer claim was invented. George still needs to read the policy end to end
+before it counts as reviewed.
 
 ### Known outstanding work
 
