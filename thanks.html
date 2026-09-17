@@ -2,6 +2,15 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58WJDJ7ZCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-58WJDJ7ZCJ');
+</script>
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="alternate icon" href="/assets/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -100,8 +109,8 @@
 
 <script src="/nav.js"></script>
 
-<!-- Fires the form-submit GA4 event for whichever form redirected here. No-op until
-     GA4 is actually installed (see the note in nav.js). -->
+<!-- Fires the form-submit GA4 event for whichever form redirected here, keyed off the
+     ?src= param each form's action carries. Live since GA4 went in on 17 Sep 2026. -->
 <script>
   (function () {
     if (typeof gtag !== 'function') return;

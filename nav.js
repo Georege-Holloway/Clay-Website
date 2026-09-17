@@ -39,9 +39,8 @@ document.addEventListener('click', function (e) {
   e.stopImmediatePropagation();
   api('modal', { calLink: calLink, config: config });
 
-  // GA4 events. Guarded on gtag existing: no GA4 script is installed yet (see
-  // privacy.html, which states the site uses no analytics), so this is a no-op until
-  // that's added, at which point a cookie banner is also needed per that same page.
+  // GA4 events. GA4 (G-58WJDJ7ZCJ) went in on 17 Sep 2026, so these now fire for real.
+  // Still guarded, since gtag is absent if the tag fails to load or is blocked.
   if (typeof gtag !== 'function') return;
   if (namespace === '30min') {
     gtag('event', 'book_call_open', { page: location.pathname });

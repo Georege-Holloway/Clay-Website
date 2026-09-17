@@ -657,6 +657,34 @@ call" opens the free event, both on the same page, each firing exactly once with
 navigation. **Don't go back to relying on `data-cal-link` auto-binding** — it looks
 correct and silently doesn't work.
 
+**Sep 2026 (17th): GA4 installed sitewide — and the privacy policy is now wrong until a
+cookie banner ships.** George created a GA4 property and asked for the standard gtag
+snippet on every page. Added `G-58WJDJ7ZCJ` to all 18 pages. Two implementation notes:
+- **Placed immediately after `<meta charset="utf-8">`, not immediately after `<head>`**
+  as Google's instructions say. On `growth-check.html`, whose long review comment sits
+  above the doctype, putting the snippet first pushed the charset declaration to byte
+  1234 — past the 1024-byte window browsers scan for it, risking a mis-sniffed encoding
+  on a page full of `£` and curly quotes. Charset first, tag immediately after, is
+  standards-correct and costs nothing in load order. Verified every page's charset now
+  sits inside the window.
+- **The four event hooks wired on 15 Sep are now live automatically.** `book_call_open`
+  and `book_session_open` from `nav.js`, `contact_form_submit` and
+  `strategy_enquiry_submit` from `thanks.html` via each form's `?src=` param. Confirmed
+  in a browser that the remote `gtag.js` executes, registers the container, and that a
+  `book_session_open` call reaches `gtag`. The `typeof gtag !== 'function'` guards stay,
+  since the tag can still be blocked client-side.
+**The open compliance gap, which George owns and was flagged to him at the time:**
+`privacy.html` still says, in two places, that the site "does not currently use
+analytics" and sets no non-essential cookies, and promises a consent banner if that
+changes. Both statements are now false. GA4 sets non-essential cookies, which under UK
+PECR need consent *before* they are set, and Clay's own
+`/resources/gdpr-for-therapists` article tells therapists exactly that. So the site
+currently contradicts its own published advice to its own audience. Fixing it properly
+means a consent banner plus Google Consent Mode: `gtag('consent', 'default',
+{analytics_storage:'denied'})` before the `config` call, updated to `granted` only on
+acceptance, with the choice persisted. Do not quietly rewrite the privacy wording to
+match the current setup and call it done — that documents the gap rather than closing it.
+
 ### Known outstanding work
 
 - [ ] `/assets/og-image.jpg` and `/assets/favicon.svg` are placeholders (blush background,
@@ -689,9 +717,9 @@ correct and silently doesn't work.
 
 ### Deliberately not done
 
-- No analytics or cookie banner yet. Decide whether GA4 is needed at all before adding
-  either; if the site sets no non-essential cookies, no consent banner is required, which
-  is the simplest and cheapest position.
+- ~~No analytics or cookie banner yet.~~ **Superseded 17 Sep 2026: GA4 is now installed**
+  (`G-58WJDJ7ZCJ`), see the dated entry below. **No cookie banner has been added, and one
+  is now required** — that is the open item, not a nice-to-have.
 - No CMS. Blog posts are hand-written HTML for now, on purpose — the friction should be
   felt before machinery is built to solve it.
 
