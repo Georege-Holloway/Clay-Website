@@ -560,6 +560,17 @@ details[open] .chev{transform:rotate(-135deg)}
 .footer__tagline{font-size:1.0625rem;font-weight:400;margin-top:.6rem;opacity:.85}
 .footer__legal{margin-top:clamp(3rem,6vw,4.5rem);font-size:.84375rem;opacity:.55}
 
+/* ---------- cookie consent banner ---------- */
+/* Built by nav.js, and only when no choice has been stored yet. z-index sits above the
+   sticky nav (50) but well below Cal.com's booking modal, so a pop-up opened while the
+   banner is still showing covers it rather than fighting it. */
+.consent{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--surface);border-top:1.5px solid var(--ink);box-shadow:0 -6px 24px rgba(32,30,29,.12);padding:1.25rem clamp(1rem,4vw,2.5rem)}
+.consent__inner{max-width:1560px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2.5rem);flex-wrap:wrap}
+.consent__text{margin:0;color:var(--ink-soft);font-size:.9375rem;max-width:68ch}
+.consent__text a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.consent__actions{display:flex;gap:.75rem;flex-shrink:0}
+.consent .btn{padding:.7rem 1.4rem;font-size:.75rem}
+
 /* ---------- mobile ---------- */
 @media (max-width:860px){
   .nav__inner{min-height:68px;gap:1rem}
@@ -619,6 +630,9 @@ details[open] .chev{transform:rotate(-135deg)}
   .gp-cards-3{grid-template-columns:1fr}
   .process-list--row{grid-template-columns:1fr}
   .gp-cross{grid-template-columns:1fr}
+
+  .consent__inner{flex-direction:column;align-items:stretch}
+  .consent__actions .btn{flex:1;text-align:center}
 }
 
 @media (prefers-reduced-motion:reduce){

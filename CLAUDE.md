@@ -673,17 +673,36 @@ snippet on every page. Added `G-58WJDJ7ZCJ` to all 18 pages. Two implementation 
   in a browser that the remote `gtag.js` executes, registers the container, and that a
   `book_session_open` call reaches `gtag`. The `typeof gtag !== 'function'` guards stay,
   since the tag can still be blocked client-side.
-**The open compliance gap, which George owns and was flagged to him at the time:**
-`privacy.html` still says, in two places, that the site "does not currently use
-analytics" and sets no non-essential cookies, and promises a consent banner if that
-changes. Both statements are now false. GA4 sets non-essential cookies, which under UK
-PECR need consent *before* they are set, and Clay's own
-`/resources/gdpr-for-therapists` article tells therapists exactly that. So the site
-currently contradicts its own published advice to its own audience. Fixing it properly
-means a consent banner plus Google Consent Mode: `gtag('consent', 'default',
-{analytics_storage:'denied'})` before the `config` call, updated to `granted` only on
-acceptance, with the choice persisted. Do not quietly rewrite the privacy wording to
-match the current setup and call it done — that documents the gap rather than closing it.
+**Sep 2026 (17th), same day: consent banner shipped, closing the PECR gap.** GA4 sets
+non-essential cookies, which under UK PECR need consent *before* they are set, and
+Clay's own `/resources/gdpr-for-therapists` article tells therapists exactly that, so
+running GA4 uncovered would have had the site contradicting its own published advice to
+its own audience. George asked for the banner immediately rather than running exposed.
+How it fits together, since the pieces live in three files:
+- **Each page's head snippet** sets Consent Mode defaults (`analytics_storage` and the
+  three ad keys all `denied`) **before** `gtag('config', ...)`, then re-applies a stored
+  acceptance from `localStorage['clay-consent']`. Order matters: the default has to
+  precede config, and the re-apply has to happen there too, so returning visitors are
+  measured from the first pageview without being asked again.
+- **`nav.js` builds the banner**, and only when no choice is stored. Injected rather than
+  hardcoded into 18 pages so there's one copy. Accept writes `granted` and fires
+  `gtag('consent','update',{analytics_storage:'granted'})`; Decline writes `denied` and
+  fires nothing, leaving the defaults in force. No banner without JS is correct, not a
+  bug: GA4 needs JS too, so a no-JS visitor is never measured.
+- **`.consent` in `styles.css`**, `z-index:60` — above the sticky nav (50), deliberately
+  far below Cal.com's booking modal so a pop-up opened while the banner still shows
+  covers it rather than fighting it.
+Verified in a browser across all three paths: on a first visit, with the choice cleared
+*and cookies wiped*, GA4 sets **no cookies at all**; Accept fires the update and `_ga`
+appears only then; Decline leaves zero cookies; a second page load shows no banner and
+restores `granted` before config. Worth knowing for future testing: `localhost` shares
+cookies across ports, so stale `_ga` cookies from an earlier test on another port will
+make it look like consent is leaking when it isn't. Clear cookies, not just the key.
+`privacy.html` rewritten to match reality: the automatic-collection list and the Cookies
+section now describe GA4 and the consent gate, Google is added to the processor list, and
+the policy date moved to September 2026. **Still missing from that processor list:
+Cal.com**, which handles names and emails for bookings. That was explicitly deferred to
+George by the enquiry-routing handover, and is still outstanding.
 
 ### Known outstanding work
 
@@ -717,9 +736,9 @@ match the current setup and call it done — that documents the gap rather than 
 
 ### Deliberately not done
 
-- ~~No analytics or cookie banner yet.~~ **Superseded 17 Sep 2026: GA4 is now installed**
-  (`G-58WJDJ7ZCJ`), see the dated entry below. **No cookie banner has been added, and one
-  is now required** — that is the open item, not a nice-to-have.
+- ~~No analytics or cookie banner yet.~~ **Superseded 17 Sep 2026: GA4 (`G-58WJDJ7ZCJ`)
+  is installed, behind a consent banner with Google Consent Mode.** Nothing is stored
+  until a visitor accepts. See the two dated entries above for how it is wired.
 - No CMS. Blog posts are hand-written HTML for now, on purpose — the friction should be
   felt before machinery is built to solve it.
 

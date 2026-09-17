@@ -7,8 +7,24 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
+  // Consent Mode. Analytics storage is denied by default, so GA4 sets no cookies until
+  // the visitor accepts, as UK PECR requires. A previous acceptance is re-applied here,
+  // before config, so returning visitors are measured without being asked again. The
+  // banner itself is built by nav.js.
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied'
+  });
+  try {
+    if (localStorage.getItem('clay-consent') === 'granted') {
+      gtag('consent', 'update', {analytics_storage: 'granted'});
+    }
+  } catch (e) {}
+
+  gtag('js', new Date());
   gtag('config', 'G-58WJDJ7ZCJ');
 </script>
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -21,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=45">
+<link rel="stylesheet" href="/styles.css?v=46">
 </head>
 <body>
 
