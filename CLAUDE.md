@@ -663,8 +663,16 @@ correct and silently doesn't work.
       ink monogram) so nothing 404s. Swap for real versions when George has them — the new
       logo sheet's circular "C" monogram (see above) could be the source for the favicon.
       `george-holloway.jpg` is in, cropped from `IMG_7253.jpeg` — reselect the crop if needed.
-- [ ] Blog post dates (`resources.html` and each article) are placeholders spaced a week
-      apart from 21 July 2026 backward — not real publish dates. Update when George confirms.
+- [ ] Blog post dates (`resources.html` and each article) are **still placeholders**, not
+      real publish dates — update when George confirms the real ones. As of 17 Sep 2026
+      they at least no longer *look* generated: they used to be every-Tuesday, exactly 7
+      or 14 days apart, which is an obvious tell. Now spread across Jun–Aug 2026 with
+      irregular gaps (16/12/20/11/18 days) on varied weekdays, none at a weekend, still
+      descending so the listing order is unchanged. The one real date,
+      `how-to-set-up-a-therapy-practice-uk` at 27 Aug 2026, was deliberately left alone:
+      it's a genuinely researched rebuild and carries `datePublished`/`dateModified` in
+      its JSON-LD. Each date lives in two places that must stay in sync — the `<time>` in
+      `resources.html`'s card and the one in the article's own `.phero__kicker`.
 - [ ] Blog post images were deliberately left out during migration — add back later.
 - [ ] Privacy policy content is filled in — merged from the reviewed copy live on the
       Squarespace site (data collected, retention, rights) with corrected technical facts
