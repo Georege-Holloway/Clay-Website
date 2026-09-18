@@ -1,13 +1,39 @@
 name: IndexNow
+
+# Tells Bing, Yandex, Naver, Seznam and Yep that pages have changed.
+# Google does NOT support IndexNow, so Search Console is still a separate,
+# manual step for Google. Nothing here affects Google at all.
+
 on:
+  # Run when the sitemap changes, which is the only thing that can produce
+  # new or updated URLs to submit. A push that only touches CSS or a page
+  # without bumping its lastmod has nothing to tell anyone about.
+  push:
+    branches: [main]
+    paths:
+      - 'sitemap.xml'
+  # Nightly backstop, in case a push-triggered run failed or was missed.
   schedule:
     - cron: '0 2 * * *'
+  # Lets you trigger a run by hand from the Actions tab.
   workflow_dispatch:
 
 jobs:
   submit:
     runs-on: ubuntu-latest
     steps:
+      # The action reads the sitemap from the LIVE site, not from this repo.
+      # On a push, Netlify has not finished deploying yet, so without this
+      # wait it would read the old sitemap and submit nothing. Netlify builds
+      # this site in well under a minute (no build step), so three minutes is
+      # generous. Not needed for the scheduled or manual runs.
+      - name: Wait for Netlify to deploy
+        if: github.event_name == 'push'
+        run: sleep 180
+
+      # Submits any sitemap URL whose lastmod falls within the last 24 hours
+      # (the action's default "since: 1 day"). This is why lastmod in
+      # sitemap.xml must be set to the real date a page changed.
       - uses: bojieyang/indexnow-action@v3
         with:
           sitemap-location: 'https://www.clayconsulting.co.uk/sitemap.xml'
