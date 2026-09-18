@@ -795,6 +795,33 @@ six years after the last contact with an adult client", deliberately echoing the
 phrasing so the two articles read as one position. The minor-client clause (until 25 or 26) already
 matched and is unchanged. **This is the only place either figure appeared** — checked sitewide.
 
+**Sep 2026 (18th): comparison article published, `/resources/help-getting-therapy-clients-uk`.**
+George's copy used verbatim; the three internal
+links came in absolute and were made root-relative, as with the previous article. Same conventions
+as `how-to-get-more-therapy-clients`: `h2` section headings, `Article` + `BreadcrumbList` JSON-LD,
+head/nav/footer byte-identical to the sibling article. Specific to this one:
+- **It names competitors and quotes their prices** (Counselling Directory, Psychology Today,
+  Therapy Directory, BACP, TheraMedia, Thera Media UK, For Client Agency, Psyche Creative, SEO for
+  Therapists, The Social Connection, Aligned). **None of those figures or claims were verified in
+  this repo** — they are George's own research, and the article carries his dated line saying so
+  ("Claims and prices checked on 18 September 2026"), rendered as a `.note` at the foot of the
+  `.article`. If prices are ever refreshed, that date has to move with them. The copy is careful to
+  attribute agency claims as claims rather than facts, and discloses George's own interest in the
+  first paragraph; keep both if this is ever edited.
+- **The comparison table uses the existing `.article table` styles** (`th` on `--stone`, `--hair`
+  borders) with no new CSS, so `styles.css` is untouched and there is no `?v=` bump. Checked at
+  375px: the two-column table wraps inside the viewport with no horizontal overflow.
+- **No `FAQPage` JSON-LD**, despite a real five-question FAQ. Matches
+  `how-to-set-up-a-therapy-practice-uk`, which omits it deliberately, and Google has restricted
+  FAQ rich results to authoritative health/government domains since 2023, so there is little to
+  gain. The questions are `h3` under an `h2`, which keeps heading order clean.
+- **The article never states the Growth Strategy's £1,200 price**, though it names the £120 Growth
+  Session. That is George's copy, not an omission introduced here, but it is worth knowing that
+  every other page publishes the £1,200 figure. Flagged, not changed.
+- **"start here" is the anchor text** on the link to the caseload article. Non-descriptive link
+  text is an accessibility weakness; the anchor was widened from "here" to "start here" without
+  altering a word of the copy. Rewording it properly is George's call.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
