@@ -1,1 +1,14 @@
+name: IndexNow
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
 
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: bojieyang/indexnow-action@v3
+        with:
+          sitemap-location: 'https://www.clayconsulting.co.uk/sitemap.xml'
+          key: ${{ secrets.INDEXNOW_KEY }}
