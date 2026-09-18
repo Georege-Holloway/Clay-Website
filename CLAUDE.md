@@ -722,6 +722,28 @@ The existing "some providers are based outside the UK" paragraph already covers 
 so no new transfer claim was invented. George still needs to read the policy end to end
 before it counts as reviewed.
 
+**Sep 2026 (18th): new resources article, `/resources/how-to-get-more-therapy-clients`.**
+Copy supplied by George in full and used verbatim — the only changes were mechanical: the
+four internal links came in as absolute `https://www.clayconsulting.co.uk/...` URLs and were
+made root-relative to match every other page, and `£`/quotes were left as-is. Two deliberate
+departures from the five older migrated articles, both following
+`how-to-set-up-a-therapy-practice-uk` (the one properly-built article) rather than the
+Squarespace migrations:
+- **Section headings are `<h2>`, not `<h3>`.** The migrated articles jump h1 → h3, which is a
+  real heading-order fault; `.article h2` is already styled, so there was no cost to doing it
+  correctly here. Not retrofitted to the older articles — that's its own pass.
+- **`Article` + `BreadcrumbList` JSON-LD included**, same shape as the setup guide's. The other
+  five have none.
+Dated **2026-09-18, a real publish date**, not one of the placeholder dates flagged below.
+Head boilerplate, Cal.com loader, nav and footer copied byte-identical from
+`why-good-therapy-isnt-enough.html`. Also added: the listing card at the top of
+`resources.html` (newest first) and a `sitemap.xml` entry, with `/resources`' own `lastmod`
+bumped to 2026-09-18. `styles.css` untouched, so no `?v=` bump. Not done, and worth knowing:
+the article links out to `/resources/how-to-set-up-a-therapy-practice-uk` and
+`/resources/why-good-therapy-isnt-enough`, but neither of those links back to it — add
+reciprocal links if this one is meant to be part of a cluster. `llms.txt` lists pages, not
+individual articles, so it was left alone.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
