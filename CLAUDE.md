@@ -784,6 +784,17 @@ wants to read end to end). 18 removed across `growth-check.html`, `thanks.html`,
 to change because that page carries no `FAQPage` JSON-LD; `growth-sessions.html` and
 `growth-strategy.html` do, but only their HTML comments were touched, so nothing fell out of sync.
 
+**Sep 2026 (18th): GDPR article's retention figure corrected to six years.** Noticed while
+de-dashing: `gdpr-for-therapists.html` said therapy records are kept "seven years after the end of
+work with an adult client", while `how-to-set-up-a-therapy-practice-uk` says "a minimum of six
+years" — two live articles giving different retention periods on a compliance point. Six is correct
+per BACP's published minimum (the same conclusion the setup-guide rebuild reached, recorded below;
+the source PDF that says seven is the one that misled both). Flagged rather than silently changed,
+and George confirmed. The sentence now reads "Standard retention for therapy records is a minimum of
+six years after the last contact with an adult client", deliberately echoing the setup guide's
+phrasing so the two articles read as one position. The minor-client clause (until 25 or 26) already
+matched and is unchanged. **This is the only place either figure appeared** — checked sitewide.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
