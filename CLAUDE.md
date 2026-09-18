@@ -822,6 +822,13 @@ head/nav/footer byte-identical to the sibling article. Specific to this one:
   text is an accessibility weakness; the anchor was widened from "here" to "start here" without
   altering a word of the copy. Rewording it properly is George's call.
 
+**Sep 2026 (18th): caseload article re-dated 2026-09-18 → 2026-09-07.** At George's request, so the
+new comparison piece sits above it. The date lives in three places in the article (`phero__kicker` `<time>`, plus
+`datePublished` and `dateModified` in its JSON-LD) and a fourth in `resources.html`'s card; all four
+were changed together. **`sitemap.xml` `lastmod` was deliberately left at 2026-09-18** for that URL:
+lastmod means last modified, and the file genuinely changed today. Listing order is unchanged, since
+7 September still sits between the new article and the 27 August setup guide.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
