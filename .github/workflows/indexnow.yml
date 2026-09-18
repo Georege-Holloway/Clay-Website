@@ -38,3 +38,10 @@ jobs:
         with:
           sitemap-location: 'https://www.clayconsulting.co.uk/sitemap.xml'
           key: ${{ secrets.INDEXNOW_KEY }}
+          # Default is 'ignore', which logs a notice and still passes, so a
+          # failed submission would show a green tick. 'error' fails the run
+          # instead, so the Actions tab tells the truth and GitHub emails on
+          # failure. Worth knowing if a run goes red: a rejected submission
+          # is not the same as a broken site, and is usually the key, the
+          # secret, or a search engine endpoint being briefly unavailable.
+          failure-strategy: error
