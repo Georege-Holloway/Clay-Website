@@ -744,6 +744,46 @@ the article links out to `/resources/how-to-set-up-a-therapy-practice-uk` and
 reciprocal links if this one is meant to be part of a cluster. `llms.txt` lists pages, not
 individual articles, so it was left alone.
 
+**Sep 2026 (18th): em dashes removed from every resources article and from `resources.html`.**
+George asked for this directly, which is also the standing "don't fix copy on the migrated pages
+unless asked" rule being lifted for this specific pass. 82 em dashes across five articles plus the
+listing page; `how-to-set-up-a-therapy-practice-uk` and the new caseload article already had none.
+Done sentence by sentence, not by find-and-replace: each one became a colon, a full stop, a comma
+pair, or a restructured sentence, matching the same treatment the Growth Sessions/Strategy copy
+already had. Points worth keeping:
+- **Colons for definition-style lists.** The GDPR article's "what your Privacy Notice must cover"
+  list was eight `X — Y` items; all eight are now `X: Y`, consistently.
+- **Parenthetical em dash pairs mostly became a second sentence**, not a comma pair, because the
+  enclosed clauses were long enough that commas read as run-ons. E.g. the ICO and DPA paragraphs
+  in the GDPR article now state the rule first and give the "that includes..." examples after.
+- **Three became deliberate fragments** ("A name, an email address, session notes.", "A GP, a
+  solicitor, a divorce coach...", "The ICO registration, the Privacy Notice, the payment setup.")
+  — the list was the emphatic part of the sentence, and fronting it keeps the punch that the
+  dashes were carrying.
+- **`&ndash;` was left alone** — the one instance (`40&ndash;60`) is a number range, not a dash.
+- **One H1 changed**: `how-clients-find-a-therapist-online`'s "...online — and how do you make
+  sure they find you?" is now "...online, and how do you...". Its `og:title` and its card title in
+  `resources.html` were updated in the same pass so the three stay in sync. The `<title>` tag never
+  contained a dash and is unchanged, so the canonical URL and search title are unaffected.
+- Six meta/OG descriptions also contained em dashes and were reworded with them.
+**Same day, second pass: the rest of the site was swept too, except `privacy.html`.** George
+asked for the remaining 23 to go, with privacy explicitly left alone (it is legal copy he still
+wants to read end to end). 18 removed across `growth-check.html`, `thanks.html`, `build.html`,
+`approach.html`, `index.html`, `growth-sessions.html`, `growth-strategy.html` and `404.html`;
+**`privacy.html` still has 10 and that is deliberate, not an oversight.** Two things worth knowing:
+- **Six of the 18 were inside HTML comments**, not visible copy: the testimonial-slot markers on
+  Home/Sessions/Strategy, the permanent-noindex note on `thanks.html`, and two of
+  `growth-check.html`'s own review comments. Those became colons or semicolons with no rewording,
+  since nothing about them is reader-facing. The other twelve are real copy and were rewritten
+  the same way the articles were.
+- **The source is inconsistent about the em dash's encoding** — some files use a literal `—`
+  character, others the `&mdash;` entity, and a few (`thanks.html`, `growth-check.html`) use both
+  in the same file. Any future sweep has to match on both forms or it will silently miss half of
+  them. All the resources articles used the literal character only.
+`growth-check.html`'s FAQ `<summary>` ("I'm still in training. Is this useful for me?") was safe
+to change because that page carries no `FAQPage` JSON-LD; `growth-sessions.html` and
+`growth-strategy.html` do, but only their HTML comments were touched, so nothing fell out of sync.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
