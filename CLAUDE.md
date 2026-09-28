@@ -928,6 +928,15 @@ Strategy now use the same `--sage-deep` as Hands-on support; only Free call keep
 `--col`/`--col-deep` modifiers are kept so any column can be given its own colour again. This also
 removes the low-contrast sage/terracotta buttons that entry flagged. `styles.css` → `v=55`.
 
+**Sep 2026 (28th): "What we cover" restyled to design "3a"** (`what-we-cover-3a.png`, parent
+folder, static image). The two-column `.cover-split` (heading left, numbered list right) is gone:
+heading now sits on top, left-aligned (`.h2-flat`), above three equal `.cover-card`s in a row, each
+with the shared `.cover-item__num` circle (number switched to `--ink` here only, via
+`.cover-card .cover-item__num`; the Growth pages keep white), an `h3` and the copy. The closing line
+is `.cover-close`, a sand pill sized to its text (a rounded full-width box below 860px). The sand
+colour is `color-mix(in srgb,var(--rule) 55%,var(--bg))`, not a new token. Copy unchanged. Stacks
+to one column below 860px. `styles.css` → `v=56`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1019,7 +1028,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=55`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=56`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

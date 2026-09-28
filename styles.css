@@ -423,9 +423,15 @@ fieldset{border:0;padding:0;margin:0}
 .split-feature{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,4vw,4rem);align-items:center}
 .split-feature .h2-flat{margin-bottom:1.5rem}
 
-/* ---- home: cover split (what we cover) ---- */
-.cover-split{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
-.cover-split__close{margin:clamp(2rem,4vw,2.75rem) 0 0;padding-top:1.5rem;border-top:1px solid var(--rule);font-size:1.0625rem;font-weight:500;color:var(--ink)}
+/* ---- home: what we cover ---- */
+/* Design "3a" (Sep 2026): three equal sand cards; only the number circles carry colour. Sand is
+   mixed from existing tokens (between --bg and --rule) rather than added as a new one. */
+.cover-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(2rem,4vw,3rem)}
+.cover-card{background:color-mix(in srgb,var(--rule) 55%,var(--bg));border-radius:var(--radius-card);padding:clamp(1.75rem,2.6vw,2.5rem)}
+.cover-card .cover-item__num{color:var(--ink);margin-bottom:1.5rem}
+.cover-card h3{font-size:clamp(1.5rem,2vw,1.875rem);margin-bottom:1rem}
+.cover-card p:not(.cover-item__num){margin:0;color:var(--ink-soft);font-size:1.0625rem;line-height:1.65}
+.cover-close{display:inline-block;margin:clamp(1.5rem,3vw,2.25rem) 0 0;padding:1rem 1.75rem;border-radius:var(--radius-pill);background:color-mix(in srgb,var(--rule) 55%,var(--bg));font-size:1.0625rem;color:var(--ink)}
 
 /* ---- home: comparison (desktop cards + mobile cards) ----
    Design "1b" (Sep 2026): each option is its own outlined card with a solid coloured cap, and
@@ -655,7 +661,8 @@ details[open] .chev{transform:rotate(-135deg)}
   .twocol{grid-template-columns:1fr;gap:2.5rem}
   .section-head__row{flex-direction:column;align-items:flex-start;gap:.5rem}
   .split-feature{grid-template-columns:1fr}
-  .cover-split{grid-template-columns:1fr}
+  .cover-cards{grid-template-columns:1fr}
+  .cover-close{display:block;border-radius:var(--radius-card)}
   .hero3 h1{white-space:normal}
 
   /* ---- growth-sessions / growth-strategy redesign, mobile ---- */
