@@ -263,6 +263,14 @@ into chat, labelled 1A / 1B / "2a hero" by them. Section changes, all on `index.
   own suggested captions ("desk, notebook, or practice space", "hands, chair, window
   light") — a calm, real photo, not stock-looking. Swap `why-panel--text-only` back to the
   plain `.why-panel` grid and add a `.why-panel__figure` once supplied.
+  **Updated 28 Sep 2026:** the photo never arrived, and a full-width card holding a 62ch
+  column of text left an obviously empty right half where the image was meant to sit. The
+  text-only variant now takes `width:fit-content` with `margin-inline:auto`, so the card
+  shrinks to its own copy and centres in the shell (827px of 1385px at a 1400px viewport).
+  `max-width:100%` keeps it inside the shell's padding on mobile, where it still fills the
+  available width. Text stays left-aligned; only the card is centred. **None of this blocks
+  the photo** — if one turns up, swapping back to the plain `.why-panel` grid drops the
+  `fit-content` rule with it.
 - **Final CTA:** unchanged, per instruction.
 
 **Sep 2026: Growth Blueprint given a fixed, published price — £1,200 flat, sitewide.**
