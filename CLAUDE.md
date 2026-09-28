@@ -986,10 +986,22 @@ Strategy, Growth Check and Build.
 - **New facts from George's copy:** the £1,200 fee "can be split into two instalments", and
   "typically 10 working days". Neither appears anywhere else on the site yet (FAQ, JSON-LD, Home).
 - Step copy is third person ("George reviews…") while the rest of this page is first person.
-- **Overlap flagged, not changed:** the following "The plan, not the build" section says much the
-  same as "After the report", and also mentions "rebuilding a website", which Home's FAQ now says
-  only happens when a Strategy calls for it.
+- **"The plan, not the build" deleted** (George: it was meant to be replaced by this section). It
+  duplicated "After the report" and offered website rebuilds, contradicting Home's FAQ.
 `styles.css` → `v=60`.
+
+**Sep 2026 (28th): FAQ conflicts across pages resolved, Home's copy wins.** George's calls:
+- "What's the difference between a Growth Session and a Growth Strategy?" on `growth-strategy.html`
+  now uses Home's answer verbatim (visible + `FAQPage` JSON-LD), so the site gives one answer.
+- `growth-strategy.html`'s "Do I have to use you for the implementation?" (`#implementation`) became
+  Home's **"Can Clay do the work, or just advise?"** (`#do-the-work`), Home's answer plus one added
+  sentence to keep the no-obligation point: "There's no obligation either way: nothing in the report
+  assumes Clay will do it." Nothing linked to the old anchor.
+- Home's "Who does Clay work with?" now says "from **trainees and** newly qualified practitioners…"
+  (visible + JSON-LD), to agree with Build, which welcomes trainees.
+- "Do you build websites?": George said to keep Home's answer as it is. Note the Build page (free
+  single-page site builder) still exists, so this remains a tension if Build ever launches.
+- Not addressed: voice (Home FAQ third person, Growth pages first person, Build "we").
 
 ### Known outstanding work
 
