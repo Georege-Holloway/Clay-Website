@@ -433,8 +433,8 @@ fieldset{border:0;padding:0;margin:0}
    the column modifier, so both the desktop column and the mobile card read from one place:
    --col (cap, border, button) and --col-deep (price figure). */
 .compare__col--call,.compare-card--call{--col:var(--ink-soft);--col-deep:var(--ink)}
-.compare__col--sessions,.compare-card--sessions{--col:var(--sage);--col-deep:var(--sage-deep)}
-.compare__col--strategy,.compare-card--strategy{--col:var(--terracotta);--col-deep:var(--terracotta-deep)}
+.compare__col--sessions,.compare-card--sessions{--col:var(--sage-deep);--col-deep:var(--sage-deep)}
+.compare__col--strategy,.compare-card--strategy{--col:var(--sage-deep);--col-deep:var(--sage-deep)}
 .compare__col--hands,.compare-card--hands{--col:var(--sage-deep);--col-deep:var(--sage-deep)}
 
 .compare{display:grid;grid-template-columns:minmax(0,.62fr) repeat(4,minmax(0,1fr));grid-template-rows:auto repeat(4,auto) auto;column-gap:clamp(.75rem,1.4vw,1.25rem);margin-top:clamp(3rem,6vw,4.5rem)}

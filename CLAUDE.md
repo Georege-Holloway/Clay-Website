@@ -922,6 +922,12 @@ desktop width: "Book a session" → **"Explore Sessions"**, "Explore a Growth St
 **"Explore Strategy"**. The testimonial's own "Explore a Growth Strategy" button is unchanged.
 `styles.css` → `v=54`.
 
+**Sep 2026 (28th): comparison cards recoloured.** At George's request, Growth Sessions and Growth
+Strategy now use the same `--sage-deep` as Hands-on support; only Free call keeps its own colour
+(`--ink-soft`). Supersedes the per-column colour mapping in the design "1b" entry above; the
+`--col`/`--col-deep` modifiers are kept so any column can be given its own colour again. This also
+removes the low-contrast sage/terracotta buttons that entry flagged. `styles.css` → `v=55`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1013,7 +1019,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=54`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=55`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
