@@ -379,7 +379,13 @@ New, `gp-`-prefixed classes added to `styles.css`, explicitly scoped to these tw
 - **`.gp-cta-band`** — solid terracotta closing-CTA section (as opposed to `.section--tint`,
   which is the *light* terracotta-tint used elsewhere) — needed its own text-link/button
   colour overrides for contrast (plain black `.btn`, not `.btn--accent`, since accent
-  *is* terracotta and would vanish into the band).
+  *is* terracotta and would vanish into the band). **No longer growth-pages-only as of
+  28 Sep 2026:** George asked for Home's "Not sure where to start?" closing section to
+  match, so it now carries the same class list as the other two
+  (`section gp-cta-band closing section--top-tight section--bottom-tight`, with a plain
+  `.shell` inside — note `closing` moved off the shell and onto the section to match).
+  The `gp-` prefix is now a slight misnomer; it was left rather than renamed across three
+  pages for a cosmetic reason. Home previously used `.section--tint`, the light tint.
 Copy: every em dash in this handover's copy was already rewritten (colons/full
 stops/commas) before it reached this repo — carried over verbatim, including into both
 pages' `FAQPage` JSON-LD, which had been quietly left with the old em-dash phrasing.
