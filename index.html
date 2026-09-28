@@ -77,7 +77,89 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles.css?v=56">
+<!-- FAQPage schema: must match the visible #faq answers word for word. Change both together. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who does Clay work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Clay works with therapists, counsellors, psychotherapists and therapy organisations across the UK, from newly qualified practitioners to established practices, CICs and training organisations. All work is done online."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between a Growth Session and a Growth Strategy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Growth Session is a one-hour call to work through whatever is on your mind, with a written summary afterwards, for £120. A Growth Strategy is a full review of your practice built around one agreed goal, delivered as a written report with phased recommendations and a walkthrough call, for £1,200. Sessions suit ongoing questions; a Strategy suits needing to know what's actually happening and what to do first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Clay do the work, or just advise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. Clay can carry out the recommendations from your Growth Strategy, or take on a specific job you bring, such as setting up your Google Business Profile or rewriting your directory listings. Hands-on work is scoped as a fixed project at a fixed price, agreed before it starts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help my practice get recommended by ChatGPT and other AI assistants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. More people now ask AI assistants to recommend a therapist, and those tools favour practices whose websites and listings answer specific questions clearly. Clay's own clients mostly find it through ChatGPT, and the same approach is applied to your practice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you set up my Google Business Profile or Psychology Today listing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Clay sets up, claims and corrects Google Business Profiles and directory listings, including Psychology Today, Counselling Directory and BACP. The aim is that all of them describe the same practice, in the same place, with the same specialism."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build websites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only where a Growth Strategy shows that a new site is what's needed. Most of the time, improving the website you already have does more, and costs less."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you use AI to write the reports?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "George uses AI tools to speed up research and drafting, the same way he uses any other tool. What isn't outsourced is the thinking: every finding comes from your own practice's data, and every recommendation is George's judgement, reviewed and signed off by him before it reaches you. He spent eight years at Amazon writing strategy documents, and applies the same standard to every report."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will I need to share anything about my clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Clay never needs clinical or client information. The work uses your website, directory listings and, with your permission, view-only access to tools like Google Search Console and Google Analytics."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you guarantee more clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and anyone who does is guessing. What Clay can do is find what's holding your practice back, agree one measurable goal with you, and focus every recommendation on reaching it."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css?v=57">
 </head>
 <body>
 
@@ -308,6 +390,52 @@
           <button type="button" class="testimonials__arrow" data-dir="-1" aria-label="Previous testimonial">&larr;</button>
           <div class="testimonials__dots"></div>
           <button type="button" class="testimonials__arrow" data-dir="1" aria-label="Next testimonial">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--top-tight section--bottom-tight home-faq" id="faq">
+    <div class="shell">
+      <h2 class="h2-flat">Frequently asked questions</h2>
+      <div class="faq2">
+        <div class="faq2__grid">
+          <details id="who-we-work-with">
+            <summary><span>Who does Clay work with?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Clay works with therapists, counsellors, psychotherapists and therapy organisations across the UK, from newly qualified practitioners to established practices, CICs and training organisations. All work is done online.</p>
+          </details>
+          <details id="session-vs-strategy">
+            <summary><span>What's the difference between a Growth Session and a Growth Strategy?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>A Growth Session is a one-hour call to work through whatever is on your mind, with a written summary afterwards, for £120. A Growth Strategy is a full review of your practice built around one agreed goal, delivered as a written report with phased recommendations and a walkthrough call, for £1,200. Sessions suit ongoing questions; a Strategy suits needing to know what's actually happening and what to do first.</p>
+          </details>
+          <details id="do-the-work">
+            <summary><span>Can Clay do the work, or just advise?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Both. Clay can carry out the recommendations from your Growth Strategy, or take on a specific job you bring, such as setting up your Google Business Profile or rewriting your directory listings. Hands-on work is scoped as a fixed project at a fixed price, agreed before it starts.</p>
+          </details>
+          <details id="ai-assistants">
+            <summary><span>Can you help my practice get recommended by ChatGPT and other AI assistants?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Yes. More people now ask AI assistants to recommend a therapist, and those tools favour practices whose websites and listings answer specific questions clearly. Clay's own clients mostly find it through ChatGPT, and the same approach is applied to your practice.</p>
+          </details>
+          <details id="listings">
+            <summary><span>Can you set up my Google Business Profile or Psychology Today listing?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Yes. Clay sets up, claims and corrects Google Business Profiles and directory listings, including Psychology Today, Counselling Directory and BACP. The aim is that all of them describe the same practice, in the same place, with the same specialism.</p>
+          </details>
+          <details id="websites">
+            <summary><span>Do you build websites?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Only where a Growth Strategy shows that a new site is what's needed. Most of the time, improving the website you already have does more, and costs less.</p>
+          </details>
+          <details id="use-of-ai">
+            <summary><span>Do you use AI to write the reports?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>George uses AI tools to speed up research and drafting, the same way he uses any other tool. What isn't outsourced is the thinking: every finding comes from your own practice's data, and every recommendation is George's judgement, reviewed and signed off by him before it reaches you. He spent eight years at Amazon writing strategy documents, and applies the same standard to every report.</p>
+          </details>
+          <details id="client-information">
+            <summary><span>Will I need to share anything about my clients?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>No. Clay never needs clinical or client information. The work uses your website, directory listings and, with your permission, view-only access to tools like Google Search Console and Google Analytics.</p>
+          </details>
+          <details id="guarantee">
+            <summary><span>Can you guarantee more clients?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>No, and anyone who does is guessing. What Clay can do is find what's holding your practice back, agree one measurable goal with you, and focus every recommendation on reaching it.</p>
+          </details>
         </div>
       </div>
     </div>

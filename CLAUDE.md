@@ -937,6 +937,25 @@ is `.cover-close`, a sand pill sized to its text (a rounded full-width box below
 colour is `color-mix(in srgb,var(--rule) 55%,var(--bg))`, not a new token. Copy unchanged. Stacks
 to one column below 860px. `styles.css` → `v=56`.
 
+**Sep 2026 (28th): Home FAQ added, per the Homepage FAQ handover.** `section#faq.home-faq`,
+between the testimonials and the closing CTA. Nine questions, George's copy verbatim, native
+`<details>`/`<summary>`, all closed by default. **Reuses the Growth pages' `.faq2`/`.faq2__grid`
+accordion unchanged**; the only new CSS is two `.home-faq`-scoped rules (heading spacing, a rule
+above the list), since the handover said not to change shared styles. Heading is "Frequently asked
+questions" in `.h2-flat`, left-aligned like "What we cover". The handover said DM Sans for body text;
+that was stale, the site has used Figtree since Sep 2026.
+- **`FAQPage` JSON-LD in Home's `<head>` must match the visible answers word for word.** Checked in
+  the browser after building (all nine identical). Change both together.
+- **Known duplicate, reported to George and not edited:** "What's the difference between a Growth
+  Session and a Growth Strategy?" is also on `growth-strategy.html` (visible and in its own
+  `FAQPage` JSON-LD) with a **different answer**. Same question, two answers, on one site.
+- Q7 states George "spent eight years at Amazon"; that figure is George's own copy and appears
+  nowhere else on the site.
+- The handover's Task 3 asked to hide the carousel arrows/dot while there is only one testimonial.
+  That contradicts George's explicit earlier choice to show them, so it was **not** done pending his
+  confirmation. ("Why this matters" was already gone.)
+`styles.css` → `v=57`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1028,7 +1047,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=56`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=57`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
