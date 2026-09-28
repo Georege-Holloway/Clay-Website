@@ -538,6 +538,9 @@ details[open] .chev{transform:rotate(-135deg)}
    not .article, which centres its measure and would sit indented relative to the
    full-width grid directly below it ---- */
 .gp-intro{max-width:60ch;margin-bottom:clamp(1.5rem,3vw,2rem)}
+/* Centred over a centred block below it (the #enquire form on Growth Strategy). */
+.gp-intro--centred{margin-inline:auto;text-align:center}
+.gp-intro--centred h2{text-align:center;text-wrap:balance}
 .gp-intro p{color:var(--ink-soft);font-size:1.125rem}
 
 /* ---- numbered / labelled row list (What people bring / What gets looked at) ---- */

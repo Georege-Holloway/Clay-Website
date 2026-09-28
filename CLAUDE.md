@@ -1003,6 +1003,21 @@ Strategy, Growth Check and Build.
   single-page site builder) still exists, so this remains a tension if Build ever launches.
 - Not addressed: voice (Home FAQ third person, Growth pages first person, Build "we").
 
+**Sep 2026 (28th): Build is now a draft, not live.** Handled like Growth Check: `build.html`
+stays on disk and reachable by direct URL, but carries `noindex, nofollow`, is out of
+`sitemap.xml`, and no live page links to it. A comment at the top of the file lists the steps to
+publish it again. **Supersedes earlier notes saying `/build` is linked from the setup-guide
+article.** Both links there were removed: the "Clay offers a free single-page website…" paragraph
+under "A simple website" is gone (it also promised "a fuller site built and maintained for you",
+contradicting Home's FAQ), and the "Just starting out?" bullet under "Where Clay fits" now points
+to the free 30-minute call instead ("costs nothing and tells you what's actually worth doing",
+reusing the closing-CTA wording). The downloadable `clay_practice_setup_guide.pdf` was not checked
+and may still mention Build.
+
+Same day, Growth Strategy: the "Send details about your practice" heading and intro are centred
+over the enquiry form (`.gp-intro--centred`; needs its own `text-align:center` on the `h2` because
+`.h2-flat` sets `left`). `styles.css` → `v=61`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1094,7 +1109,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=60`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=61`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
