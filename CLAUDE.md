@@ -851,7 +851,7 @@ lastmod means last modified, and the file genuinely changed today. Listing order
   before the "Not sure where to start?" band**, and confirmed when asked about the conflict.
 - **Site tokens, not the mock-up's.** Fraunces instead of Caprasimo; card is `--surface` (the
   mock's `#f5ead8` is exactly `--bg` and would have vanished into the page); tag is
-  `--sage-tint`/`--sage-deep`; CTA is `.btn--outline`. The handover asked for this mapping.
+  `--sage-tint`/`--sage-deep`; CTA is the plain black `.btn` (George, 28 Sep; the build started as `.btn--outline`). The handover asked for this mapping.
 - **Slides are real markup, not a JS array.** Each testimonial is a `<figure class="testimonial">`
   in `index.html`, so the quote is crawlable and readable without JS. The script at the bottom
   of `nav.js` shows one slide at a time, builds a dot per figure, wraps at both ends, and supports
