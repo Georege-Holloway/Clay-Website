@@ -77,7 +77,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles.css?v=52">
+<link rel="stylesheet" href="/styles.css?v=53">
 </head>
 <body>
 
@@ -190,53 +190,53 @@
         <h2 class="h-section">Ways to work together</h2>
       </div>
 
+      <!-- Desktop: one card per option. The label column and every card are subgrids of
+           .compare, so each row lines up across all five columns whatever the text length. -->
       <div class="compare">
-        <div class="compare__row">
-          <div class="compare__label"></div>
-          <div class="compare__cell compare__head"><h3>Free call</h3></div>
-          <div class="compare__cell compare__head"><h3>Growth Sessions</h3></div>
-          <div class="compare__cell compare__head"><h3>Growth Strategy</h3></div>
-          <div class="compare__cell compare__head"><h3>Hands-on support</h3></div>
+        <div class="compare__labels" aria-hidden="true">
+          <span></span>
+          <span class="compare__label">You leave with</span>
+          <span class="compare__label">Best if</span>
+          <span class="compare__label">Time</span>
+          <span class="compare__label">Cost</span>
+          <span></span>
         </div>
-        <div class="compare__row">
-          <div class="compare__label">You leave with</div>
-          <div class="compare__cell">An honest answer on whether I can help, and which option makes sense.</div>
-          <div class="compare__cell">A summary of what we discussed, what we agreed, and what to work on next.</div>
-          <div class="compare__cell">A written report with prioritised recommendations, phased now / next / later, with evidence.</div>
-          <div class="compare__cell">The work done, from your Growth Strategy or a specific job you bring.</div>
+        <div class="compare__col compare__col--call">
+          <h3 class="compare__head">Free call</h3>
+          <p class="compare__cell"><span class="visually-hidden">You leave with: </span>An honest answer on whether I can help, and which option makes sense.</p>
+          <p class="compare__cell"><span class="visually-hidden">Best if: </span>You're not sure yet what you need.</p>
+          <p class="compare__cell"><span class="visually-hidden">Time: </span>30 minutes</p>
+          <p class="compare__cell compare__figure"><span class="visually-hidden">Cost: </span>Free</p>
+          <div class="compare__cta"><a class="btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book the call</a></div>
         </div>
-        <div class="compare__row">
-          <div class="compare__label">Best if</div>
-          <div class="compare__cell">You're not sure yet what you need.</div>
-          <div class="compare__cell">You want someone to think the business side through with, regularly or once.</div>
-          <div class="compare__cell">You need to know what's actually happening, with evidence.</div>
-          <div class="compare__cell">You know what needs doing and would rather it was done for you.</div>
+        <div class="compare__col compare__col--sessions">
+          <h3 class="compare__head">Growth Sessions</h3>
+          <p class="compare__cell"><span class="visually-hidden">You leave with: </span>A summary of what we discussed, what we agreed, and what to work on next.</p>
+          <p class="compare__cell"><span class="visually-hidden">Best if: </span>You want someone to think the business side through with, regularly or once.</p>
+          <p class="compare__cell"><span class="visually-hidden">Time: </span>1 hour, as often as you want</p>
+          <p class="compare__cell compare__figure"><span class="visually-hidden">Cost: </span>£120 per session</p>
+          <div class="compare__cta"><a class="btn" href="/growth-sessions">Book a session</a></div>
         </div>
-        <div class="compare__row">
-          <div class="compare__label">Time</div>
-          <div class="compare__cell">30 minutes</div>
-          <div class="compare__cell">1 hour, as often as you want</div>
-          <div class="compare__cell">Discovery call, then a report and walkthrough</div>
-          <div class="compare__cell">A fixed project with an agreed end date</div>
+        <div class="compare__col compare__col--strategy">
+          <h3 class="compare__head">Growth Strategy</h3>
+          <p class="compare__cell"><span class="visually-hidden">You leave with: </span>A written report with prioritised recommendations, phased now / next / later, with evidence.</p>
+          <p class="compare__cell"><span class="visually-hidden">Best if: </span>You need to know what's actually happening, with evidence.</p>
+          <p class="compare__cell"><span class="visually-hidden">Time: </span>Discovery call, then a report and walkthrough</p>
+          <p class="compare__cell compare__figure"><span class="visually-hidden">Cost: </span>£1,200</p>
+          <div class="compare__cta"><a class="btn" href="/growth-strategy">Explore a Growth Strategy</a></div>
         </div>
-        <div class="compare__row">
-          <div class="compare__label">Cost</div>
-          <div class="compare__cell compare__figure">Free</div>
-          <div class="compare__cell compare__figure">£120 per session</div>
-          <div class="compare__cell compare__figure">£1,200</div>
-          <div class="compare__cell compare__figure">Fixed price, agreed before we start</div>
-        </div>
-        <div class="compare__row">
-          <div class="compare__label"></div>
-          <div class="compare__cell compare__cta"><a class="btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book the call</a></div>
-          <div class="compare__cell compare__cta"><a class="btn btn--accent" href="/growth-sessions">Book a session</a></div>
-          <div class="compare__cell compare__cta"><a class="btn btn--accent" href="/growth-strategy">Explore a Growth Strategy</a></div>
-          <div class="compare__cell compare__cta"><a class="btn btn--accent" href="/contact">Talk about a project</a></div>
+        <div class="compare__col compare__col--hands">
+          <h3 class="compare__head">Hands-on support</h3>
+          <p class="compare__cell"><span class="visually-hidden">You leave with: </span>The work done, from your Growth Strategy or a specific job you bring.</p>
+          <p class="compare__cell"><span class="visually-hidden">Best if: </span>You know what needs doing and would rather it was done for you.</p>
+          <p class="compare__cell"><span class="visually-hidden">Time: </span>A fixed project with an agreed end date</p>
+          <p class="compare__cell compare__figure"><span class="visually-hidden">Cost: </span>Fixed price, agreed before we start</p>
+          <div class="compare__cta"><a class="btn" href="/contact">Talk about a project</a></div>
         </div>
       </div>
 
       <div class="compare--mobile">
-        <div class="compare-card">
+        <div class="compare-card compare-card--call">
           <h3>Free call</h3>
           <dl>
             <div><dt>You leave with</dt><dd>An honest answer on whether I can help, and which option makes sense.</dd></div>
@@ -246,7 +246,7 @@
           </dl>
           <a class="btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book the call</a>
         </div>
-        <div class="compare-card">
+        <div class="compare-card compare-card--sessions">
           <h3>Growth Sessions</h3>
           <dl>
             <div><dt>You leave with</dt><dd>A summary of what we discussed, what we agreed, and what to work on next.</dd></div>
@@ -254,9 +254,9 @@
             <div><dt>Time</dt><dd>1 hour, as often as you want</dd></div>
             <div><dt>Cost</dt><dd>£120 per session</dd></div>
           </dl>
-          <a class="btn btn--accent" href="/growth-sessions">Book a session</a>
+          <a class="btn" href="/growth-sessions">Book a session</a>
         </div>
-        <div class="compare-card">
+        <div class="compare-card compare-card--strategy">
           <h3>Growth Strategy</h3>
           <dl>
             <div><dt>You leave with</dt><dd>A written report with prioritised recommendations, phased now / next / later, with evidence.</dd></div>
@@ -264,9 +264,9 @@
             <div><dt>Time</dt><dd>Discovery call, then a report and walkthrough</dd></div>
             <div><dt>Cost</dt><dd>£1,200</dd></div>
           </dl>
-          <a class="btn btn--accent" href="/growth-strategy">Explore a Growth Strategy</a>
+          <a class="btn" href="/growth-strategy">Explore a Growth Strategy</a>
         </div>
-        <div class="compare-card">
+        <div class="compare-card compare-card--hands">
           <h3>Hands-on support</h3>
           <dl>
             <div><dt>You leave with</dt><dd>The work done, from your Growth Strategy or a specific job you bring.</dd></div>
@@ -274,7 +274,7 @@
             <div><dt>Time</dt><dd>A fixed project with an agreed end date</dd></div>
             <div><dt>Cost</dt><dd>Fixed price, agreed before we start</dd></div>
           </dl>
-          <a class="btn btn--accent" href="/contact">Talk about a project</a>
+          <a class="btn" href="/contact">Talk about a project</a>
         </div>
       </div>
     </div>

@@ -891,6 +891,27 @@ George's copy, verbatim.
   a look: the two `approach.html` "done-for-you" cards flagged at the top of this file now fit this
   offer rather than contradicting the product line-up.
 
+**Sep 2026 (28th): "Ways to work together" restyled to design "1b"** (`ways-to-work-together-1b.png`
+in the parent folder, a static image export). Each option is now its own outlined card with a solid
+coloured cap, and its price figure and button take the same colour. Site fonts kept (Fraunces, not
+the mock's Caprasimo), colours mapped to existing tokens: Free call `--ink-soft`, Growth Sessions
+`--sage`, Growth Strategy `--terracotta`, Hands-on support `--sage-deep`. Set per column as two
+custom properties, `--col` (cap/border/button) and `--col-deep` (price), on `.compare__col--*` and
+`.compare-card--*`, so desktop and mobile read from one place.
+- **Desktop markup is now column-major** (one `.compare__col` per option, plus a `.compare__labels`
+  column) instead of row-major `.compare__row`s, which are gone. Rows still line up across cards
+  because the label column and every card are `grid-template-rows:subgrid` of `.compare`. Each
+  cell carries a `.visually-hidden` "You leave with: " etc. prefix, since the shared label column is
+  `aria-hidden` and screen readers would otherwise lose the row context. `.visually-hidden` is a new
+  sitewide utility class.
+- Buttons are plain `.btn` recoloured by `--col`; hover goes to transparent with `--col` border,
+  matching the site's existing button hover. The free-call button keeps its Cal.com attributes.
+- Mobile `.compare-card`s got the same caps, borders and button colours.
+- Contrast note: cream text on the sage and terracotta caps/buttons is around 3:1, the same level
+  as the site's existing `.btn--accent`. Fine for the large cap headings; the small uppercase button
+  labels are below WCAG AA. Accepted to match the design; darken `--col` on buttons if it matters.
+`styles.css` → `v=53`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -982,7 +1003,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=52`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=53`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

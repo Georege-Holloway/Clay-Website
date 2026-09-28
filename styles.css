@@ -442,29 +442,42 @@ fieldset{border:0;padding:0;margin:0}
 .cover-split{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
 .cover-split__close{margin:clamp(2rem,4vw,2.75rem) 0 0;padding-top:1.5rem;border-top:1px solid var(--rule);font-size:1.0625rem;font-weight:500;color:var(--ink)}
 
-/* ---- home: comparison grid (desktop) — moved here from the retired Services page ---- */
-.compare{border-top:1.5px solid var(--ink);margin-top:clamp(4.5rem,9vw,6.25rem)}
-.compare__row{display:grid;grid-template-columns:.62fr 1fr 1fr 1fr 1fr}
-.compare__row + .compare__row{border-top:1px solid var(--rule)}
-.compare__label{padding:1.25rem 1rem 1.25rem 0;font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);display:flex;align-items:center}
-.compare__cell{padding:1.25rem 1.25rem;font-size:1rem;line-height:1.55;display:flex;align-items:center;justify-content:center;text-align:center}
-.compare__head{flex-direction:column;align-items:center;text-align:center;padding-top:1.75rem}
-.compare__head h3{font-size:1.625rem;font-weight:600}
-.compare__head span{font-size:.84375rem;color:var(--ink-muted);margin-top:.35rem}
-.compare__figure{font-family:var(--display);font-size:1.5rem}
-.compare__figure small{font-family:var(--body);font-size:.84375rem;color:var(--ink-muted);font-weight:400;margin-left:.4rem}
-.compare__cta{justify-content:center;padding-bottom:1.75rem}
-.compare__cta .btn{font-size:.75rem;padding:.85rem 1.5rem}
+/* ---- home: comparison (desktop cards + mobile cards) ----
+   Design "1b" (Sep 2026): each option is its own outlined card with a solid coloured cap, and
+   its price and button take the same colour. The colour lives in two custom properties set by
+   the column modifier, so both the desktop column and the mobile card read from one place:
+   --col (cap, border, button) and --col-deep (price figure). */
+.compare__col--call,.compare-card--call{--col:var(--ink-soft);--col-deep:var(--ink)}
+.compare__col--sessions,.compare-card--sessions{--col:var(--sage);--col-deep:var(--sage-deep)}
+.compare__col--strategy,.compare-card--strategy{--col:var(--terracotta);--col-deep:var(--terracotta-deep)}
+.compare__col--hands,.compare-card--hands{--col:var(--sage-deep);--col-deep:var(--sage-deep)}
 
-/* ---- home: comparison cards (mobile) ---- */
-.compare--mobile{display:none;margin-top:clamp(4.5rem,9vw,6.25rem)}
-.compare-card{background:var(--surface);border-radius:var(--radius-card);padding:1.75rem;margin-bottom:1.25rem}
+.compare{display:grid;grid-template-columns:minmax(0,.62fr) repeat(4,minmax(0,1fr));grid-template-rows:auto repeat(4,auto) auto;column-gap:clamp(.75rem,1.4vw,1.25rem);margin-top:clamp(3rem,6vw,4.5rem)}
+.compare__labels,.compare__col{grid-row:1 / -1;display:grid;grid-template-rows:subgrid}
+.compare__label{display:flex;align-items:center;padding:1.25rem 1rem 1.25rem 0;font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
+.compare__label + .compare__label{border-top:1px solid var(--rule)}
+.compare__col{border:2px solid var(--col);border-radius:var(--radius-card);overflow:hidden}
+.compare__head{margin:0;padding:1.75rem 1rem;background:var(--col);color:var(--bg);font-size:clamp(1.3rem,1.6vw,1.625rem);font-weight:600;line-height:1.15;text-align:center;display:flex;align-items:center;justify-content:center}
+.compare__cell{margin:0;padding:1.25rem clamp(1rem,1.4vw,1.5rem);font-size:1rem;line-height:1.55;display:flex;align-items:center;justify-content:center;text-align:center}
+.compare__cell + .compare__cell{border-top:1px solid var(--rule)}
+.compare__figure{font-family:var(--display);font-variation-settings:var(--display-vf);font-size:1.5rem;font-weight:600;line-height:1.2;color:var(--col-deep)}
+.compare__cta{display:flex;align-items:center;justify-content:center;padding:.5rem 1rem 1.75rem}
+.compare__cta .btn,.compare-card .btn{background:var(--col);border-color:var(--col);color:var(--bg);font-size:.75rem;padding:.85rem 1.5rem;text-align:center}
+.compare__cta .btn:hover,.compare-card .btn:hover{background:transparent;color:var(--col-deep);border-color:var(--col)}
+
+.compare--mobile{display:none;margin-top:clamp(3rem,6vw,4.5rem)}
+.compare-card{border:2px solid var(--col);border-radius:var(--radius-card);overflow:hidden;margin-bottom:1.25rem}
 .compare-card:last-child{margin-bottom:0}
-.compare-card h3{font-size:1.375rem;margin-bottom:1.25rem}
-.compare-card dl{margin:0 0 1.5rem;display:grid;gap:.9rem}
+.compare-card h3{margin:0;padding:1.1rem 1.5rem;background:var(--col);color:var(--bg);font-size:1.375rem}
+.compare-card dl{margin:0;padding:1.5rem 1.5rem 0;display:grid;gap:.9rem}
 .compare-card dl div{display:flex;justify-content:space-between;gap:1.25rem}
 .compare-card dt{color:var(--ink-muted);text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;flex-shrink:0;padding-top:.2rem}
 .compare-card dd{margin:0;text-align:right;font-size:.9375rem}
+.compare-card .btn{margin:1.5rem}
+
+/* Text for screen readers only (e.g. the row labels inside each comparison card, which sighted
+   readers get from the shared label column instead). */
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ---- services: credit callout ---- */
 .credit-callout{background:var(--sage-tint);border-radius:var(--radius-card);padding:1.5rem 1.75rem;display:flex;align-items:flex-start;gap:1.125rem;margin-top:1.75rem}
