@@ -34,6 +34,8 @@
   --sage:#7a8a5e;
   --sage-deep:#3f4a2b;
   --sage-tint:#e8eddc;
+  /* Sand: card fill for What we cover and the FAQs. Mixed from existing tokens, not a new hue. */
+  --sand:color-mix(in srgb,var(--rule) 55%,var(--bg));
   --footer:#2e2b25;
   --footer-bg:#2e2b25;
   --footer-fg:#f0e6d6;
@@ -264,17 +266,6 @@ fieldset{border:0;padding:0;margin:0}
 .fork-links__q{color:var(--ink-soft)}
 .contact .field input,.contact .field textarea,.contact .field select{background:transparent}
 
-/* ---------- faq ---------- */
-.faq{background:var(--stone);border:1.5px solid var(--ink);border-radius:var(--radius-card);padding:clamp(2rem,5vw,4.5rem);display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:clamp(2rem,4vw,4rem);align-items:start}
-.faq h2{font-size:clamp(2.1rem,4vw,3.4rem);font-weight:600}
-.faq__list{display:grid}
-.faq details{border-bottom:1px solid rgba(32,30,29,.5)}
-.faq summary{list-style:none;cursor:pointer;padding:1.35rem 2.5rem 1.35rem 0;position:relative;font-size:1.0625rem}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:.25rem;top:50%;transform:translateY(-50%);font-size:1.35rem;line-height:1}
-.faq details[open] summary::after{content:"–"}
-.faq details p{padding:0 2.5rem 1.5rem 0;color:var(--ink-soft);margin:0}
-
 /* ---------- long-form / legal pages ---------- */
 .legal{max-width:72ch;margin-inline:auto}
 .legal h2{font-size:clamp(1.5rem,2.2vw,1.9rem);font-weight:600;margin:2.75rem 0 .9rem}
@@ -427,11 +418,11 @@ fieldset{border:0;padding:0;margin:0}
 /* Design "3a" (Sep 2026): three equal sand cards; only the number circles carry colour. Sand is
    mixed from existing tokens (between --bg and --rule) rather than added as a new one. */
 .cover-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(2rem,4vw,3rem)}
-.cover-card{background:color-mix(in srgb,var(--rule) 55%,var(--bg));border-radius:var(--radius-card);padding:clamp(1.75rem,2.6vw,2.5rem)}
+.cover-card{background:var(--sand);border-radius:var(--radius-card);padding:clamp(1.75rem,2.6vw,2.5rem)}
 .cover-card .cover-item__num{color:var(--ink);margin-bottom:1.5rem}
 .cover-card h3{font-size:clamp(1.5rem,2vw,1.875rem);margin-bottom:1rem}
 .cover-card p:not(.cover-item__num){margin:0;color:var(--ink-soft);font-size:1.0625rem;line-height:1.65}
-.cover-close{display:inline-block;margin:clamp(1.5rem,3vw,2.25rem) 0 0;padding:1rem 1.75rem;border-radius:var(--radius-pill);background:color-mix(in srgb,var(--rule) 55%,var(--bg));font-size:1.0625rem;color:var(--ink)}
+.cover-close{display:inline-block;margin:clamp(1.5rem,3vw,2.25rem) 0 0;padding:1rem 1.75rem;border-radius:var(--radius-pill);background:var(--sand);font-size:1.0625rem;color:var(--ink)}
 
 /* ---- home: comparison (desktop cards + mobile cards) ----
    Design "1b" (Sep 2026): each option is its own outlined card with a solid coloured cap, and
@@ -477,7 +468,6 @@ fieldset{border:0;padding:0;margin:0}
 .credit-callout strong{color:var(--ink)}
 
 /* ---- services: detail accordions + faq v2 (chevron mechanics shared) ---- */
-.detail-eyebrow{font-size:.9375rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding-bottom:1.25rem;border-bottom:1.5px solid var(--ink);margin-bottom:0}
 .chev{flex-shrink:0;width:11px;height:11px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);transition:transform .2s}
 details[open] .chev{transform:rotate(-135deg)}
 
@@ -490,16 +480,23 @@ details[open] .chev{transform:rotate(-135deg)}
 .detail-list details > div p{color:var(--ink-soft)}
 .detail-list details > div ul{padding-left:1.35rem;display:grid;gap:.7rem;color:var(--ink-soft);margin:0 0 1.2em}
 
-.faq2 .detail-eyebrow{margin-bottom:1.5rem}
-.faq2__grid{columns:2;column-gap:3rem}
-.faq2__grid details{break-inside:avoid;border-bottom:1px solid var(--rule);margin-bottom:0}
-.faq2__grid summary{list-style:none;cursor:pointer;padding:1.375rem 0;display:flex;align-items:center;gap:1rem;font-weight:600;font-size:1.0625rem}
+/* FAQs, sitewide (design "4a", Sep 2026): each question is its own sand card, in two columns,
+   with a terracotta circle holding the chevron. Used on Home, Growth Sessions, Growth Strategy,
+   Growth Check and Build. */
+.h2-flat + .faq2{margin-top:clamp(1.75rem,3.5vw,2.5rem)}
+/* A grid, not CSS columns: with columns, opening one card reflowed the others between the two
+   columns. In a grid every card keeps its place; questions read left to right, row by row. */
+.faq2__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,1.6vw,1.5rem) clamp(1rem,2vw,1.75rem);align-items:start}
+.faq2__grid details{background:var(--sand);border-radius:var(--radius-card)}
+.faq2__grid summary{list-style:none;cursor:pointer;padding:1.25rem 1.25rem 1.25rem clamp(1.25rem,2vw,1.75rem);display:flex;align-items:center;gap:1.25rem;font-size:1.0625rem;line-height:1.45}
 .faq2__grid summary::-webkit-details-marker{display:none}
 .faq2__grid summary span:first-child{flex:1}
-.faq2__grid details > p{padding:0 0 1.375rem;color:var(--ink-soft);max-width:60ch}
-/* Home FAQ (#faq): reuses .faq2__grid as-is; these rules are scoped to Home only. */
-.home-faq .h2-flat{margin-bottom:clamp(1.75rem,3.5vw,2.5rem)}
-.home-faq .faq2__grid{border-top:1.5px solid var(--ink)}
+.faq2__grid .chev{position:relative;width:40px;height:40px;border:0;border-radius:50%;background:var(--terracotta);transform:none}
+.faq2__grid .chev::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translate(-50%,-70%) rotate(45deg);transition:transform .2s}
+.faq2__grid details[open] .chev{transform:none}
+.faq2__grid details[open] .chev::after{transform:translate(-50%,-30%) rotate(-135deg)}
+.faq2__grid details > p{margin:0;padding:0 clamp(1.25rem,2vw,1.75rem) 1rem;color:var(--ink-soft)}
+.faq2__grid details > p:last-child{padding-bottom:1.5rem}
 
 /* ---- services: afterwards / not-for columns ---- */
 .twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem)}
@@ -645,7 +642,7 @@ details[open] .chev{transform:rotate(-135deg)}
   .nav__cta{display:none}
   .nav__links-contact{display:block}
   .thesis,.quote{max-width:none}
-  .split,.faq,.contact__grid{grid-template-columns:1fr}
+  .split,.contact__grid{grid-template-columns:1fr}
   .contact__intro h1{max-width:none}
   .contact--enquiry .contact__intro p{white-space:normal}
   .fork-links{grid-template-columns:1fr}
@@ -660,7 +657,7 @@ details[open] .chev{transform:rotate(-135deg)}
   .testimonial__body{grid-template-columns:1fr;gap:2rem}
   .compare{display:none}
   .compare--mobile{display:block}
-  .faq2__grid{columns:1}
+  .faq2__grid{grid-template-columns:1fr}
   .twocol{grid-template-columns:1fr;gap:2.5rem}
   .section-head__row{flex-direction:column;align-items:flex-start;gap:.5rem}
   .split-feature{grid-template-columns:1fr}

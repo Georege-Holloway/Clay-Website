@@ -940,8 +940,7 @@ to one column below 860px. `styles.css` → `v=56`.
 **Sep 2026 (28th): Home FAQ added, per the Homepage FAQ handover.** `section#faq.home-faq`,
 between the testimonials and the closing CTA. Nine questions, George's copy verbatim, native
 `<details>`/`<summary>`, all closed by default. **Reuses the Growth pages' `.faq2`/`.faq2__grid`
-accordion unchanged**; the only new CSS is two `.home-faq`-scoped rules (heading spacing, a rule
-above the list), since the handover said not to change shared styles. Heading is "Frequently asked
+accordion unchanged**; it briefly had two `.home-faq`-scoped rules, since removed by the sitewide FAQ restyle below. Heading is "Frequently asked
 questions" in `.h2-flat`, left-aligned like "What we cover". The handover said DM Sans for body text;
 that was stale, the site has used Figtree since Sep 2026.
 - **`FAQPage` JSON-LD in Home's `<head>` must match the visible answers word for word.** Checked in
@@ -955,6 +954,24 @@ that was stale, the site has used Figtree since Sep 2026.
   That contradicts George's explicit earlier choice to show them, so it was **not** done pending his
   confirmation. ("Why this matters" was already gone.)
 `styles.css` → `v=57`.
+
+**Sep 2026 (28th): every FAQ restyled sitewide to design "4a"** (`common-questions-4a.png`,
+parent folder). Each question is its own sand card (`--sand`) in two columns, question text at normal
+weight, with a 40px terracotta circle holding the chevron (`.faq2__grid .chev` + `::after`; the old
+bare-chevron `.chev` still exists for anything else). Five pages: Home, Growth Sessions, Growth
+Strategy, Growth Check and Build.
+- **One component now.** `build.html`'s old `.faq`/`.faq__list` (Warm Classic, bordered stone box)
+  was converted to the shared `.faq2`/`.faq2__grid` markup, and the old `.faq` CSS deleted.
+- **Headings:** the Growth pages' and Growth Check's small-caps `h2.detail-eyebrow` "Common questions"
+  became `h2.h2-flat`, placed above `.faq2`, matching Home and the design; `.detail-eyebrow` CSS
+  deleted as unused. Home keeps "Frequently asked questions".
+- **Grid, not CSS columns.** `.faq2__grid` was `columns:2`, which reflowed cards between columns
+  whenever one opened (very visible once each item was a card). Now a two-column grid with
+  `align-items:start`, so every card stays put. Side effect: questions read left to right, row by
+  row, rather than down one column then the next. Question order in the markup is unchanged.
+- **New token `--sand`** (`color-mix(in srgb,var(--rule) 55%,var(--bg))`), now shared by the FAQ
+  cards and the What we cover cards/closing pill.
+`styles.css` → `v=58`.
 
 ### Known outstanding work
 
@@ -1047,7 +1064,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=57`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=58`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
