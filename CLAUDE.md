@@ -956,8 +956,8 @@ that was stale, the site has used Figtree since Sep 2026.
 `styles.css` → `v=57`.
 
 **Sep 2026 (28th): every FAQ restyled sitewide to design "4a"** (`common-questions-4a.png`,
-parent folder). Each question is its own sand card (`--sand`) in two columns, question text at normal
-weight, with a 40px terracotta circle holding the chevron (`.faq2__grid .chev` + `::after`; the old
+parent folder). Each question is its own sand card (`--sand`) in two columns, question text semibold (600, George's
+request after launch; the design had normal weight), with a 40px terracotta circle holding the chevron (`.faq2__grid .chev` + `::after`; the old
 bare-chevron `.chev` still exists for anything else). Five pages: Home, Growth Sessions, Growth
 Strategy, Growth Check and Build.
 - **One component now.** `build.html`'s old `.faq`/`.faq__list` (Warm Classic, bordered stone box)
@@ -1064,7 +1064,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=58`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=59`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

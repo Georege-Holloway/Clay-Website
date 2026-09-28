@@ -488,7 +488,7 @@ details[open] .chev{transform:rotate(-135deg)}
    columns. In a grid every card keeps its place; questions read left to right, row by row. */
 .faq2__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,1.6vw,1.5rem) clamp(1rem,2vw,1.75rem);align-items:start}
 .faq2__grid details{background:var(--sand);border-radius:var(--radius-card)}
-.faq2__grid summary{list-style:none;cursor:pointer;padding:1.25rem 1.25rem 1.25rem clamp(1.25rem,2vw,1.75rem);display:flex;align-items:center;gap:1.25rem;font-size:1.0625rem;line-height:1.45}
+.faq2__grid summary{list-style:none;cursor:pointer;padding:1.25rem 1.25rem 1.25rem clamp(1.25rem,2vw,1.75rem);display:flex;align-items:center;gap:1.25rem;font-size:1.0625rem;font-weight:600;line-height:1.45}
 .faq2__grid summary::-webkit-details-marker{display:none}
 .faq2__grid summary span:first-child{flex:1}
 .faq2__grid .chev{position:relative;width:40px;height:40px;border:0;border-radius:50%;background:var(--terracotta);transform:none}
