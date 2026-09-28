@@ -374,21 +374,6 @@ fieldset{border:0;padding:0;margin:0}
 /* ---- centred CTA row (growth-sessions / growth-blueprint / services) ---- */
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.5rem;text-align:center;margin-top:2rem}
 
-/* ---- home: why this matters panel ---- */
-.why-panel{background:var(--surface);border-radius:var(--radius-card);padding:clamp(2rem,4vw,3.5rem);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
-/* No photo ever arrived for the two-column version, so the text-only card shrinks to fit
-   its own copy and centres in the shell, rather than stretching full width with an empty
-   half where the image would have gone. Text stays left-aligned: it is a paragraph to
-   read, not a heading to centre. Revert to the plain .why-panel grid if a photo lands. */
-.why-panel--text-only{grid-template-columns:1fr;text-align:left;width:fit-content;max-width:100%;margin-inline:auto}
-.why-panel__body{max-width:62ch}
-.why-panel__figure{border-radius:var(--radius-card);overflow:hidden;min-height:300px;background:var(--rule)}
-.why-panel__figure img{display:block;width:100%;height:100%;object-fit:cover}
-.why-panel h2{font-size:clamp(1.75rem,3vw,2.125rem);margin-bottom:1.25rem}
-.why-panel__stat{font-family:var(--display);color:var(--terracotta-deep);font-size:clamp(2.25rem,4.5vw,3.25rem);font-weight:500;display:block;margin-bottom:.35rem}
-.why-panel p{color:var(--ink-soft)}
-.why-panel .source-note{color:var(--ink-muted);font-style:italic;margin-top:1.75rem}
-
 /* ---- home: testimonials carousel ----
    Slides are real markup in index.html; nav.js shows one at a time and builds the dots.
    Without JS every slide simply stacks and the controls stay hidden. Full shell width and
@@ -663,7 +648,6 @@ details[open] .chev{transform:rotate(-135deg)}
   .hero2__intro{order:1}
   .accent-circle{display:none}
   .hero2-cols{grid-template-columns:1fr;gap:1.25rem}
-  .why-panel,.why-panel--text-only{grid-template-columns:1fr}
   .testimonial__body{grid-template-columns:1fr;gap:2rem}
   .compare{display:none}
   .compare--mobile{display:block}
