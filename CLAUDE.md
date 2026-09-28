@@ -874,6 +874,23 @@ therapists" (George's wording), an `h2.h2-flat` under the existing `.eyebrow`, m
 cover" directly below it. `.split-feature .h2-flat{margin-bottom:1.5rem}` spaces it from the prose,
 since `.h2-flat` itself has `margin:0`. `styles.css` → `v=51`.
 
+**Sep 2026 (28th): "What we cover" rewritten and a fourth offer, Hands-on support, added.**
+George's copy, verbatim.
+- **What we cover:** each item now says what gets looked at *and* what gets done. "Operations"
+  became **"Enquiries"** (finding → first booking). A closing line sits under the list,
+  `.cover-split__close` (rule above, slightly heavier text): "Every piece of work starts from one
+  agreed goal, so nothing gets done just because it's on a checklist."
+- **Hands-on support** is a fourth column in the "Ways to work together" table (`.compare__row` is
+  now `.62fr` + four `1fr`) and a fourth `.compare-card` on mobile. Done-for-you project work, fixed
+  price agreed up front, **no published number**; CTA "Talk about a project" → plain `/contact`
+  (`.btn--accent`, like the other paid options). Trailing full stops were dropped from its Time and
+  Cost cells to match the other columns. Checked at 1894, 1024 and 375px: no overflow; at 1024 the
+  headings and button labels wrap to two lines, which is fine.
+- **Not updated, deliberately (no price to state, and George didn't ask):** Home's `Service` JSON-LD
+  `offers`, the meta/OG descriptions and `llms.txt` still describe two paid services only. Also worth
+  a look: the two `approach.html` "done-for-you" cards flagged at the top of this file now fit this
+  offer rather than contradicting the product line-up.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -965,7 +982,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=51`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=52`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
