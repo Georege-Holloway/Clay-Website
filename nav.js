@@ -101,3 +101,67 @@ document.addEventListener('click', function (e) {
     build();
   }
 })();
+
+// Home testimonials carousel.
+//
+// The slides are plain markup in index.html, so they read fine without JS. This shows one
+// at a time and builds a dot per slide, so adding a testimonial is just adding a figure.
+// Arrows wrap at both ends; with a single slide they fade it out and straight back in.
+// No autoplay, on purpose: the quotes are long and people need time to read them.
+(function () {
+  var root = document.querySelector('.testimonials');
+  if (!root) return;
+  var slides = root.querySelectorAll('.testimonial');
+  var controls = root.querySelector('.testimonials__controls');
+  var dotsWrap = root.querySelector('.testimonials__dots');
+  if (!slides.length || !controls || !dotsWrap) return;
+
+  var index = 0;
+  var timer;
+  var dots = [];
+
+  Array.prototype.forEach.call(slides, function (slide, i) {
+    slide.setAttribute('aria-label', (i + 1) + ' of ' + slides.length);
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'testimonials__dot';
+    dot.setAttribute('aria-label', 'Show testimonial ' + (i + 1));
+    dot.addEventListener('click', function () { go(i); });
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+  });
+
+  function render() {
+    Array.prototype.forEach.call(slides, function (slide, i) {
+      slide.classList.toggle('is-active', i === index);
+    });
+    dots.forEach(function (dot, i) {
+      dot.setAttribute('aria-current', String(i === index));
+    });
+  }
+
+  function go(n) {
+    var current = slides[index];
+    clearTimeout(timer);
+    current.classList.add('is-fading');
+    timer = setTimeout(function () {
+      current.classList.remove('is-fading');
+      index = (n + slides.length) % slides.length;
+      render();
+    }, 200);
+  }
+
+  controls.addEventListener('click', function (e) {
+    var arrow = e.target.closest('[data-dir]');
+    if (arrow) go(index + Number(arrow.getAttribute('data-dir')));
+  });
+
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') go(index - 1);
+    else if (e.key === 'ArrowRight') go(index + 1);
+  });
+
+  render();
+  root.classList.add('is-ready');
+  controls.hidden = false;
+})();

@@ -843,6 +843,30 @@ were changed together. **`sitemap.xml` `lastmod` was deliberately left at 2026-0
 lastmod means last modified, and the file genuinely changed today. Listing order is unchanged, since
 7 September still sits between the new article and the 27 August setup guide.
 
+**Sep 2026 (28th): testimonials carousel on Home, first quote from Philip Bruce.** Source was
+`Clay Consulting testimonial design.zip` (parent folder, design option "1a"). Supersedes every
+"testimonials pending a quote from Aaron" note above, and the old marker comment is gone.
+- **Placement is George's call, not the handover's.** The handover said between "Ways to work
+  together" and "Why this matters"; George asked for it **after "Why this matters", directly
+  before the "Not sure where to start?" band**, and confirmed when asked about the conflict.
+- **Site tokens, not the mock-up's.** Fraunces instead of Caprasimo; card is `--surface` (the
+  mock's `#f5ead8` is exactly `--bg` and would have vanished into the page); tag is
+  `--sage-tint`/`--sage-deep`; CTA is `.btn--outline`. The handover asked for this mapping.
+- **Slides are real markup, not a JS array.** Each testimonial is a `<figure class="testimonial">`
+  in `index.html`, so the quote is crawlable and readable without JS. The script at the bottom
+  of `nav.js` shows one slide at a time, builds a dot per figure, wraps at both ends, and supports
+  ←/→ keys. **To add a testimonial, copy a figure block**; nothing else needs touching. No
+  autoplay, on purpose (long quotes). Without JS every figure just stacks and the controls stay
+  `hidden`.
+- **Controls show even with one slide**, at George's request: the arrows fade Phil's quote out
+  and back in. (The handover suggested hiding them at one slide; George chose otherwise.)
+- Philip's role is **"CBT Therapist/EMDR Therapist"**, supplied by George; the quote itself is
+  verbatim from the handover and must not be edited. The handover's slides 2 and 3 were
+  placeholders and were deliberately not built.
+- `min-height:430px` on a slide (desktop only) keeps the controls from jumping between slides of
+  different lengths once there are several. Stacks to one column below 860px (the sitewide
+  breakpoint, not the handover's suggested 760px). `styles.css?v=47` → `v=48`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -883,8 +907,8 @@ lastmod means last modified, and the file genuinely changed today. Listing order
 - [ ] 301 redirect map from Squarespace URLs. Skeleton is in `netlify.toml`; the real list
       comes from Search Console.
 - [ ] `sitemap.xml`.
-- [ ] First client testimonial. There's a placeholder block in `index.html` — it must not
-      go live with placeholder text.
+- [x] **First client testimonial shipped (28 Sep 2026)**: Philip Bruce, on Home. See the
+      dated entry under "Current state".
 
 ### Deliberately not done
 
@@ -934,7 +958,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=42`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=48`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

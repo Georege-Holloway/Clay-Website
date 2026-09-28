@@ -77,7 +77,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles.css?v=47">
+<link rel="stylesheet" href="/styles.css?v=48">
 </head>
 <body>
 
@@ -262,10 +262,6 @@
     </div>
   </section>
 
-  <!-- Testimonials section slots in here, between "How we work" and "Why this matters",
-       once a quote from Aaron is ready. Do not build a placeholder; per the Sep 2026
-       Homepage Restructure Handover, leave this comment as the marker until then. -->
-
   <section class="section section--top-tight section--bottom-tight">
     <div class="shell">
       <div class="why-panel why-panel--text-only">
@@ -274,6 +270,46 @@
           <p><span class="why-panel__stat">4 in 10</span>UK businesses don't make it past their fifth year. The most common reason isn't lack of skill. It's admin, cash flow, and decisions made without the right information.</p>
           <p>For therapists, the risk is sharper. Training prepares you to hold space for clients, not to run a business. Practitioners end up doing both, without HR, finance or marketing teams to lean on.</p>
           <p class="source-note"><em>Sources: ONS Business Demography (2024); BACP Private Practice Toolkit</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials carousel. To add one, copy a .testimonial figure and fill it in: nav.js
+       builds the dots and the forward/back behaviour from however many figures are here.
+       Only real, approved quotes go in; never ship a placeholder slide. -->
+  <section class="section section--top-tight section--bottom-tight">
+    <div class="shell">
+      <div class="testimonials" aria-roledescription="carousel" aria-label="What Clay clients say">
+        <h2 class="testimonials__title">What Clay clients say</h2>
+        <div class="testimonials__track" aria-live="polite">
+          <figure class="testimonial" aria-roledescription="slide">
+            <div class="testimonial__head">
+              <span class="testimonial__tag">Growth Strategy &middot; Client story</span>
+              <p class="testimonial__pull">&ldquo;I always knew what was happening and what to expect next.&rdquo;</p>
+            </div>
+            <div class="testimonial__body">
+              <blockquote class="testimonial__quote">
+                <p>&ldquo;Working with George on my Growth Strategy Report was a really positive experience. The whole process was clear from start to finish, and I was kept informed at every stage, so I always knew what was happening and what to expect next. George was extremely knowledgeable and took the time to explain things in a way that made sense, helping me understand what was going on throughout. I came away with a much clearer picture of my practice's online presence and would happily recommend him to others.&rdquo;</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <div class="testimonial__person">
+                  <span class="testimonial__avatar" aria-hidden="true">PB</span>
+                  <span class="testimonial__meta">
+                    <strong class="testimonial__name">Philip Bruce</strong>
+                    <span class="testimonial__role">CBT Therapist/EMDR Therapist</span>
+                    <a class="testimonial__site" href="https://www.philipbrucetherapy.co.uk/" target="_blank" rel="noopener" aria-label="philipbrucetherapy.co.uk (opens in a new tab)">philipbrucetherapy.co.uk &nearr;</a>
+                  </span>
+                </div>
+                <a class="btn btn--outline" href="/growth-strategy">Explore a Growth Strategy</a>
+              </figcaption>
+            </div>
+          </figure>
+        </div>
+        <div class="testimonials__controls" hidden>
+          <button type="button" class="testimonials__arrow" data-dir="-1" aria-label="Previous testimonial">&larr;</button>
+          <div class="testimonials__dots"></div>
+          <button type="button" class="testimonials__arrow" data-dir="1" aria-label="Next testimonial">&rarr;</button>
         </div>
       </div>
     </div>
