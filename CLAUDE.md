@@ -973,6 +973,24 @@ Strategy, Growth Check and Build.
   cards and the What we cover cards/closing pill.
 `styles.css` → `v=58`.
 
+**Sep 2026 (28th): Growth Strategy's "How it runs" replaced by "How a Growth Strategy works"**
+(`growth-strategy-section.png`, parent folder; George's copy verbatim). `section#how-it-works`:
+- **`.gp-steps`**, an `<ol>` timeline: outlined terracotta number circles joined by a soft
+  terracotta line (`::before` on every step but the last), title and description beside each.
+  Collapses to circle + stacked title/description below 860px. Replaces the old vertical
+  `.process-list` here (still used elsewhere via `.process-list--row`).
+- **`.gp-steps__note`**, a sand pill: "Typically 10 working days from payment to walkthrough…".
+- **`.gp-after`**, "After the report": points to Hands-on support and Growth Sessions. Uses
+  `--sage-deep`, not the design's mid sage: cream body text on `--sage` is about 3.1:1, below AA,
+  and George had just chosen the dark green for the comparison cards.
+- **New facts from George's copy:** the £1,200 fee "can be split into two instalments", and
+  "typically 10 working days". Neither appears anywhere else on the site yet (FAQ, JSON-LD, Home).
+- Step copy is third person ("George reviews…") while the rest of this page is first person.
+- **Overlap flagged, not changed:** the following "The plan, not the build" section says much the
+  same as "After the report", and also mentions "rebuilding a website", which Home's FAQ now says
+  only happens when a Strategy calls for it.
+`styles.css` → `v=60`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1064,7 +1082,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=59`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=60`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

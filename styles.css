@@ -567,6 +567,20 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-callout p:last-child{color:var(--ink-soft);margin:0}
 
 /* ---- cross-link cards (Sessions vs Blueprint) ---- */
+/* ---- growth strategy: "How a Growth Strategy works" timeline (Sep 2026 design) ----
+   Numbered outlined circles joined by a soft terracotta line, title and description beside
+   each. The line is drawn from each step's circle down to the next, so the last has none. */
+.gp-steps{list-style:none;margin:clamp(2.5rem,5vw,3.5rem) 0 0;padding:0}
+.gp-steps__item{position:relative;display:grid;grid-template-columns:64px minmax(0,.75fr) minmax(0,1.5fr);grid-template-areas:"num title desc";column-gap:clamp(1.5rem,3vw,3rem);align-items:start;padding-bottom:clamp(2.25rem,4vw,3rem)}
+.gp-steps__item:not(:last-child)::before{content:"";position:absolute;left:30.5px;top:64px;bottom:0;width:3px;background:color-mix(in srgb,var(--terracotta) 40%,var(--bg))}
+.gp-steps__num{grid-area:num;width:64px;height:64px;border-radius:50%;border:3px solid var(--terracotta);background:var(--bg);color:var(--terracotta-deep);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-variation-settings:var(--display-vf);font-size:1.5rem;font-weight:600}
+.gp-steps__item h3{grid-area:title;margin:.7rem 0 0;font-size:clamp(1.5rem,2.2vw,2rem);font-weight:600;line-height:1.15}
+.gp-steps__item p{grid-area:desc;margin:.6rem 0 0;font-size:1.0625rem;line-height:1.65;max-width:62ch}
+.gp-steps__note{width:fit-content;max-width:100%;margin:clamp(.5rem,1.5vw,1rem) auto 0;padding:1rem 1.75rem;border-radius:var(--radius-pill);background:var(--sand);text-align:center;font-size:1.0625rem}
+.gp-after{margin-top:clamp(3rem,6vw,4.5rem);background:var(--sage-deep);color:var(--bg);border-radius:clamp(2rem,4vw,3.5rem);padding:clamp(2.5rem,5vw,4rem) clamp(1.75rem,6vw,6rem)}
+.gp-after h3{margin:0 0 1.25rem;text-align:center;color:var(--bg);font-size:clamp(1.75rem,2.6vw,2.25rem);font-weight:600}
+.gp-after p{margin:0 auto;max-width:72ch;font-size:1.0625rem;line-height:1.7}
+
 .gp-cross{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:clamp(2rem,4vw,2.75rem)}
 .gp-cross__card{background:var(--surface);border-radius:var(--radius-card);padding:clamp(1.5rem,2.4vw,2rem)}
 .gp-cross__card h3{font-size:1.375rem;margin-bottom:.75rem}
@@ -674,6 +688,11 @@ details[open] .chev{transform:rotate(-135deg)}
   .gp-cards-3{grid-template-columns:1fr}
   .process-list--row{grid-template-columns:1fr}
   .gp-cross{grid-template-columns:1fr}
+  .gp-steps__item{grid-template-columns:48px minmax(0,1fr);grid-template-areas:"num title" ". desc";column-gap:1.25rem}
+  .gp-steps__item:not(:last-child)::before{left:22.5px;top:48px}
+  .gp-steps__num{width:48px;height:48px;font-size:1.25rem}
+  .gp-steps__item h3{margin-top:.45rem}
+  .gp-steps__note{border-radius:var(--radius-card)}
 
   .consent__inner{flex-direction:column;align-items:stretch}
   .consent__actions .btn{flex:1;text-align:center}
