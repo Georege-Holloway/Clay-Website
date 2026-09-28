@@ -863,9 +863,11 @@ lastmod means last modified, and the file genuinely changed today. Listing order
 - Philip's role is **"CBT Therapist/EMDR Therapist"**, supplied by George; the quote itself is
   verbatim from the handover and must not be edited. The handover's slides 2 and 3 were
   placeholders and were deliberately not built.
-- `min-height:430px` on a slide (desktop only) keeps the controls from jumping between slides of
-  different lengths once there are several. Stacks to one column below 860px (the sitewide
-  breakpoint, not the handover's suggested 760px). `styles.css?v=47` → `v=48`.
+- **Card runs the full `.shell` width, not the handover's 1120px**, with tight vertical padding and
+  no `min-height`: George asked for it wider and shorter so the whole card fits on one laptop screen
+  (it was getting cut off top and bottom). Trade-off to know: with no `min-height`, the arrows will
+  shift up or down between slides of different lengths once there are several. Stacks to one column
+  below 860px (the sitewide breakpoint, not the handover's suggested 760px). `styles.css` → `v=49`.
 
 ### Known outstanding work
 
@@ -958,7 +960,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=48`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=49`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

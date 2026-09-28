@@ -391,19 +391,18 @@ fieldset{border:0;padding:0;margin:0}
 
 /* ---- home: testimonials carousel ----
    Slides are real markup in index.html; nav.js shows one at a time and builds the dots.
-   Without JS every slide simply stacks and the controls stay hidden. min-height keeps the
-   controls from jumping between slides of different lengths. */
-.testimonials{max-width:1120px;margin-inline:auto;background:var(--surface);border-radius:var(--radius-card);padding:clamp(3rem,7vw,6rem) clamp(1.75rem,6.5vw,5.5rem);box-shadow:0 3px 10px rgba(46,43,37,.16);display:flex;flex-direction:column;gap:2.5rem}
+   Without JS every slide simply stacks and the controls stay hidden. Full shell width and
+   tight vertical padding so the whole card fits on one laptop screen. */
+.testimonials{background:var(--surface);border-radius:var(--radius-card);padding:clamp(2.25rem,3.5vw,3.5rem) clamp(1.75rem,5vw,5rem);box-shadow:0 3px 10px rgba(46,43,37,.16);display:flex;flex-direction:column;gap:1.75rem}
 .testimonials__title{font-size:1.75rem;font-weight:500;line-height:1.2;color:var(--terracotta-deep);margin:0}
 .testimonials__track{display:grid;gap:4rem}
 .testimonials.is-ready .testimonial:not(.is-active){display:none}
-.testimonial{margin:0;display:flex;flex-direction:column;gap:2.5rem;transition:opacity .25s ease}
-.testimonials.is-ready .testimonial{min-height:430px}
+.testimonial{margin:0;display:flex;flex-direction:column;gap:2rem;transition:opacity .25s ease}
 .testimonial.is-fading{opacity:0}
 .testimonial__head{display:flex;flex-direction:column;gap:1rem}
 .testimonial__tag{align-self:flex-start;font-size:.75rem;letter-spacing:.02em;padding:.2rem .65rem;border-radius:12px;background:var(--sage-tint);color:var(--sage-deep)}
 .testimonial__pull{font-family:var(--display);font-variation-settings:var(--display-vf);font-size:clamp(2.1rem,4.4vw,3.25rem);font-weight:500;line-height:1.1;margin:0;text-wrap:pretty}
-.testimonial__body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:3.5rem;align-items:center}
+.testimonial__body{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:clamp(2.5rem,5vw,5rem);align-items:center}
 .testimonial__quote{margin:0}
 .testimonial__quote p{margin:0;font-size:1.125rem;line-height:1.65;text-wrap:pretty}
 .testimonial__author{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
@@ -651,7 +650,6 @@ details[open] .chev{transform:rotate(-135deg)}
   .hero2-cols{grid-template-columns:1fr;gap:1.25rem}
   .why-panel,.why-panel--text-only{grid-template-columns:1fr}
   .testimonial__body{grid-template-columns:1fr;gap:2rem}
-  .testimonials.is-ready .testimonial{min-height:0}
   .compare{display:none}
   .compare--mobile{display:block}
   .faq2__grid{columns:1}
