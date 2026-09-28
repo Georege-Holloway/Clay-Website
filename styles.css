@@ -401,7 +401,7 @@ fieldset{border:0;padding:0;margin:0}
 .testimonial.is-fading{opacity:0}
 .testimonial__head{display:flex;flex-direction:column;gap:1rem}
 .testimonial__tag{align-self:flex-start;font-size:.75rem;letter-spacing:.02em;padding:.2rem .65rem;border-radius:12px;background:var(--sage-tint);color:var(--sage-deep)}
-.testimonial__pull{font-family:var(--display);font-variation-settings:var(--display-vf);font-size:clamp(2.1rem,4.4vw,3.25rem);font-weight:500;line-height:1.1;margin:0;text-wrap:pretty}
+.testimonial__pull{font-family:var(--display);font-variation-settings:var(--display-vf);font-size:clamp(2.1rem,4.4vw,3.25rem);font-weight:500;line-height:1.1;margin:0;text-align:center;text-wrap:balance}
 .testimonial__body{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:clamp(2.5rem,5vw,5rem);align-items:center}
 .testimonial__quote{margin:0}
 .testimonial__quote p{margin:0;font-size:1.125rem;line-height:1.65;text-wrap:pretty}
