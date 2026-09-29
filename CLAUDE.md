@@ -1030,6 +1030,30 @@ every width, and the band height is within 2px at 1024, 1680 and 1920px (746 vs 
 825 vs 754 at 1280, where the headline still takes four lines; the leftover gap comes from the
 copy). Below 860px the image goes back to `position:static`, full width. `styles.css` → `v=62`.
 
+**Sep 2026 (29th): Approach restyled to match the new pages.** George's calls: dark green hero like
+the Growth pages, black and white photo kept, terracotta closing band whose button now opens the
+free-call pop-up (it was a plain `/contact` link). Copy unchanged, apart from an "Our approach"
+eyebrow on the hero. Section by section:
+- **Hero:** `.gp-hero` with `.gp-hero__tag`. The long headline gets `.gp-hero__title--wide` (26ch
+  instead of 20ch) so it runs to three lines. Kicker and intro use the new `.gp-hero__kicker` /
+  `.gp-hero__intro`.
+- **How Clay Started:** the old bordered `.split` card became `.split-feature--photo-left` (photo
+  left, start-aligned, since the story is long). The B&W photo sits in `.photo-frame`, with its
+  caption as a `figcaption`.
+- **Why 'Clay':** `.gp-split` on `.gp-tint--peach`. The opening sentence ("Clay is made from two
+  elements: earth and water.") moved into the `.gp-side` callout; the words are unchanged.
+- **How we work:** four sand `.cover-card`s in a 2×2 grid (`.cover-cards--4`; four across wrapped
+  the headings to three lines at 1440px). Intro in `.gp-intro`, and the closing line is a
+  `.cover-close` pill.
+- The old `.phero`, `.split`, `.cards` and `.section--stone` rules are still used by the resources
+  pages, privacy and build, so they stay.
+- **The two "How we work" cards flagged at the top of this file are now resolved** (George
+  approved the rewrites). "One team, one bill, one place" became **"One point of contact, start to
+  finish"**: "team" overstated a one-person business, and "one bill" implied a managed service.
+  "Your practice, in your name" kept its title, but its body no longer promises to "manage the parts
+  that need managing behind the scenes"; it now says the setup is handed over for you to run.
+`styles.css` → `v=63`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1121,7 +1145,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=62`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=63`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

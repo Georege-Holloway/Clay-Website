@@ -423,6 +423,9 @@ fieldset{border:0;padding:0;margin:0}
 .cover-card h3{font-size:clamp(1.5rem,2vw,1.875rem);margin-bottom:1rem}
 .cover-card p:not(.cover-item__num){margin:0;color:var(--ink-soft);font-size:1.0625rem;line-height:1.65}
 .cover-close{display:inline-block;margin:clamp(1.5rem,3vw,2.25rem) 0 0;padding:1rem 1.75rem;border-radius:var(--radius-pill);background:var(--sand);font-size:1.0625rem;color:var(--ink)}
+.cover-cards--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.split-feature--photo-left{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start}
+.split-feature__figure{margin:0}
 
 /* ---- home: comparison (desktop cards + mobile cards) ----
    Design "1b" (Sep 2026): each option is its own outlined card with a solid coloured cap, and
@@ -525,6 +528,9 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-hero__grid .hero2-cols{grid-template-columns:1fr}
 .gp-hero__figure{position:relative}
 .gp-hero__figure img{position:absolute;top:0;right:0;width:auto;height:auto;max-width:100%;max-height:100%;border-radius:var(--radius-card);display:block;box-shadow:0 1.5rem 3rem rgba(0,0,0,.25)}
+.gp-hero h1.gp-hero__title--wide{max-width:26ch}
+.gp-hero__kicker{color:#fff;font-size:1.25rem;font-weight:600;margin-bottom:1rem}
+.gp-hero__intro{color:rgba(255,255,255,.82);font-size:1.125rem;max-width:62ch;margin:0}
 
 /* ---- tinted section bands ---- */
 .gp-tint--peach{background:var(--terracotta-tint)}
