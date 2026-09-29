@@ -1054,6 +1054,33 @@ eyebrow on the hero. Section by section:
   that need managing behind the scenes"; it now says the setup is handed over for you to run.
 `styles.css` → `v=63`.
 
+**Sep 2026 (29th): Growth Strategy rebuilt per the "Growth Strategy section layouts" handover**
+(`Growth Strategy section layouts.zip` in the parent folder, Elements 1 to 4). New order: hero,
+single objective, what gets looked at, what you receive, testimonial, how it works + after the
+report, who it's for, FAQ, form, and the existing terracotta closing band, which is kept.
+- **No pink bands.** Cream (`--bg`) and sand (`--sand`) alternate via `.gs-bg--cream`/`--sand`.
+  Green is used only for the hero and "After the report". The only pink left is the small "Now"
+  pill, which the mockup shows.
+- **`.gs-note`**, a tilted off-white card with a sage "tape" strip, holds "An example objective"
+  and "Inside the report" (a numbered list with Now/Next/Later pills on item 4). The old
+  `.gp-side` boxes and `.gp-tags` are gone from this page.
+- **Testimonial:** Home's figure copied verbatim. The CTA reads "Send details about your practice"
+  and links to `#enquire`; the handover set the link but not the label. Arrows and dot are hidden
+  by CSS (`:has`) only while there is a single slide, and only on this page. Home still shows them,
+  per George's earlier choice.
+- Steps 4 and 5 are now first person. The FAQ "Can Clay do the work, or just advise?"
+  (`#do-the-work`) became **"Can Clay carry out the recommendations after the report?"**
+  (`#after-the-report`), visible text and `FAQPage` JSON-LD identical (checked by script).
+- **Known leftovers, reported rather than changed:** "What's the difference between a Growth
+  Session and a Growth Strategy?" is word for word the same question as on Home (made identical
+  deliberately on 28 Sep). "After the report", which the handover says to leave unchanged, still
+  says "ask Clay to do it" in the third person.
+- **Approach then moved onto the same system** (George: the gp-/pink treatment is what he's moving
+  away from). Its sections are now cream, sand and cream, and "Why 'Clay'" uses a `.gs-note` card
+  instead of the white `.gp-side` box on pink. The `gs-` classes are therefore shared by two pages
+  now, like `gp-cta-band`.
+`styles.css` → `v=64`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1145,7 +1172,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=63`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=64`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
