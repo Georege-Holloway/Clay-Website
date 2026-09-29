@@ -1085,8 +1085,9 @@ report, who it's for, FAQ, form, and the existing terracotta closing band, which
 **Sep 2026 (29th): Approach hero eyebrow removed, text block centred.** George: the "Our approach"
 eyebrow is gone, and the hero's text sat flush left with a large empty area on the right. It is now
 wrapped in `.gp-hero__centred` (`width:fit-content`, `margin-inline:auto`), so the block centres in
-the band while the text itself stays left-aligned. Only Approach uses it; the Growth pages' heroes
-are unchanged. `styles.css` → `v=65`.
+the band. George then asked for the text itself to be centred too (`text-align:center`, with the
+h1 and intro given auto margins and balanced wrapping). Only Approach uses it; the Growth pages' heroes
+are unchanged. `styles.css` → `v=66`.
 
 ### Known outstanding work
 
@@ -1179,7 +1180,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=65`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=66`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
