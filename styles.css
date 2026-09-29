@@ -531,6 +531,7 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-hero h1.gp-hero__title--wide{max-width:26ch}
 .gp-hero__kicker{color:#fff;font-size:1.25rem;font-weight:600;margin-bottom:1rem}
 .gp-hero__intro{color:rgba(255,255,255,.82);font-size:1.125rem;max-width:62ch;margin:0}
+.gp-hero__centred{width:fit-content;max-width:100%;margin-inline:auto}
 
 /* ---- tinted section bands ---- */
 .gp-tint--peach{background:var(--terracotta-tint)}
