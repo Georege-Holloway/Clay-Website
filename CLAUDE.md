@@ -1073,8 +1073,9 @@ report, who it's for, FAQ, form, and the existing terracotta closing band, which
   (`#after-the-report`), visible text and `FAQPage` JSON-LD identical (checked by script).
 - **Known leftovers, reported rather than changed:** "What's the difference between a Growth
   Session and a Growth Strategy?" is word for word the same question as on Home (made identical
-  deliberately on 28 Sep). "After the report", which the handover says to leave unchanged, still
-  says "ask Clay to do it" in the third person.
+  deliberately on 28 Sep); George confirmed identical is fine. "After the report" was moved to
+  first person afterwards at George's request ("ask me to do it"), but keeps "Clay's hands-on
+  support" so the business is still named as the organisation offering the service (GEO).
 - **Approach then moved onto the same system** (George: the gp-/pink treatment is what he's moving
   away from). Its sections are now cream, sand and cream, and "Why 'Clay'" uses a `.gs-note` card
   instead of the white `.gp-side` box on pink. The `gs-` classes are therefore shared by two pages
