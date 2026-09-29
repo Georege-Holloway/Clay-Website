@@ -1018,6 +1018,18 @@ Same day, Growth Strategy: the "Send details about your practice" heading and in
 over the enquiry form (`.gp-intro--centred`; needs its own `text-align:center` on the `h2` because
 `.h2-flat` sets `left`). `styles.css` → `v=61`.
 
+**Sep 2026 (29th): Growth Strategy hero matched to Growth Sessions' height.** The grid used
+`align-items:center`, so on wide screens (1680px+) the 672px-tall report image set the row height
+and pushed the text down: the eyebrow sat at 161px from the top of the band against 80px on
+Sessions, and the band was 912px tall against 752px. Now the text column alone sets the height.
+`.gp-hero__figure` is `position:relative` and the image is absolutely positioned inside it at
+`max-height:100%`/`max-width:100%`, so it scales to the text's height with its ratio kept, not
+cropped. The columns went from `1.1fr/.9fr` to `1.2fr/.8fr`, so the headline wraps to three lines
+instead of four and both buttons sit on one row. Measured: the eyebrow is identical to Sessions at
+every width, and the band height is within 2px at 1024, 1680 and 1920px (746 vs 780 at 1440, and
+825 vs 754 at 1280, where the headline still takes four lines; the leftover gap comes from the
+copy). Below 860px the image goes back to `position:static`, full width. `styles.css` → `v=62`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1109,7 +1121,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=61`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=62`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
