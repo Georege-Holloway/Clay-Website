@@ -1089,6 +1089,34 @@ the band. George then asked for the text itself to be centred too (`text-align:c
 h1 and intro given auto margins and balanced wrapping). Only Approach uses it; the Growth pages' heroes
 are unchanged. `styles.css` → `v=66`.
 
+**Sep 2026 (29th): Growth Sessions updated per the Growth Sessions page handover** (copy and
+schema only, no mockups). The payment and cancellation callout is gone from under the hero and
+is now an FAQ. "What people bring" has eight new items and no numbers (`.gss-plain-list`,
+page-scoped). The Monthly tag reads "A good place to start". "Why me for this" is two paragraphs,
+now saying "currently training" and "eight years at Amazon"; its numbered cards and the "Guidance,
+not supervision" callout are deleted. The "Sessions or a Strategy?" closing line has been rewritten
+(it names Clay, which the handover allows). The FAQ is replaced with nine questions, visible text
+and `FAQPage` JSON-LD identical (checked by script). None duplicates a question on Home or Growth
+Strategy.
+- **Cancellation policy is now 48 hours everywhere.** The old callout said "48 hours or more…
+  Inside 24 hours, not refundable", which left a 24 to 48 hour gap. No other page in the repo
+  states Clay's policy. The 48-hour mention in the practice-setup article is advice to therapists
+  about their own clients. Cal.com/Stripe booking and confirmation emails live outside the repo
+  and are George's to update.
+- **Booking buttons: the handover's premise was stale.** "Book a Growth Session" (hero and closing
+  band) doesn't send people to the top of `/contact`. It opens the paid Cal.com `growth-session`
+  event (Stripe payment) in a pop-up via `nav.js`. `href="/contact"` is only the no-JS fallback.
+  Verified by clicking it at 380px: the `app.cal.com/.../growth-session/embed` iframe opened with
+  no navigation. George confirmed the links stay exactly as they are.
+- **Pink bands removed (George).** Same cream/sand alternation as Growth Strategy (`gs-bg--*`),
+  starting on sand after the green hero so the FAQ lands on cream and its sand cards stay visible.
+  `gp-tint--peach`/`--cream` are no longer used on this page.
+`styles.css` → `v=67`.
+
+**Sep 2026 (29th): Home's "Most therapy training ends at the clinic door" band is now `--sage-deep`**
+(was `--sage`), the same green as the Growth Sessions/Strategy heroes (George). `.quote-band` is
+used only on Home. Text contrast improves: the pale text sits on a darker ground. `styles.css` → `v=68`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1180,7 +1208,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=66`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=68`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

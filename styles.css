@@ -350,7 +350,7 @@ fieldset{border:0;padding:0;margin:0}
 #pathway .section-head__lede{margin-inline:auto}
 
 /* ---- home: pull-quote band ---- */
-.quote-band{background:var(--sage);color:#f4f7ea;padding-block:clamp(1.75rem,3.5vw,2.5625rem)}
+.quote-band{background:var(--sage-deep);color:#f4f7ea;padding-block:clamp(1.75rem,3.5vw,2.5625rem)}
 
 /* ---- home: what we cover ---- */
 .cover-item__num{width:54px;height:54px;border-radius:50%;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.1875rem;margin-bottom:1.375rem}
@@ -558,6 +558,7 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-table__row--labelled{grid-template-columns:minmax(140px,13rem) 1fr}
 .gp-table__num,.gp-table__label{font-family:var(--display);color:var(--terracotta-deep);font-size:1.0625rem;font-weight:500}
 .gp-table__row p{margin:0;color:var(--ink-soft)}
+.gss-plain-list .gp-table__row{grid-template-columns:1fr}
 
 /* ---- three-card row (How often) ---- */
 .gp-cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:clamp(2rem,4vw,2.75rem)}
