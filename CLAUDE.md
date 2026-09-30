@@ -1117,6 +1117,33 @@ Strategy.
 (was `--sage`), the same green as the Growth Sessions/Strategy heroes (George). `.quote-band` is
 used only on Home. Text contrast improves: the pale text sits on a darker ground. `styles.css` → `v=68`.
 
+**Sep 2026 (30th): PostHog installed sitewide, gated on the existing consent banner.** EU cloud
+(`api_host: 'https://eu.i.posthog.com'`), project key `phc_wBrp…`. How it fits together:
+- **Head snippet on all 20 pages**, directly after the GA4 block. PostHog's loader stub is
+  verbatim, but `posthog.init` is wrapped in `window.clayPosthogInit()` and only called when
+  `localStorage['clay-consent'] === 'granted'`. The stub only fetches `array.js` on `init`, so
+  before consent PostHog makes no requests and writes no cookie or storage. Not in `styles.css`.
+- **`nav.js`**: Accept on the banner now also calls `clayPosthogInit()`, so tracking starts on
+  that page view. `window.clayPosthogStarted` guards against a double `init`. Every custom event
+  goes through `phCapture()`, which does nothing until PostHog has started: otherwise the stub
+  would queue pre-consent events and replay them after a later Accept.
+- **Custom events.** `booking_popup_opened` and `booking_completed` (`{event_type, page}`, where
+  `event_type` is the Cal.com namespace, `30min` or `growth-session`) come from the embed's own
+  events via `Cal.ns[ns]('on', ...)`: `bookerViewed` + `bookerReopened` for opens,
+  `bookingSuccessfulV2` for bookings (names from cal.com/help/embedding/embed-events;
+  `bookingSuccessful` is deprecated). `enquiry_submitted` (`{page}`) fires on `/thanks` for any
+  Netlify form: the form's page is stashed in `sessionStorage['clay_form_page']` on submit and
+  consumed on `/thanks`, so a direct visit or refresh sends nothing. No field values are read.
+- **`data-attr` on CTA buttons** for autocapture: `cta-free-call`, `cta-growth-session`,
+  `cta-growth-session-explore`, `cta-growth-strategy-explore`, `cta-growth-strategy-enquire`.
+- Verified locally: first visit makes zero PostHog requests and stores nothing, even with a
+  pop-up opened; Accept starts it mid-page and events flow; a returning visitor starts from the
+  head; Decline stays at zero. Testing tip: PostHog writes its persistence on page unload, so
+  clearing storage and then navigating can leave a stale `ph_` key that looks like a leak.
+- **Not verified:** a real `booking_completed` (tested with a synthetic embed message), and
+  whether a paid Growth Session fires it before Stripe payment completes (Cal.com says the
+  booking "might not be confirmed", and the payload has `paymentRequired`).
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1164,7 +1191,8 @@ used only on Home. Text contrast improves: the pale text sits on a darker ground
 
 - ~~No analytics or cookie banner yet.~~ **Superseded 17 Sep 2026: GA4 (`G-58WJDJ7ZCJ`)
   is installed, behind a consent banner with Google Consent Mode.** Nothing is stored
-  until a visitor accepts. See the two dated entries above for how it is wired.
+  until a visitor accepts. See the two dated entries above for how it is wired. PostHog
+  joined it on 30 Sep 2026, behind the same banner.
 - No CMS. Blog posts are hand-written HTML for now, on purpose — the friction should be
   felt before machinery is built to solve it.
 

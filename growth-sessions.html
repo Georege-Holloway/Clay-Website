@@ -27,6 +27,23 @@
   gtag('js', new Date());
   gtag('config', 'G-58WJDJ7ZCJ');
 </script>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="mu yu bu Su init Vu Gu zu Uu Ku il Wu Yu ju rh oh ah uh hh dh capture getExtension Zu pu gh calculateEventProperties ph register register_once register_for_session unregister unregister_for_session Hu mh getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync wh identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset kh shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty yh ih createPersonProfile setInternalOrTestUser bh xu Cu opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing th debug nl Os getPageViewId captureTraceFeedback captureTraceMetric Du".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    // Consent-gated, like GA4 above: PostHog is only initialised once the visitor has
+    // accepted the banner (nav.js), so before that it loads nothing and stores nothing.
+    window.clayPosthogInit = function () {
+      if (window.clayPosthogStarted) return;
+      window.clayPosthogStarted = true;
+      posthog.init('phc_wBrpYj3GSVLMSCezZpEZa89NvT4Xop6dwKvShv2cJS8X', {
+          api_host: 'https://eu.i.posthog.com',
+          defaults: '2026-05-30',
+          person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+      })
+    };
+    try {
+      if (localStorage.getItem('clay-consent') === 'granted') clayPosthogInit();
+    } catch (e) {}
+</script>
 <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -196,8 +213,8 @@
         <p>Most practitioners work through those alone, or in the gaps between clients. Growth Sessions are an hour set aside to do it properly, with someone who understands both halves of what you're building.</p>
       </div>
       <div class="gp-hero__actions">
-        <a class="btn btn--accent" href="/contact" data-cal-namespace="growth-session" data-cal-link="clay-consulting-ws6xph/growth-session" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a Growth Session</a>
-        <a class="btn btn--outline" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Not sure? Book a free 30-minute call</a>
+        <a data-attr="cta-growth-session" class="btn btn--accent" href="/contact" data-cal-namespace="growth-session" data-cal-link="clay-consulting-ws6xph/growth-session" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a Growth Session</a>
+        <a data-attr="cta-free-call" class="btn btn--outline" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Not sure? Book a free 30-minute call</a>
       </div>
     </div>
   </section>
@@ -334,7 +351,7 @@
     <div class="shell">
       <h2 class="h-section">Book a Growth Session</h2>
       <p>Or email <a class="text-link" href="mailto:george@clayconsulting.co.uk">george@clayconsulting.co.uk</a> if you would rather write.</p>
-      <a class="btn" href="/contact" data-cal-namespace="growth-session" data-cal-link="clay-consulting-ws6xph/growth-session" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a Growth Session</a>
+      <a data-attr="cta-growth-session" class="btn" href="/contact" data-cal-namespace="growth-session" data-cal-link="clay-consulting-ws6xph/growth-session" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a Growth Session</a>
     </div>
   </section>
 

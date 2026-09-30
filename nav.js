@@ -49,12 +49,63 @@ document.addEventListener('click', function (e) {
   }
 }, true);
 
+// PostHog capture, only once the visitor has accepted the banner and PostHog has started.
+// Before that the head snippet's stub would queue calls and replay them after a later
+// Accept, which would send events from before consent was given.
+function phCapture(name, props) {
+  if (!window.clayPosthogStarted || typeof posthog === 'undefined') return;
+  posthog.capture(name, props);
+}
+
+// PostHog booking events, from the Cal.com embed's own lifecycle events.
+//
+// Event names are from Cal.com's embed events reference (cal.com/help/embedding/embed-events):
+// bookingSuccessfulV2 fires on a fresh booking (it replaces the deprecated bookingSuccessful),
+// bookerViewed fires the first time a modal's booker is shown, and bookerReopened on each
+// reopen after the modal was closed. Namespaces are registered by each page's loader at the
+// top of <body>; a page without one of them (only Growth Sessions has growth-session) skips it.
+// The namespace names match the event slugs, so they double as event_type.
+(function () {
+  if (!window.Cal || !window.Cal.ns) return;
+  ['30min', 'growth-session'].forEach(function (namespace) {
+    var api = window.Cal.ns[namespace];
+    if (!api) return;
+    function send(name) {
+      return function () {
+        phCapture(name, { event_type: namespace, page: location.pathname });
+      };
+    }
+    api('on', { action: 'bookerViewed', callback: send('booking_popup_opened') });
+    api('on', { action: 'bookerReopened', callback: send('booking_popup_opened') });
+    api('on', { action: 'bookingSuccessfulV2', callback: send('booking_completed') });
+  });
+})();
+
+// PostHog enquiry event for Netlify Forms.
+//
+// Netlify only redirects to /thanks after it has accepted a submission, so arriving there is
+// the success signal. The page the form was on is stashed at submit time and read back on
+// /thanks, so `page` is the form's page rather than /thanks. Nothing from the form's fields is
+// read or sent. A direct visit or refresh of /thanks finds nothing stashed and sends nothing.
+(function () {
+  var KEY = 'clay_form_page';
+  document.addEventListener('submit', function (e) {
+    if (!e.target.matches('form[data-netlify="true"]')) return;
+    try { sessionStorage.setItem(KEY, location.pathname); } catch (err) {}
+  });
+  if (location.pathname.replace(/\.html$/, '') !== '/thanks') return;
+  var page = null;
+  try { page = sessionStorage.getItem(KEY); sessionStorage.removeItem(KEY); } catch (err) {}
+  if (page) phCapture('enquiry_submitted', { page: page });
+})();
+
 // Cookie consent banner, sitewide.
 //
-// GA4 sets non-essential cookies, which under UK PECR need consent before they are set.
-// The gtag snippet in each page's head defaults analytics_storage to 'denied' and
-// re-applies a stored acceptance before config, so nothing is stored until someone opts
-// in here. This only builds the banner when no choice has been recorded yet.
+// GA4 and PostHog set non-essential cookies, which under UK PECR need consent before they
+// are set. The gtag snippet in each page's head defaults analytics_storage to 'denied' and
+// re-applies a stored acceptance before config; the PostHog snippet only initialises on a
+// stored acceptance. So nothing is stored until someone opts in here. This only builds the
+// banner when no choice has been recorded yet.
 //
 // Injected rather than hardcoded into all 18 pages so there is one copy to maintain. No
 // banner without JS is fine: GA4 needs JS too, so a no-JS visitor is never measured.
@@ -69,6 +120,7 @@ document.addEventListener('click', function (e) {
     if (choice === 'granted' && typeof gtag === 'function') {
       gtag('consent', 'update', {analytics_storage: 'granted'});
     }
+    if (choice === 'granted' && typeof clayPosthogInit === 'function') clayPosthogInit();
     var el = document.querySelector('.consent');
     if (el) el.parentNode.removeChild(el);
   }
