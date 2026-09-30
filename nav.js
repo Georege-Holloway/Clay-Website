@@ -132,8 +132,8 @@ function phCapture(name, props) {
     wrap.setAttribute('aria-label', 'Cookie choice');
     wrap.innerHTML =
       '<div class="consent__inner">' +
-        '<p class="consent__text">Clay uses Google Analytics to see which pages people ' +
-        'actually find useful. It sets cookies, so it only runs if you accept. ' +
+        '<p class="consent__text">Clay uses Google Analytics and PostHog to see which pages ' +
+        'people actually find useful. They set cookies, so they only run if you accept. ' +
         '<a href="/privacy">Read the privacy policy</a>.</p>' +
         '<div class="consent__actions">' +
           '<button type="button" class="btn btn--outline" data-consent="denied">Decline</button>' +

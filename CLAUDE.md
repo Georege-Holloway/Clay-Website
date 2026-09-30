@@ -1143,6 +1143,11 @@ used only on Home. Text contrast improves: the pale text sits on a darker ground
 - **Not verified:** a real `booking_completed` (tested with a synthetic embed message), and
   whether a paid Growth Session fires it before Stripe payment completes (Cal.com says the
   booking "might not be confirmed", and the payload has `paymentRequired`).
+- **Copy updated to match (approved by George):** the banner now names Google Analytics and
+  PostHog; `privacy.html` gained a PostHog bullet under automatic collection and a PostHog
+  processor line, and the Cookies paragraph covers both. The privacy wording assumes PostHog
+  session replay is off and click autocapture is on; if either changes in the PostHog
+  project settings, the policy needs updating too.
 
 ### Known outstanding work
 
