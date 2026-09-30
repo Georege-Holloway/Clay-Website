@@ -1149,6 +1149,27 @@ used only on Home. Text contrast improves: the pale text sits on a darker ground
   session replay is off and click autocapture is on; if either changes in the PostHog
   project settings, the policy needs updating too.
 
+**Sep 2026 (30th): "Cookie settings" footer link, so consent can be withdrawn as easily as
+given.** Every page's footer Legal list has `<a class="ph-no-capture" href="/privacy#cookies"
+data-cookie-settings>`; `nav.js` intercepts it and rebuilds the banner with "Your current
+choice: accepted/declined." and `aria-pressed` on the matching button (no-JS falls back to
+the new `#cookies` anchor on the privacy page). A change applies with no reload:
+- **Reject:** GA4 consent update to `denied`; PostHog `opt_out_capturing()`, then
+  `set_config({disable_persistence: true})`, then `stopSessionRecording()`; then `_ga`, `_ga_*`
+  and `ph_*` cookies are expired on every parent domain, and `ph_*` localStorage keys removed.
+  **Order matters, found by testing:** stopping the recording before opting out flushes a last
+  `$snapshot`, and without `disable_persistence` the still-running instance rewrites its
+  `ph_` cookie within seconds of it being deleted. PostHog's `__ph_opt_in_out_*` flag is kept.
+- **Accept:** GA4 update to `granted`; `clayPosthogInit()` if not yet started, then
+  `disable_persistence: false` and `opt_in_capturing()`. The opt-in is always needed:
+  otherwise the persisted opt-out flag keeps a re-accepting visitor silently opted out.
+- **`ph-no-capture` on the banner and the footer link**, or autocapture records the Decline
+  click in the instant before opt-out and sends it about 3 seconds after.
+Verified locally: after Reject via the link, zero captures and zero PostHog requests over 10s
+including a pop-up open, no cookies or `ph_` storage left, GA4 `denied`; re-accept on the same
+page and after a reload both resume capturing. Events captured in the ~3s *before* a Reject
+can still be sent in PostHog's next batch; they were captured with consent.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia

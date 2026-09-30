@@ -104,40 +104,108 @@ function phCapture(name, props) {
 // GA4 and PostHog set non-essential cookies, which under UK PECR need consent before they
 // are set. The gtag snippet in each page's head defaults analytics_storage to 'denied' and
 // re-applies a stored acceptance before config; the PostHog snippet only initialises on a
-// stored acceptance. So nothing is stored until someone opts in here. This only builds the
-// banner when no choice has been recorded yet.
+// stored acceptance. So nothing is stored until someone opts in here. The banner builds
+// itself when no choice has been recorded yet, and the footer's "Cookie settings" link
+// ([data-cookie-settings]) reopens it at any time, showing the current choice, since
+// withdrawing consent has to be as easy as giving it.
 //
-// Injected rather than hardcoded into all 18 pages so there is one copy to maintain. No
-// banner without JS is fine: GA4 needs JS too, so a no-JS visitor is never measured.
+// A change applies on the spot, no reload: GA4 gets a consent update either way, and
+// PostHog is opted out (session recording stopped too) or started and opted in. Opt-in is
+// always called after starting, because opt_out_capturing() persists its own flag in
+// PostHog's storage and would otherwise keep a re-accepting visitor opted out.
+//
+// Injected rather than hardcoded into every page so there is one copy to maintain. No
+// banner without JS is fine: GA4 needs JS too, so a no-JS visitor is never measured. The
+// footer link falls back to the Cookies section of the privacy policy.
 (function () {
   var KEY = 'clay-consent';
-  var stored = null;
-  try { stored = localStorage.getItem(KEY); } catch (e) { return; }
-  if (stored === 'granted' || stored === 'denied') return;
 
-  function record(choice) {
-    try { localStorage.setItem(KEY, choice); } catch (e) {}
-    if (choice === 'granted' && typeof gtag === 'function') {
-      gtag('consent', 'update', {analytics_storage: 'granted'});
+  function current() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+
+  function apply(choice) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {analytics_storage: choice === 'granted' ? 'granted' : 'denied'});
     }
-    if (choice === 'granted' && typeof clayPosthogInit === 'function') clayPosthogInit();
+    if (choice === 'granted') {
+      if (typeof clayPosthogInit === 'function') clayPosthogInit();
+      if (window.clayPosthogStarted) {
+        posthog.set_config({disable_persistence: false});
+        posthog.opt_in_capturing();
+      }
+    } else {
+      // Opt out before stopping the recording, or stopping it flushes a last $snapshot.
+      // disable_persistence removes PostHog's cookie and storage and stops the still-running
+      // instance writing them back, which it otherwise does within seconds.
+      if (window.clayPosthogStarted) {
+        posthog.opt_out_capturing();
+        posthog.set_config({disable_persistence: true});
+        posthog.stopSessionRecording();
+      }
+      clearAnalyticsStorage();
+    }
+  }
+
+  // On reject, remove what was already set: PostHog's ph_* cookies and GA4's _ga/_ga_*
+  // cookies, plus PostHog's ph_* localStorage keys, which hold the same visitor ID. Both
+  // tools set cookies on a parent domain (.clayconsulting.co.uk), so each name is expired
+  // on every domain it could live on. PostHog's own opt-out flag (__ph_opt_in_out_*) does
+  // not match and is kept, so it stays opted out.
+  function clearAnalyticsStorage() {
+    var parts = location.hostname.split('.');
+    var domains = [''];
+    for (var i = 0; i < parts.length - 1; i++) {
+      var d = parts.slice(i).join('.');
+      domains.push('; domain=' + d, '; domain=.' + d);
+    }
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (!/^(ph_|_ga$|_ga_)/.test(name)) return;
+      domains.forEach(function (domain) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + domain;
+      });
+    });
+    try {
+      Object.keys(localStorage).forEach(function (k) {
+        if (k.indexOf('ph_') === 0) localStorage.removeItem(k);
+      });
+    } catch (e) {}
+  }
+
+  function close() {
     var el = document.querySelector('.consent');
     if (el) el.parentNode.removeChild(el);
   }
 
-  function build() {
+  function record(choice) {
+    var previous = current();
+    try { localStorage.setItem(KEY, choice); } catch (e) {}
+    if (choice !== previous) apply(choice);
+    close();
+  }
+
+  function build(focus) {
+    close();
+    var choice = current();
+    var status = choice === 'granted' ? ' Your current choice: accepted.'
+      : choice === 'denied' ? ' Your current choice: declined.' : '';
     var wrap = document.createElement('div');
-    wrap.className = 'consent';
+    // ph-no-capture keeps PostHog autocapture off the banner: otherwise the Decline click
+    // itself is recorded a moment before the opt-out runs, and sent after it.
+    wrap.className = 'consent ph-no-capture';
     wrap.setAttribute('role', 'region');
     wrap.setAttribute('aria-label', 'Cookie choice');
     wrap.innerHTML =
       '<div class="consent__inner">' +
         '<p class="consent__text">Clay uses Google Analytics and PostHog to see which pages ' +
         'people actually find useful. They set cookies, so they only run if you accept. ' +
-        '<a href="/privacy">Read the privacy policy</a>.</p>' +
+        '<a href="/privacy">Read the privacy policy</a>.' + status + '</p>' +
         '<div class="consent__actions">' +
-          '<button type="button" class="btn btn--outline" data-consent="denied">Decline</button>' +
-          '<button type="button" class="btn btn--accent" data-consent="granted">Accept</button>' +
+          '<button type="button" class="btn btn--outline" data-consent="denied" aria-pressed="' +
+            (choice === 'denied') + '">Decline</button>' +
+          '<button type="button" class="btn btn--accent" data-consent="granted" aria-pressed="' +
+            (choice === 'granted') + '">Accept</button>' +
         '</div>' +
       '</div>';
     wrap.addEventListener('click', function (e) {
@@ -145,12 +213,22 @@ function phCapture(name, props) {
       if (btn) record(btn.getAttribute('data-consent'));
     });
     document.body.appendChild(wrap);
+    if (focus) wrap.querySelector('button').focus();
   }
 
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('[data-cookie-settings]');
+    if (!link) return;
+    e.preventDefault();
+    build(true);
+  });
+
+  var stored = current();
+  if (stored === 'granted' || stored === 'denied') return;
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', build);
+    document.addEventListener('DOMContentLoaded', function () { build(false); });
   } else {
-    build();
+    build(false);
   }
 })();
 
