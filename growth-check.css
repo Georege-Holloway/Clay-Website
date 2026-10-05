@@ -1,0 +1,42 @@
+/* Growth Check landing page only (/growth-check). Linked from growth-check.html and nowhere
+   else, so nothing here can affect another page. The handover asked for styles.css to stay
+   untouched; every rule is scoped under .gc-page and builds on existing site components. */
+
+/* Hero: centred, like Approach, with the CTA row and microcopy centred to match. */
+.gc-page .gc-hero__actions{justify-content:center}
+.gc-page .gc-hero__micro{margin:1rem auto 0;color:var(--sage-tint);font-size:.9375rem;text-wrap:balance}
+
+/* Prose blocks: .gp-intro caps the measure; give the heading room above the body. */
+.gc-page .gc-prose .h2-flat{margin-bottom:1.5rem}
+.gc-page .gc-prose p{font-size:1.125rem;line-height:1.7}
+.gc-page .gp-intro.gc-prose{max-width:66ch;margin-bottom:0}
+.gc-page .gc-split--top{align-items:start}
+
+/* Tick list ("Is it for you?" and "What you get"). */
+.gc-page .gc-ticks{list-style:none;margin:0;padding:0;display:grid;gap:.875rem}
+.gc-page .gc-ticks li{position:relative;padding:1rem 1.25rem 1rem 3.25rem;background:var(--surface);border-radius:1rem;font-size:1.0625rem;line-height:1.5;color:var(--ink)}
+.gc-page .gc-ticks li::before{content:"";position:absolute;left:1.25rem;top:1.3rem;width:1.1rem;height:.6rem;border-left:2.5px solid var(--terracotta);border-bottom:2.5px solid var(--terracotta);transform:rotate(-45deg)}
+.gc-page .gc-ticks--note li{background:none;padding:0 0 0 2.25rem}
+.gc-page .gc-ticks--note li::before{left:.1rem;top:.35rem}
+
+/* Notes under a section sit on the band's opposite colour so they stay visible. */
+.gc-page .gs-bg--cream .gc-close{background:var(--sand)}
+.gc-page .gs-bg--sand .gc-close{background:var(--surface)}
+
+/* Six areas: two rows of three. Cards are sand by default, so lift them on the sand band. */
+.gc-page .gs-bg--sand .cover-card{background:var(--surface)}
+.gc-page .gc-areas .cover-card h3{font-size:clamp(1.375rem,1.8vw,1.625rem)}
+
+/* After your Growth Check: buttons pinned to the bottom so all three line up. */
+.gc-page .gc-offers{margin-top:clamp(1.5rem,3vw,2.25rem)}
+.gc-page .gc-offers__btn{margin-top:auto;align-self:flex-start}
+
+/* Testimonial sits under the "Who's behind it" copy. */
+.gc-page .gc-testimonial{margin-top:clamp(2rem,4vw,3rem)}
+
+/* Closing band has no paragraph, so the button sits straight under the heading. */
+.gc-page #start .h-section{margin-bottom:clamp(1.5rem,3vw,2rem)}
+
+@media (max-width:860px){
+  .gc-page .gc-close{display:block}
+}

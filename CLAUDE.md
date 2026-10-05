@@ -1170,6 +1170,24 @@ including a pop-up open, no cookies or `ph_` storage left, GA4 `denied`; re-acce
 page and after a reload both resume capturing. Events captured in the ~3s *before* a Reject
 can still be sent in PostHog's next batch; they were captured with consent.
 
+**Oct 2026 (5th): Growth Check landing page rebuilt, branch `growth-check-page`, NOT live.**
+Per `growth-check-page-handover.md` (parent folder). Supersedes the Sep 2026 "12-question quiz"
+notes above. Copy is the handover's, verbatim.
+- **Page-scoped stylesheet `growth-check.css`**, every rule under `body.gc-page`. Exception to
+  "one stylesheet", because the handover required `styles.css` untouched. Fold it in later if wanted.
+- **Still preview-only:** `noindex`, out of `sitemap.xml`, both marked `TODO: remove at launch`.
+- **Tool proxy in `_redirects`:** `/growth-check/start` plus the three
+  `/.netlify/functions/growth-check-*` paths proxy (200) to the v2 branch deploy of
+  therapy-web-builder. At launch, swap the host on all four lines. The functions proxy is
+  untested; Netlify has known quirks proxying `/.netlify/` paths across sites.
+- **FAQPage JSON-LD** is generated from the same strings as the visible FAQ; keep them identical.
+  Home's `ProfessionalService` gained `"@id": ".../#organization"`, which this page references.
+- **PostHog events** (`growth_check_*_click`) via `data-gc-event`, a window capture listener
+  (nav.js stops propagation at the document for Cal.com triggers) and nav.js's `phCapture`.
+- **Not in the nav:** at 1024px a sixth item wraps three labels onto two lines.
+- Links added: Home `#pathway` note, Growth Sessions ("What people bring"), Growth Strategy
+  (after "Who it's for"), and both resource articles the handover named.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia

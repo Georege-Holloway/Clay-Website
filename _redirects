@@ -45,3 +45,16 @@
 /resources/local-seo-for-therapists.html  /resources/local-seo-for-therapists  301!
 /resources/setting-up-a-therapy-practice-mistakes.html  /resources/setting-up-a-therapy-practice-mistakes  301!
 /resources/why-good-therapy-isnt-enough.html  /resources/why-good-therapy-isnt-enough  301!
+
+# Growth Check tool, served on the Clay domain (Oct 2026, growth-check-page branch).
+# The tool lives in the therapy-builder repo; these proxy rewrites (status 200) make it
+# open at clayconsulting.co.uk/growth-check/start so visitors never see the netlify.app
+# address. The tool page calls three functions at root paths, so those are proxied too.
+# Explicit paths, not a /.netlify/functions/* splat: the Clay site has no functions of
+# its own today, but a splat would silently swallow any it gains later.
+# TODO: remove at launch. All four lines point at the v2 branch preview. At launch,
+# replace "growth-check-v2--therapy-web-builder" with "therapy-web-builder" on all four.
+/growth-check/start  https://growth-check-v2--therapy-web-builder.netlify.app/growth-check.html  200!
+/.netlify/functions/growth-check-questions  https://growth-check-v2--therapy-web-builder.netlify.app/.netlify/functions/growth-check-questions  200!
+/.netlify/functions/growth-check-score  https://growth-check-v2--therapy-web-builder.netlify.app/.netlify/functions/growth-check-score  200!
+/.netlify/functions/growth-check-submit  https://growth-check-v2--therapy-web-builder.netlify.app/.netlify/functions/growth-check-submit  200!

@@ -1,17 +1,13 @@
 <!--
-  UNPUBLISHED: direct-URL review only. Built to spec per the Sep 2026 Site Restructure
-  Handover §6, but the quiz itself is still being built separately by Neil, and three
-  items are OPEN (email gating, quiz integration method, final question count).
+  PREVIEW ONLY: not live until the Growth Check v2 tool launches.
+  Built per growth-check-page-handover.md (5 Oct 2026), on the growth-check-page branch.
 
-  When this page goes live, reverse ALL FIVE of the following:
-  1. Remove the <meta name="robots" content="noindex, nofollow"> tag below.
-  2. Add /growth-check to sitemap.xml.
-  3. Add "Growth Check" to the Services nav dropdown (index.html, services.html, and
-     every other page's nav; currently deliberately excluded from all of them).
-  4. Add internal links to this page from live pages (Services, Growth Sessions,
-     Growth Strategy) where relevant.
-  5. Replace the quiz placeholder block below with the real embed/link, once Neil's
-     quiz and the integration method (in-page / embed / link-out) are confirmed.
+  At launch (see the handover's section 9 for the full checklist):
+  1. Remove the robots noindex tag below (marked TODO: remove at launch).
+  2. Add /growth-check to sitemap.xml (marked TODO in that file).
+  3. Repoint the /growth-check/start proxy in _redirects from the v2 branch preview to
+     production (marked TODO in that file).
+  4. Replace the example report placeholder at /assets/growth-check-example.pdf.
 -->
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -61,40 +57,151 @@
 </script>
 <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
+<!-- TODO: remove at launch. Keeps this page out of search until the tool is live. -->
+<meta name="robots" content="noindex">
 
-<title>Free Practice Growth Check for Therapists | Clay Consulting</title>
-<meta name="description" content="A free 12-question check for UK therapists and counsellors. Find out whether your practice has a visibility problem, a conversion problem, or an operations problem.">
+<title>Free Growth Check for Therapists in Private Practice | Clay Consulting</title>
+<meta name="description" content="A free five-minute assessment for UK therapists and counsellors. Score six areas of your practice, see what's most likely holding it back, and get a personalised report.">
 <link rel="canonical" href="https://www.clayconsulting.co.uk/growth-check">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Clay Consulting">
 <meta property="og:url" content="https://www.clayconsulting.co.uk/growth-check">
-<meta property="og:title" content="Free Practice Growth Check for Therapists | Clay Consulting">
-<meta property="og:description" content="A free 12-question check for UK therapists and counsellors. Find out whether your practice has a visibility problem, a conversion problem, or an operations problem.">
+<meta property="og:title" content="Free Growth Check for Therapists in Private Practice | Clay Consulting">
+<meta property="og:description" content="A free five-minute assessment for UK therapists and counsellors. Score six areas of your practice, see what's most likely holding it back, and get a personalised report.">
 <meta property="og:image" content="https://www.clayconsulting.co.uk/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Growth Check for Therapists in Private Practice | Clay Consulting">
+<meta name="twitter:description" content="A free five-minute assessment for UK therapists and counsellors. Score six areas of your practice, see what's most likely holding it back, and get a personalised report.">
+<meta name="twitter:image" content="https://www.clayconsulting.co.uk/assets/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- No FAQPage JSON-LD on this page while it's noindexed, per the handover. -->
+<!-- The publisher points at Home's ProfessionalService block by @id rather than repeating it.
+     FAQPage answers must match the visible FAQ below word for word: change both together. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.clayconsulting.co.uk/growth-check#webpage",
+  "url": "https://www.clayconsulting.co.uk/growth-check",
+  "name": "Free Growth Check for Therapists in Private Practice",
+  "description": "A free five-minute assessment for UK therapists and counsellors. Score six areas of your practice, see what's most likely holding it back, and get a personalised report.",
+  "inLanguage": "en-GB",
+  "publisher": { "@id": "https://www.clayconsulting.co.uk/#organization" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.clayconsulting.co.uk/growth-check#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the Growth Check free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You don't need to give payment details, and there's no obligation to buy anything afterwards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are about 25 questions, or about 15 if you haven't started seeing private clients yet. Most people finish in around five minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why isn't my therapy practice growing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most private practices that stall do so for one of a small number of reasons: not enough enquiries are reaching them, enquiries aren't becoming clients, people can't find them online, or it isn't clear who the practice is for. Less often, the practice is full but the fees or the admin are the problem. From the inside, these can look alike, because a quiet diary can come from any of them. The Growth Check scores each one, so you can see which is most likely in your case."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my report written by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Your report is built from fixed rules and text written in advance, so it's consistent and based only on your answers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I take it before I've started private practice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you're training, or haven't seen private clients yet, you'll get a shorter version focused on what to have in place before you start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is it different from a Growth Strategy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Growth Check is a free, automated self-assessment based on your own answers. A Growth Strategy is a paid, in-depth review by George of your actual practice: your website, directory listings, search visibility and local competition, with a written plan built around one clear objective. The Growth Check tells you where to look. A Growth Strategy does the looking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is it scored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each answer scores between 0 and 10, and each area's score is the average of its answers. “Don't know” answers score low on purpose, because not knowing where your enquiries come from, for example, is useful to find out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my answers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your answers and contact details are stored securely and used to create your report. We'll only send you marketing emails if you tick the box to say you'd like them, and you can ask us to delete your data at any time. See our privacy notice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you contact me afterwards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You'll receive your report by email. Beyond that, we'll only be in touch if you've asked us to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I take it again?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Many practitioners find it useful to retake every few months and see what's changed."
+      }
+    }
+  ]
+}
+</script>
 
 <link rel="stylesheet" href="/styles.css?v=70">
+<link rel="stylesheet" href="/growth-check.css?v=1">
 </head>
-<body>
+<body class="gc-page">
 
-<!-- Cal.com pop-up embed (element click) -->
+<!-- Cal.com pop-up embeds (element click). Two namespaces, since the free call
+     and the paid Growth Session both need a pop-up on this page. -->
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
   Cal("init", "30min", {origin:"https://app.cal.com"});
+  Cal("init", "growth-session", {origin:"https://app.cal.com"});
   Cal.config = Cal.config || {};
   Cal.config.forwardQueryParams = true;
   // Event: clay-consulting-ws6xph/30min
   Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  // Event: clay-consulting-ws6xph/growth-session
+  Cal.ns["growth-session"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 
 <a class="skip" href="#main">Skip to content</a>
@@ -119,69 +226,246 @@
 
 <main id="main">
 
-  <section class="section section--top-tight section--flush-bottom">
+  <section class="section section--top-tight gp-hero">
     <div class="shell">
-      <h1>Find out what's actually holding your practice back</h1>
-      <div class="hero2-cols">
-        <p>Most practitioners know something isn't working. Far fewer can say which thing. &ldquo;I need more clients&rdquo; can mean nobody can find you, or that plenty of people find you and don't get in touch, or that you're spending hours on admin that should be spent on clients. Those are three different problems with three different answers.</p>
-        <p>The Growth Check is a short set of questions that tells you which one you're dealing with.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="shell">
-      <div class="article">
-
-        <h2>How it works</h2>
-        <p>Twelve questions about your practice, your website, where your clients come from and how much time your admin takes. Nothing technical, nothing you need to look up. It takes about three minutes.</p>
-        <p>At the end you get a result telling you which area is most likely holding your growth back, and why that pattern tends to show up.</p>
-
-        <h2>What it tells you, and what it doesn't</h2>
-        <p>The Check gives you the category. It's genuinely useful for knowing where to look, and it costs nothing.</p>
-        <p>What it can't do is look at your actual website, your search visibility or your competitors. It's working from your answers, not from evidence. So it will tell you that your problem is likely visibility; it won't tell you that your site isn't indexed, or that three competitors in your area rank above you for the term your clients actually search. That's what the <a href="/growth-strategy">Growth Strategy</a> does.</p>
-
-        <div class="credit-callout">
-          <span class="credit-callout__icon" aria-hidden="true">&#9888;</span>
-          <p><strong>Placeholder: quiz not yet integrated.</strong> The button below goes nowhere. Neil's quiz still needs to be finished and the integration method (in-page, embed, or link out) confirmed before this goes live. See the handover's Open Decisions, items 1&ndash;3.</p>
+      <div class="gp-hero__centred">
+        <p class="gp-hero__tag">Free Growth Check</p>
+        <h1 class="gp-hero__title--wide">A free Growth Check for therapists in private practice</h1>
+        <p class="gp-hero__intro">Find out where your practice is strong, what's most likely holding it back, and where to focus next. About 25 questions, around five minutes.</p>
+        <div class="gp-hero__actions gc-hero__actions">
+          <a class="btn btn--accent" href="/growth-check/start" data-gc-event="growth_check_start_click" data-gc-button="hero">Start your Growth Check</a>
         </div>
-
-        <p class="cta-row"><a class="btn btn--accent" href="#" aria-disabled="true">Start the Growth Check &rarr;</a></p>
-
-        <h2>What happens after</h2>
-        <p>Nothing automatic. No sequence of emails, no call unless you ask for one.</p>
-        <p>If the result is useful on its own, take it and act on it. If you want to talk it through, <a href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>book a free 30-minute call</a>, bring your result and we'll start from there rather than from scratch. If you already know you want ongoing support or a full review, the <a href="/growth-sessions">Growth Sessions</a> and <a href="/growth-strategy">Growth Strategy</a> are the two ways to work with me.</p>
-
+        <p class="gc-hero__micro">Free. No payment details. Results on screen straight away, full report by email.</p>
       </div>
     </div>
   </section>
 
-  <section class="section section--top-tight section--bottom-tight" id="faq">
+  <section class="section gs-bg--sand" id="what-is-it">
     <div class="shell">
-      <h2 class="h2-flat">Common questions</h2>
+      <div class="gp-intro gc-prose">
+        <h2 class="h2-flat">What is the Growth Check?</h2>
+        <p>The Growth Check is a free online assessment from Clay Consulting for therapists, counsellors, psychotherapists and other wellbeing practitioners in private practice in the UK. It asks about 25 questions about how your practice finds clients, turns enquiries into bookings and runs day to day. It scores six areas out of ten and identifies the one area with most room to grow. You see your results as soon as you finish, and receive a full personalised report by email.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gs-bg--cream" id="is-it-for-you">
+    <div class="shell">
+      <div class="gs-split gc-split--top">
+        <div class="gc-prose">
+          <h2 class="h2-flat">Is it for you?</h2>
+          <p>The Growth Check is for practitioners at any stage, from ten years in practice to still training. It's most useful if any of these sound familiar:</p>
+        </div>
+        <div>
+          <ul class="gc-ticks">
+            <li>Enquiries come in waves: busy one month, quiet the next</li>
+            <li>People get in touch but don't book a first session</li>
+            <li>Your diary has gaps you can't seem to fill</li>
+            <li>You're busy, but the income doesn't reflect the work</li>
+            <li>You're not sure which of the things you've tried are actually working</li>
+            <li>You're about to start private practice and want to know what to get in place first</li>
+          </ul>
+        </div>
+      </div>
+      <p class="cover-close gc-close">If you haven't started seeing private clients yet, you'll get a shorter set of questions about setting up, so you aren't marked down for not having clients yet.</p>
+    </div>
+  </section>
+
+  <section class="section gs-bg--sand" id="six-areas">
+    <div class="shell">
+      <h2 class="h2-flat">The six areas it looks at</h2>
+      <div class="cover-cards gc-areas">
+        <div class="cover-card">
+          <p class="cover-item__num">1</p>
+          <h3>Client Flow</h3>
+          <p>How many new enquiries reach you, and where they come from.</p>
+        </div>
+        <div class="cover-card">
+          <p class="cover-item__num">2</p>
+          <h3>Conversion</h3>
+          <p>How many suitable enquiries become clients.</p>
+        </div>
+        <div class="cover-card">
+          <p class="cover-item__num">3</p>
+          <h3>Visibility</h3>
+          <p>Whether people looking for a therapist can find you, on Google, on directories and through AI assistants like ChatGPT.</p>
+        </div>
+        <div class="cover-card">
+          <p class="cover-item__num">4</p>
+          <h3>Positioning</h3>
+          <p>How clearly people can tell who your practice is for.</p>
+        </div>
+        <div class="cover-card">
+          <p class="cover-item__num">5</p>
+          <h3>Business Performance</h3>
+          <p>Whether your practice gives you the income you need for the time it takes.</p>
+        </div>
+        <div class="cover-card">
+          <p class="cover-item__num">6</p>
+          <h3>Practice Systems</h3>
+          <p>The everyday mechanics of booking, payments, records and admin.</p>
+        </div>
+      </div>
+      <p class="cover-close gc-close">For trainees and new starters, the Growth Check looks at visibility, positioning, pricing and practice setup instead.</p>
+    </div>
+  </section>
+
+  <section class="section gs-bg--cream" id="what-you-get">
+    <div class="shell">
+      <div class="gs-split">
+        <div class="gc-prose">
+          <h2 class="h2-flat">What you get</h2>
+          <p>As soon as you finish, you'll see your overall score, a score for each area, your biggest opportunity and your strongest area. Enter your email to receive your full personalised report, which you can also download straight away. It includes:</p>
+          <!-- TODO: the example PDF doesn't exist yet. George will supply an anonymised report
+               (fictional practice, not his own test run) at /assets/growth-check-example.pdf. -->
+          <p><a class="text-link" href="/assets/growth-check-example.pdf" data-gc-event="growth_check_example_click">See an example report</a></p>
+        </div>
+        <aside class="gs-note gs-note--tilt-right">
+          <ul class="gc-ticks gc-ticks--note">
+            <li>Your overall score, and a score out of ten for each area</li>
+            <li>Your biggest opportunity: the area most likely to be limiting your practice, and why</li>
+            <li>Your strongest area: what's already working in your favour</li>
+            <li>Any warning signs in your answers worth looking at soon</li>
+            <li>A page for each area, explaining what your answers suggest and the signs to look for</li>
+            <li>Where to focus, and what to avoid, in each area</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gs-bg--sand" id="limits">
+    <div class="shell">
+      <div class="gp-intro gc-prose">
+        <h2 class="h2-flat">What the Growth Check can and can't tell you</h2>
+        <p>The Growth Check shows you where to focus. It doesn't tell you exactly how to fix things, because that depends on things a questionnaire can't see: your website, your directory listings, the other therapists near you, and what you want from your practice.</p>
+        <p>The report is automated, but it isn't written by AI. The questions, scoring and report were designed by George Holloway, the founder of Clay. Your results come from fixed rules and pre-written text, so two practitioners who give the same answers get the same report.</p>
+        <p>If you want someone to look at the full picture, that's what Clay's paid work is for.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gs-bg--cream" id="after">
+    <div class="shell">
+      <div class="gp-intro gc-prose">
+        <h2 class="h2-flat">After your Growth Check</h2>
+        <p>Your report will point to one area. Some people take it and run with it. If you'd like help, there are three ways to work with Clay.</p>
+      </div>
+      <div class="gp-cards-3 gc-offers">
+        <div class="gp-card">
+          <h3>Free 30-minute call</h3>
+          <p>A short conversation about your results and what you want from your practice, so we can work out whether and how Clay can help. No obligation.</p>
+          <a data-attr="cta-free-call" data-gc-event="growth_check_call_click" class="btn btn--accent gc-offers__btn" href="/contact" data-cal-namespace="30min" data-cal-link="clay-consulting-ws6xph/30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a free call</a>
+        </div>
+        <div class="gp-card">
+          <h3>Growth Session, £120</h3>
+          <p>A 60-minute video session with George to work through the area your Growth Check points to, with a short written summary afterwards.</p>
+          <a data-attr="cta-growth-session" data-gc-event="growth_check_session_click" class="btn btn--accent gc-offers__btn" href="/growth-sessions" data-cal-namespace="growth-session" data-cal-link="clay-consulting-ws6xph/growth-session" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book a Growth Session</a>
+        </div>
+        <div class="gp-card">
+          <h3>Growth Strategy, £1,200</h3>
+          <p>George reviews your whole practice, including your website, listings and search visibility, and writes a plan built around one clear objective. Delivered within 10 working days, with a walkthrough call.</p>
+          <a data-attr="cta-growth-strategy-explore" data-gc-event="growth_check_strategy_click" class="btn btn--accent gc-offers__btn" href="/growth-strategy">About the Growth Strategy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gs-bg--sand gs-testimonial" id="who">
+    <div class="shell">
+      <div class="gp-intro gc-prose">
+        <h2 class="h2-flat">Who's behind it</h2>
+        <p>Clay Consulting is run by George Holloway. George spent 13 years in commercial and growth roles, including eight years at Amazon, most recently as Senior Growth Manager at Amazon Business UK. He is currently training as an integrative transpersonal psychotherapist at CCPE. Clay helps therapists and wellbeing practitioners with the commercial side of private practice that their training didn't cover.</p>
+      </div>
+      <!-- Philip Bruce's testimonial, copied verbatim from index.html. Keep the two in sync. -->
+      <div class="testimonials gc-testimonial" aria-label="What Clay clients say">
+        <div class="testimonials__track">
+          <figure class="testimonial" aria-roledescription="slide">
+            <div class="testimonial__head">
+              <span class="testimonial__tag">Growth Strategy &middot; Client story</span>
+              <p class="testimonial__pull">&ldquo;I always knew what was happening and what to expect next.&rdquo;</p>
+            </div>
+            <div class="testimonial__body">
+              <blockquote class="testimonial__quote">
+                <p>&ldquo;Working with George on my Growth Strategy Report was a really positive experience. The whole process was clear from start to finish, and I was kept informed at every stage, so I always knew what was happening and what to expect next. George was extremely knowledgeable and took the time to explain things in a way that made sense, helping me understand what was going on throughout. I came away with a much clearer picture of my practice's online presence and would happily recommend him to others.&rdquo;</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <div class="testimonial__person">
+                  <span class="testimonial__avatar" aria-hidden="true">PB</span>
+                  <span class="testimonial__meta">
+                    <strong class="testimonial__name">Philip Bruce</strong>
+                    <span class="testimonial__role">CBT Therapist/EMDR Therapist</span>
+                    <a class="testimonial__site" href="https://www.philipbrucetherapy.co.uk/" target="_blank" rel="noopener" aria-label="philipbrucetherapy.co.uk (opens in a new tab)">philipbrucetherapy.co.uk &nearr;</a>
+                  </span>
+                </div>
+                <a data-attr="cta-growth-strategy-explore" class="btn" href="/growth-strategy">Explore a Growth Strategy</a>
+              </figcaption>
+            </div>
+          </figure>
+        </div>
+        <div class="testimonials__controls" hidden>
+          <button type="button" class="testimonials__arrow" data-dir="-1" aria-label="Previous testimonial">&larr;</button>
+          <div class="testimonials__dots"></div>
+          <button type="button" class="testimonials__arrow" data-dir="1" aria-label="Next testimonial">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--top-tight section--bottom-tight gs-bg--cream" id="faq">
+    <div class="shell">
+      <h2 class="h2-flat">Frequently asked questions</h2>
       <div class="faq2">
         <div class="faq2__grid">
-          <details id="really-free">
-            <summary><span>Is the Growth Check really free?</span><span class="chev" aria-hidden="true"></span></summary>
-            <p>Yes. No card details, no trial, nothing to cancel.</p>
+          <details id="free">
+            <summary><span>Is the Growth Check free?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Yes. You don't need to give payment details, and there's no obligation to buy anything afterwards.</p>
           </details>
-          <!-- "Do I have to give you my email?" deliberately omitted: email-gating
-               decision is OPEN per the handover (§10, item 1). Do not add an answer
-               until George confirms. -->
-          <details id="how-accurate">
-            <summary><span>How accurate can twelve questions be?</span><span class="chev" aria-hidden="true"></span></summary>
-            <p>Accurate about the category, not about the specifics. The questions are built around the patterns that come up repeatedly across therapy practices, so it's reliable at telling you whether you're looking at a visibility, conversion or operations problem. It isn't a substitute for someone looking at your actual setup.</p>
+          <details id="how-long">
+            <summary><span>How long does it take?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>There are about 25 questions, or about 15 if you haven't started seeing private clients yet. Most people finish in around five minutes.</p>
           </details>
-          <details id="in-training">
-            <summary><span>I'm still in training. Is this useful for me?</span><span class="chev" aria-hidden="true"></span></summary>
-            <p>Less so. The Check assumes there's a practice to assess. If you're pre-qualification, the <a href="/resources">resources</a> are free and more relevant.</p>
+          <details id="not-growing">
+            <summary><span>Why isn't my therapy practice growing?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Most private practices that stall do so for one of a small number of reasons: not enough enquiries are reaching them, enquiries aren't becoming clients, people can't find them online, or it isn't clear who the practice is for. Less often, the practice is full but the fees or the admin are the problem. From the inside, these can look alike, because a quiet diary can come from any of them. The Growth Check scores each one, so you can see which is most likely in your case.</p>
           </details>
-          <details id="who-sees-answers">
-            <summary><span>Who sees my answers?</span><span class="chev" aria-hidden="true"></span></summary>
-            <p>Only me. They aren't shared or sold, and the <a href="/privacy">privacy policy</a> sets out what's stored and for how long.</p>
+          <details id="written-by-ai">
+            <summary><span>Is my report written by AI?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>No. Your report is built from fixed rules and text written in advance, so it's consistent and based only on your answers.</p>
+          </details>
+          <details id="before-practice">
+            <summary><span>Can I take it before I've started private practice?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Yes. If you're training, or haven't seen private clients yet, you'll get a shorter version focused on what to have in place before you start.</p>
+          </details>
+          <details id="vs-strategy">
+            <summary><span>How is it different from a Growth Strategy?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>The Growth Check is a free, automated self-assessment based on your own answers. A Growth Strategy is a paid, in-depth review by George of your actual practice: your website, directory listings, search visibility and local competition, with a written plan built around one clear objective. The Growth Check tells you where to look. A Growth Strategy does the looking.</p>
+          </details>
+          <details id="scoring">
+            <summary><span>How is it scored?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Each answer scores between 0 and 10, and each area's score is the average of its answers. &ldquo;Don't know&rdquo; answers score low on purpose, because not knowing where your enquiries come from, for example, is useful to find out.</p>
+          </details>
+          <details id="your-answers">
+            <summary><span>What happens to my answers?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Your answers and contact details are stored securely and used to create your report. We'll only send you marketing emails if you tick the box to say you'd like them, and you can ask us to delete your data at any time. See our <a href="/privacy">privacy notice</a>.</p>
+          </details>
+          <details id="contact-afterwards">
+            <summary><span>Will you contact me afterwards?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>You'll receive your report by email. Beyond that, we'll only be in touch if you've asked us to.</p>
+          </details>
+          <details id="retake">
+            <summary><span>Can I take it again?</span><span class="chev" aria-hidden="true"></span></summary>
+            <p>Yes. Many practitioners find it useful to retake every few months and see what's changed.</p>
           </details>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section gp-cta-band closing section--top-tight section--bottom-tight" id="start">
+    <div class="shell">
+      <h2 class="h-section">Find out where to focus first</h2>
+      <a class="btn" href="/growth-check/start" data-gc-event="growth_check_start_click" data-gc-button="footer">Start your Growth Check</a>
     </div>
   </section>
 
@@ -223,6 +507,20 @@
 </footer>
 
 <script src="/nav.js"></script>
+<script>
+  // Growth Check page events (handover section 8). Listens on window in the capture phase
+  // because nav.js stops propagation on Cal.com triggers at the document. phCapture is
+  // nav.js's consent-gated wrapper, so nothing is sent before the visitor accepts.
+  // growth_check_page_view is left to PostHog's own $pageview, which already records it.
+  window.addEventListener('click', function (e) {
+    var el = e.target && e.target.closest ? e.target.closest('[data-gc-event]') : null;
+    if (!el || typeof phCapture !== 'function') return;
+    var props = { page: location.pathname };
+    var button = el.getAttribute('data-gc-button');
+    if (button) props.button = button;
+    phCapture(el.getAttribute('data-gc-event'), props);
+  }, true);
+</script>
 
 </body>
 </html>
