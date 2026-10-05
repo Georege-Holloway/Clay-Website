@@ -1221,6 +1221,9 @@ can still be sent in PostHog's next batch; they were captured with consent.
       in the old marker slot between "Sessions or a Strategy?" and the FAQ, `gs-bg--cream
       gs-testimonial` so the arrows hide at one slide; its CTA is the Cal.com "Book a Growth
       Session" button. The tag wraps to two lines at 375px; fine.
+      **Home only:** Aaron's slide has two stacked, equal-width CTAs in `.testimonial__ctas`,
+      "Explore a Growth Strategy" (`.btn`) and "Explore Growth Sessions" (`.btn--outline`),
+      since his work spanned both (George, 5 Oct). `styles.css` → `v=70`.
 
 ### Deliberately not done
 
