@@ -1176,10 +1176,10 @@ notes above. Copy is the handover's, verbatim.
 - **Page-scoped stylesheet `growth-check.css`**, every rule under `body.gc-page`. Exception to
   "one stylesheet", because the handover required `styles.css` untouched. Fold it in later if wanted.
 - **Still preview-only:** `noindex`, out of `sitemap.xml`, both marked `TODO: remove at launch`.
-- **Tool proxy in `_redirects`:** `/growth-check/start` plus the three
-  `/.netlify/functions/growth-check-*` paths proxy (200) to the v2 branch deploy of
-  therapy-web-builder. At launch, swap the host on all four lines. The functions proxy is
-  untested; Netlify has known quirks proxying `/.netlify/` paths across sites.
+- **Tool proxy in `_redirects`:** `/growth-check/start` and `/growth-check/api/*` proxy (200)
+  to the v2 branch deploy of therapy-web-builder; swap the host on both lines at launch.
+  Netlify ignores redirect rules on `/.netlify/` paths (confirmed on the deploy preview), so
+  the tool has to call `/growth-check/api/<function>` when served from this domain.
 - **FAQPage JSON-LD** is generated from the same strings as the visible FAQ; keep them identical.
   Home's `ProfessionalService` gained `"@id": ".../#organization"`, which this page references.
 - **PostHog events** (`growth_check_*_click`) via `data-gc-event`, a window capture listener
