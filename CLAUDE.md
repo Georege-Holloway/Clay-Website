@@ -1225,6 +1225,17 @@ can still be sent in PostHog's next batch; they were captured with consent.
       "Explore a Growth Strategy" (`.btn`) and "Explore Growth Sessions" (`.btn--outline`),
       since his work spanned both (George, 5 Oct). `styles.css` → `v=70`.
 
+- [x] **Index cleanup (5 Oct 2026)**, from Search Console. `_redirects` now 301s `/home`,
+      `/home-1`, `/home-old` and `/index.html` to `/`, and the `.html` copy of every live page
+      that lacked one (Growth Sessions/Strategy, Resources and all eight articles) to its clean
+      URL (`301!`, since the file exists on disk). `/launch` → Home is now **confirmed by
+      George**. The "Blog Post Title One" Squarespace URL pointed at the old setup-guide slug
+      (a two-hop chain); it now goes straight to the current guide. **The six
+      `blog-post-title…` URLs stay 301s on purpose:** they were the real Squarespace articles
+      with unrenamed slugs, not placeholders, so 410 would throw away their equity (George, when
+      a brief asked for 410). `/build` and `/growth-check` were already noindex and out of the
+      sitemap. IndexNow key file is `/36ec8206ca6c799481bd778f2f4479fb.txt`; leave it alone.
+
 ### Deliberately not done
 
 - ~~No analytics or cookie banner yet.~~ **Superseded 17 Sep 2026: GA4 (`G-58WJDJ7ZCJ`)

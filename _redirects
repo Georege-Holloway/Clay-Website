@@ -7,9 +7,8 @@
 /resources/free-practice-setup-guide  /resources/how-to-set-up-a-therapy-practice-uk  301
 
 # Services page merge: Launch and Grow retired as separate products (Aug 2026)
-# /launch: OPEN per Sep 2026 Site Restructure Handover §8 — George to confirm whether
-# this should point to Home, /growth-strategy, or 404. Was pointing to /services;
-# retargeted to / since /services no longer exists (13 Sep 2026) — still not confirmed.
+# /launch: Home confirmed by George (5 Oct 2026). Home's comparison table is the
+# nearest thing to the old services page. /launch-old does the same (netlify.toml).
 /launch  /  301
 
 # Sep 2026 Site Restructure: /grow retargeted from /services to the page that replaced
@@ -17,7 +16,7 @@
 # equity, so it must keep 301ing rather than 404 (handover §8).
 /grow    /growth-strategy  301
 
-# Sep 2026 Homepage & Navigation Update: Services page retired — its one comparison
+# Sep 2026 Homepage & Navigation Update: Services page retired; its one comparison
 # table now lives on the homepage, and the nav points straight at the two service
 # pages. Redirect rather than 404, in case it's picked up inbound links or AI-assistant
 # citations.
@@ -27,3 +26,22 @@
 # ranking, per George). The old page had live traffic and any search/generative-search
 # equity it had accumulated needs to carry over, so this redirects rather than 404s.
 /growth-blueprint  /growth-strategy  301
+
+# Oct 2026 index cleanup (Search Console): old Squarespace home variants and
+# .html duplicates of live pages that were still being served with a 200.
+# "!" forces the redirect even though the .html file exists on disk.
+/home      /  301
+/home-1    /  301
+/home-old  /  301
+/index.html  /  301!
+/growth-sessions.html   /growth-sessions   301!
+/growth-strategy.html   /growth-strategy   301!
+/resources.html         /resources         301!
+/resources/gdpr-for-therapists.html  /resources/gdpr-for-therapists  301!
+/resources/help-getting-therapy-clients-uk.html  /resources/help-getting-therapy-clients-uk  301!
+/resources/how-clients-find-a-therapist-online.html  /resources/how-clients-find-a-therapist-online  301!
+/resources/how-to-get-more-therapy-clients.html  /resources/how-to-get-more-therapy-clients  301!
+/resources/how-to-set-up-a-therapy-practice-uk.html  /resources/how-to-set-up-a-therapy-practice-uk  301!
+/resources/local-seo-for-therapists.html  /resources/local-seo-for-therapists  301!
+/resources/setting-up-a-therapy-practice-mistakes.html  /resources/setting-up-a-therapy-practice-mistakes  301!
+/resources/why-good-therapy-isnt-enough.html  /resources/why-good-therapy-isnt-enough  301!
