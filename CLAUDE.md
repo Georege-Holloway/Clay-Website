@@ -1212,6 +1212,15 @@ can still be sent in PostHog's next batch; they were captured with consent.
 - [ ] `sitemap.xml`.
 - [x] **First client testimonial shipped (28 Sep 2026)**: Philip Bruce, on Home. See the
       dated entry under "Current state".
+- [x] **Second testimonial (5 Oct 2026)**: Aaron Davis, Director, Catalyst Counselling CIC,
+      links to catalyst-wcs.org.uk. Added as slide 2 on both carousels (Home and Growth
+      Strategy), so Growth Strategy's arrows/dots now show. Quote verbatim from Aaron, in four
+      `<p>`s; `.testimonial__quote p+p` adds the paragraph gap (`styles.css` → `v=69`). Tag is
+      "Growth Sessions & Growth Strategy · Client story" (George: he used both); pull quote was
+      chosen by Claude from his last paragraph. **Also on Growth Sessions** (Aaron's slide only),
+      in the old marker slot between "Sessions or a Strategy?" and the FAQ, `gs-bg--cream
+      gs-testimonial` so the arrows hide at one slide; its CTA is the Cal.com "Book a Growth
+      Session" button. The tag wraps to two lines at 375px; fine.
 
 ### Deliberately not done
 
