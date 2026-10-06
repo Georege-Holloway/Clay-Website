@@ -1,41 +1,125 @@
 /* Growth Check landing page only (/growth-check). Linked from growth-check.html and nowhere
-   else, so nothing here can affect another page. The handover asked for styles.css to stay
-   untouched; every rule is scoped under .gc-page and builds on existing site components. */
+   else, so nothing here can affect another page. styles.css stays untouched (handover rule);
+   every rule is scoped under .gc-page. Built from "Growth Check page redesign.zip" (Oct 2026):
+   site tokens where they match the mock, the mock's own values where the site has none.
+   Headings keep the site's Fraunces rather than the mock's Caprasimo, per the handoff. */
 
-/* Hero: centred, like Approach, with the CTA row and microcopy centred to match. */
-.gc-page .gc-hero__actions{justify-content:center}
-.gc-page .gc-hero__micro{margin:1rem auto 0;color:var(--sage-tint);font-size:.9375rem;text-wrap:balance}
+.gc-page{
+  --gc-surface:#ebddc5;     /* mock "surface" band */
+  --gc-n100:#f9f4ed;
+  --gc-n300:#dcd3c4;
+  --gc-n700:#645c50;
+  --gc-n800:#474238;
+  --gc-sage100:#f0fae1;
+  --gc-sage200:#e1eecc;
+  --gc-sage700:#56633f;
+  --gc-sage900:#272e1b;
+  --gc-acc300:#ffc6a5;
+  --gc-acc400:#f6a06b;
+  --gc-acc800:#643312;
+  --gc-shadow-lg:0 12px 32px rgba(46,43,37,.22);
+  --gc-y:clamp(4.5rem,9vw,6.875rem);
+}
 
-/* "What it is": one paragraph straight under the hero, in a short band rather than a full section. */
-.gc-page .gc-lede{padding-block:clamp(2rem,4vw,3rem)}
-.gc-page .gc-lede p{max-width:70ch;margin:0 auto;text-align:center;font-size:clamp(1.125rem,1.6vw,1.3125rem);line-height:1.6;color:var(--ink);text-wrap:pretty}
+/* Layout: the mock's 1240px content width inside main (header and footer keep the site's). */
+.gc-page main .shell{max-width:calc(1240px + 2 * var(--pad))}
+.gc-page .gc-section{padding-block:var(--gc-y)}
+.gc-page .gc-bg{background:var(--bg)}
+.gc-page .gc-surface{background:var(--gc-surface)}
+.gc-page .gc-split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(2.5rem,5vw,4rem);align-items:center}
+.gc-page .gc-split--start{align-items:start}
 
-/* Prose blocks: .gp-intro caps the measure; give the heading room above the body. */
-.gc-page .gc-prose .h2-flat{margin-bottom:1.5rem}
-.gc-page .gc-prose p{font-size:1.125rem;line-height:1.7}
-.gc-page .gp-intro.gc-prose{max-width:66ch;margin-bottom:0}
-.gc-page .gc-split--top{align-items:start}
+/* Section headings and intros. */
+.gc-page .gc-section h2{font-size:clamp(2.125rem,4vw,3.25rem);font-weight:600;line-height:1.08;margin:0}
+.gc-page .gc-intro{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.gc-page .gc-intro > p{font-size:1.125rem;line-height:1.6;margin:0;max-width:28em;color:var(--ink)}
+.gc-page .gc-intro--head{max-width:640px;margin-bottom:clamp(2rem,4vw,3rem)}
+.gc-page .gc-intro--head > p{max-width:none}
+.gc-page .gc-kicker{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--terracotta-deep)}
 
-/* Tick list ("Is it for you?" and "What you get"). */
-.gc-page .gc-ticks{list-style:none;margin:0;padding:0;display:grid;gap:.875rem}
-.gc-page .gc-ticks li{position:relative;padding:1rem 1.25rem 1rem 3.25rem;background:var(--surface);border-radius:1rem;font-size:1.0625rem;line-height:1.5;color:var(--ink)}
-.gc-page .gc-ticks li::before{content:"";position:absolute;left:1.25rem;top:1.3rem;width:1.1rem;height:.6rem;border-left:2.5px solid var(--terracotta);border-bottom:2.5px solid var(--terracotta);transform:rotate(-45deg)}
-.gc-page .gc-ticks--note li{background:none;padding:0 0 0 2.25rem}
-.gc-page .gc-ticks--note li::before{left:.1rem;top:.35rem}
+/* Focus ring from the handoff, on this page's own controls. */
+.gc-page main a:focus-visible,.gc-page main summary:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px}
 
-/* Six areas: compact two-column list, name in bold with its description on the same line. */
-.gc-page .gc-areas{list-style:none;margin:clamp(1.5rem,3vw,2.25rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(2rem,4vw,4rem)}
-.gc-page .gc-areas li{padding:1.125rem 0;border-top:1px solid var(--rule);font-size:1.0625rem;line-height:1.55;color:var(--ink-soft)}
-.gc-page .gc-areas strong{color:var(--ink);font-weight:600}
+/* Hero: two columns, decorative circles, stat pills on the right. */
+.gc-page .gc-hero{position:relative;overflow:hidden;padding-block:clamp(4.5rem,9vw,6.875rem) clamp(5rem,10vw,7.5rem)}
+.gc-page .gc-hero__circle{position:absolute;border-radius:50%;pointer-events:none}
+.gc-page .gc-hero__circle--sage{right:-140px;top:-120px;width:520px;height:520px;background:var(--gc-sage700)}
+.gc-page .gc-hero__circle--accent{right:120px;bottom:-180px;width:300px;height:300px;background:var(--terracotta);opacity:.9}
+.gc-page .gc-hero__grid{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(2.5rem,5vw,3.5rem);align-items:center}
+.gc-page .gc-hero__copy{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
+.gc-page .gc-hero__tag{margin:0;padding:.45rem .9rem;border-radius:var(--radius-pill);background:var(--gc-sage100);color:var(--gc-sage900);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.gc-page .gc-hero h1{font-size:clamp(2.5rem,5.4vw,4.25rem);line-height:1.04;max-width:14em;margin:0;color:var(--bg)}
+.gc-page .gc-hero__lede{font-size:1.1875rem;line-height:1.6;max-width:34em;margin:0;color:var(--gc-sage100);text-wrap:pretty}
+.gc-page .gc-hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem}
+.gc-page .gc-hero__link{color:var(--bg);text-decoration:underline;text-underline-offset:3px;font-size:.9375rem}
+.gc-page .gc-hero__link:hover{color:#fff}
+.gc-page .gc-stats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:380px;justify-self:end}
+.gc-page .gc-stats li{display:flex;align-items:center;gap:1rem;background:var(--gc-sage900);border-radius:var(--radius-pill);padding:.875rem 1.375rem;font-size:.9375rem;line-height:1.35;color:var(--gc-sage100)}
+.gc-page .gc-stats__num{flex:none;min-width:3.5rem;font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.875rem;line-height:1;color:var(--gc-acc300)}
 
-/* After your Growth Check: buttons pinned to the bottom so all three line up. */
-.gc-page .gc-offers{margin-top:clamp(1.5rem,3vw,2.25rem)}
-.gc-page .gc-offers__btn{margin-top:auto;align-self:flex-start}
+/* Is it for you? */
+.gc-page .gc-for{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem}
+.gc-page .gc-for li{display:flex;gap:1rem;align-items:flex-start;background:var(--gc-n100);border-radius:28px;padding:1.25rem 1.5rem;font-size:1.0625rem;line-height:1.5}
+.gc-page .gc-for__tick{flex:none;width:28px;height:28px;border-radius:50%;background:var(--gc-sage200);color:var(--sage-deep);display:grid;place-items:center}
 
-/* Closing band has no paragraph, so the button sits straight under the heading. */
-.gc-page #start .h-section{margin-bottom:clamp(1.5rem,3vw,2rem)}
+/* Six areas. */
+.gc-page .gc-areas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1.25rem}
+.gc-page .gc-area{background:var(--bg);border-radius:28px;padding:1.75rem;display:flex;flex-direction:column;gap:.875rem}
+.gc-page .gc-area__num{width:48px;height:48px;border-radius:50%;background:var(--terracotta);color:var(--bg);display:grid;place-items:center;font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.25rem}
+.gc-page .gc-area h3{font-size:1.5rem;line-height:1.2;margin:0}
+.gc-page .gc-area p{font-size:1rem;line-height:1.55;margin:0;color:var(--gc-n700)}
+
+/* What you get: checklist plus a tilted preview of the real report. */
+.gc-page .gc-gets{list-style:none;margin:.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:.75rem}
+.gc-page .gc-gets li{display:flex;gap:.75rem;align-items:flex-start;font-size:1.0625rem;line-height:1.5}
+.gc-page .gc-gets svg{flex:none;margin-top:3px;color:var(--terracotta)}
+.gc-page .gc-gets__btn{margin-top:.75rem}
+.gc-page .gc-preview{position:relative}
+.gc-page .gc-preview__blob{position:absolute;left:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--gc-sage200)}
+.gc-page .gc-preview__card{position:relative;margin:0;background:var(--gc-n100);border-radius:28px;padding:1.75rem;display:flex;flex-direction:column;gap:1.375rem;transform:rotate(-1.5deg);box-shadow:var(--gc-shadow-lg)}
+.gc-page .gc-preview__hello{font-size:.9375rem;color:var(--gc-n700)}
+.gc-page .gc-preview__overall{display:flex;align-items:center;gap:1.375rem;flex-wrap:wrap}
+.gc-page .gc-preview__headline{flex:1;min-width:180px;display:flex;flex-direction:column;gap:.375rem}
+.gc-page .gc-preview .gc-kicker{font-size:.6875rem}
+.gc-page .gc-preview__title{font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.5rem;line-height:1.2}
+.gc-page .gc-ring{flex:none;width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--terracotta) 0 40%,var(--gc-n300) 0);display:grid;place-items:center}
+.gc-page .gc-ring > div{width:86px;height:86px;border-radius:50%;background:var(--gc-n100);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gc-page .gc-ring__num{font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.875rem;line-height:1}
+.gc-page .gc-ring__of{font-size:.6875rem;color:var(--gc-n700)}
+.gc-page .gc-minis{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:.625rem}
+.gc-page .gc-mini{--band:var(--terracotta);background:var(--bg);border:1px solid var(--gc-n300);border-radius:16px;padding:.875rem 1rem;display:flex;flex-direction:column;gap:.5rem}
+.gc-page .gc-mini--early{--band:var(--gc-acc800)}
+.gc-page .gc-mini__head{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.gc-page .gc-mini__name{font-size:.875rem;font-weight:600}
+.gc-page .gc-mini__score{font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.125rem}
+.gc-page .gc-mini__desc{font-size:.8125rem;line-height:1.4;color:var(--gc-n800)}
+.gc-page .gc-mini__bar{display:block;height:6px;border-radius:var(--radius-pill);background:var(--gc-n300);overflow:hidden}
+.gc-page .gc-mini__bar > span{display:block;height:100%;border-radius:var(--radius-pill);background:var(--band)}
+.gc-page .gc-mini__bar--19 > span{width:19%}
+.gc-page .gc-mini__bar--25 > span{width:25%}
+.gc-page .gc-mini__bar--38 > span{width:38%}
+.gc-page .gc-mini__bar--49 > span{width:49%}
+.gc-page .gc-mini__bar--52 > span{width:52%}
+.gc-page .gc-mini__bar--55 > span{width:55%}
+.gc-page .gc-mini__band{align-self:flex-start;font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--bg);background:var(--band);border-radius:var(--radius-pill);padding:3px 9px}
+
+/* After your Growth Check: three cards, button pinned to the bottom. */
+.gc-page .gc-nexts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1.25rem}
+.gc-page .gc-next{background:var(--bg);border-radius:28px;padding:2rem;display:flex;flex-direction:column;gap:.875rem;align-items:flex-start}
+.gc-page .gc-next h3{font-size:1.625rem;line-height:1.2;margin:0}
+.gc-page .gc-next p{flex:1;font-size:1rem;line-height:1.55;margin:0;color:var(--gc-n700)}
+.gc-page .gc-next .btn{margin-top:.5rem}
+
+/* Questions: heading left, single-column accordion right (the site's .faq2 cards). */
+.gc-page .gc-faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(2.5rem,5vw,3.5rem);align-items:start}
+.gc-page .gc-faq__list{grid-template-columns:minmax(0,1fr);gap:.75rem}
+.gc-page .gc-faq__list details{background:var(--gc-surface);overflow:hidden}
+.gc-page .gc-faq__list summary{padding:1.375rem 1.5rem 1.375rem 1.75rem}
+.gc-page .gc-faq__list summary:hover{background:var(--gc-n300)}
+.gc-page .gc-faq__list details > p{padding:0 1.75rem 1.625rem;font-size:1rem;line-height:1.7;max-width:46em;color:var(--gc-n800)}
 
 @media (max-width:860px){
-  .gc-page .gc-areas{grid-template-columns:1fr}
-  .gc-page .gc-lede p{text-align:left}
+  .gc-page .gc-stats{justify-self:start}
+  .gc-page .gc-faq{grid-template-columns:minmax(0,1fr)}
+  .gc-page .gc-preview__blob{left:-16px;top:-24px;width:140px;height:140px}
 }

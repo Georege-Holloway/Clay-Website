@@ -1190,6 +1190,14 @@ notes above. Copy is the handover's, verbatim.
 - **6 Oct: content cut down (George's copy, verbatim).** "Can and can't", "Who's behind it"
   (and Phil's testimonial) are gone; "What it is" is a short unheaded band under the hero;
   the six areas are a compact two-column list; FAQ is five questions (JSON-LD matches).
+- **6 Oct: redesigned per `Growth Check page redesign.zip`** (parent folder; Claude Design
+  mock, high fidelity). Two-column hero with stat pills, six area cards, a tilted static preview
+  of the real report (fictional "James"; bands follow the report's rule, Early < 4.0), price-kicker
+  cards, "Questions" with a single-column FAQ. The mock's copy replaced the previous version
+  (new H1 and lede; the hero microcopy and "What it is" band are gone). Fraunces kept, not the
+  mock's Caprasimo; header, footer and CTA band are the site's own. FAQ stays native `<details>`
+  with a shared `name` (one open at a time, first open) so answers are in the HTML on load.
+  "See an example report" now jumps to the on-page preview (`#report`), not the missing PDF.
 
 ### Known outstanding work
 
