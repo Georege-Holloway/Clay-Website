@@ -55,7 +55,7 @@
 .gc-page .gc-hero__link:hover{color:#fff}
 .gc-page .gc-stats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:380px;justify-self:end}
 .gc-page .gc-stats li{display:flex;align-items:center;gap:1rem;background:var(--gc-sage900);border-radius:var(--radius-pill);padding:.875rem 1.375rem;font-size:.9375rem;line-height:1.35;color:var(--gc-sage100)}
-.gc-page .gc-stats__num{flex:none;min-width:3.5rem;font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.875rem;line-height:1;color:var(--gc-acc300)}
+.gc-page .gc-stats__num{flex:none;min-width:4.25rem;font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.875rem;line-height:1;color:var(--gc-acc300)}
 
 /* Is it for you? */
 .gc-page .gc-for{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem}
