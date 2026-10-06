@@ -1187,6 +1187,9 @@ notes above. Copy is the handover's, verbatim.
 - **Not in the nav:** at 1024px a sixth item wraps three labels onto two lines.
 - Links added: Home `#pathway` note, Growth Sessions ("What people bring"), Growth Strategy
   (after "Who it's for"), and both resource articles the handover named.
+- **6 Oct: content cut down (George's copy, verbatim).** "Can and can't", "Who's behind it"
+  (and Phil's testimonial) are gone; "What it is" is a short unheaded band under the hero;
+  the six areas are a compact two-column list; FAQ is five questions (JSON-LD matches).
 
 ### Known outstanding work
 

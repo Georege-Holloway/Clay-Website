@@ -6,6 +6,10 @@
 .gc-page .gc-hero__actions{justify-content:center}
 .gc-page .gc-hero__micro{margin:1rem auto 0;color:var(--sage-tint);font-size:.9375rem;text-wrap:balance}
 
+/* "What it is": one paragraph straight under the hero, in a short band rather than a full section. */
+.gc-page .gc-lede{padding-block:clamp(2rem,4vw,3rem)}
+.gc-page .gc-lede p{max-width:70ch;margin:0 auto;text-align:center;font-size:clamp(1.125rem,1.6vw,1.3125rem);line-height:1.6;color:var(--ink);text-wrap:pretty}
+
 /* Prose blocks: .gp-intro caps the measure; give the heading room above the body. */
 .gc-page .gc-prose .h2-flat{margin-bottom:1.5rem}
 .gc-page .gc-prose p{font-size:1.125rem;line-height:1.7}
@@ -19,24 +23,19 @@
 .gc-page .gc-ticks--note li{background:none;padding:0 0 0 2.25rem}
 .gc-page .gc-ticks--note li::before{left:.1rem;top:.35rem}
 
-/* Notes under a section sit on the band's opposite colour so they stay visible. */
-.gc-page .gs-bg--cream .gc-close{background:var(--sand)}
-.gc-page .gs-bg--sand .gc-close{background:var(--surface)}
-
-/* Six areas: two rows of three. Cards are sand by default, so lift them on the sand band. */
-.gc-page .gs-bg--sand .cover-card{background:var(--surface)}
-.gc-page .gc-areas .cover-card h3{font-size:clamp(1.375rem,1.8vw,1.625rem)}
+/* Six areas: compact two-column list, name in bold with its description on the same line. */
+.gc-page .gc-areas{list-style:none;margin:clamp(1.5rem,3vw,2.25rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(2rem,4vw,4rem)}
+.gc-page .gc-areas li{padding:1.125rem 0;border-top:1px solid var(--rule);font-size:1.0625rem;line-height:1.55;color:var(--ink-soft)}
+.gc-page .gc-areas strong{color:var(--ink);font-weight:600}
 
 /* After your Growth Check: buttons pinned to the bottom so all three line up. */
 .gc-page .gc-offers{margin-top:clamp(1.5rem,3vw,2.25rem)}
 .gc-page .gc-offers__btn{margin-top:auto;align-self:flex-start}
 
-/* Testimonial sits under the "Who's behind it" copy. */
-.gc-page .gc-testimonial{margin-top:clamp(2rem,4vw,3rem)}
-
 /* Closing band has no paragraph, so the button sits straight under the heading. */
 .gc-page #start .h-section{margin-bottom:clamp(1.5rem,3vw,2rem)}
 
 @media (max-width:860px){
-  .gc-page .gc-close{display:block}
+  .gc-page .gc-areas{grid-template-columns:1fr}
+  .gc-page .gc-lede p{text-align:left}
 }
