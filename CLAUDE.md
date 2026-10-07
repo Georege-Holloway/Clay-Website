@@ -1204,6 +1204,19 @@ notes above. Copy is the handover's, verbatim.
 `noindex` removed and `/growth-check` added to `sitemap.xml`. `privacy.html` gained Growth Check
 collection, lawful basis (report: legitimate interest; tips: consent), Supabase as processor and a
 two-year retention line, all subject to George's approval. Still not in the nav (1024px wrap).
+**Oct 2026 (6th): new article, `/resources/one-off-marketing-help-for-therapists`.** From George's
+"page draft" PDF (parent folder), written to answer "who offers one-off marketing help, not a
+retainer?" in AI-assistant tests. Copy is the draft's, with its three `[Confirm]` items resolved by
+George: the sample/anonymised-extract offer is **left out** (no example report exists yet); the AI
+FAQ says George uses some tools to gather information but the judgement, recommendations and writing
+are his; instalments use the live Growth Strategy wording ("two instalments, work starts once the
+first is paid"), not the draft's unconfirmed "half before the walkthrough" detail. Body is first
+person, FAQs third person ("George") on purpose, so either half can be quoted alone. Unlike the other
+articles it carries **`FAQPage` and `Service` (Offer 1200 GBP) JSON-LD**, per the draft; the FAQ
+JSON-LD is generated from the visible strings, so change both together. Inbound links: a `.note`
+under Growth Strategy's "What gets looked at", a `.note` under Home's comparison cards, and one
+sentence in the comparison article's Clay section. Listing card, sitemap and `.html` 301 added.
+`styles.css` untouched.
 
 ### Known outstanding work
 
