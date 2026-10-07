@@ -1248,6 +1248,20 @@ up… Growth Sessions are an hour set aside to focus on your business…"); Sess
 band is gone (it sat oddly). Strategy still has its band. Hero heights and button positions
 re-measured, unchanged.
 
+**7 Oct 2026: Strategy hero image made bigger again.** `.gc-hero__media` is a size container
+(`container-type:size`) and the report image is sized from it (`max-height:100cqh`, up to 440px wide,
+allowed into the column gap), so it fills the text column's height without changing the hero's
+height. The £1,200 pill (`.gc-hero__price`) overlaps the image's bottom-left corner; it tucks inside
+the image edge between 861 and 1339px. Below 860px the image goes full width with the pill under it.
+`styles.css` → `v=74`.
+
+**7 Oct 2026: Strategy's `.hero-follow` band removed too** (George), so its second intro sentence
+("It's delivered as a written report…") is no longer on the page. No page uses `.hero-follow` now;
+its CSS is deleted.
+
+**7 Oct 2026: Check's "See an example report"** is now a `.btn--outline` like the second CTA on
+Sessions/Strategy (was a text link); the unused `.gc-hero__link` CSS is deleted.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
