@@ -21,8 +21,6 @@
   --gc-y:clamp(4.5rem,9vw,6.875rem);
 }
 
-/* Layout: the mock's 1240px content width inside main (header and footer keep the site's). */
-.gc-page main .shell{max-width:calc(1240px + 2 * var(--pad))}
 .gc-page .gc-section{padding-block:var(--gc-y)}
 .gc-page .gc-bg{background:var(--bg)}
 .gc-page .gc-surface{background:var(--gc-surface)}
@@ -40,14 +38,6 @@
 /* Focus ring from the handoff, on this page's own controls. */
 .gc-page main a:focus-visible,.gc-page main summary:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px}
 
-/* Hero: shared look lives in styles.css (.gc-hero); this is only the Check page's layout. */
-.gc-page .gc-hero__grid{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(2.5rem,5vw,3.5rem);align-items:center}
-.gc-page .gc-hero__copy{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
-.gc-page .gc-hero__copy > *{margin:0}
-.gc-page .gc-hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem}
-.gc-page .gc-stats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:380px;justify-self:end}
-.gc-page .gc-stats li{display:flex;align-items:center;gap:1rem;background:var(--sage-ink);border-radius:var(--radius-pill);padding:.875rem 1.375rem;font-size:.9375rem;line-height:1.35;color:var(--sage-mist)}
-.gc-page .gc-stats__num{flex:none;min-width:4.25rem;font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.875rem;line-height:1;color:var(--peach)}
 
 /* Is it for you? */
 .gc-page .gc-for{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem}
@@ -111,7 +101,6 @@
 .gc-page .gc-faq__list details > p{padding:0 1.75rem 1.625rem;font-size:1rem;line-height:1.7;max-width:46em;color:var(--gc-n800)}
 
 @media (max-width:860px){
-  .gc-page .gc-stats{justify-self:start}
   .gc-page .gc-faq{grid-template-columns:minmax(0,1fr)}
   .gc-page .gc-preview__blob{left:-16px;top:-24px;width:140px;height:140px}
 }

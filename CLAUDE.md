@@ -1231,6 +1231,18 @@ a `.gp-hero`): two decorative circles (spans as the hero's first children), a mi
 below. New tokens: `--sage-mid`, `--sage-ink`, `--sage-mist`, `--peach`. Content, CTAs and the
 Strategy report image are unchanged; Approach's hero still uses plain `.gp-hero`. `styles.css` → `v=72`.
 
+**7 Oct 2026 (later): the three Growth heroes now share one layout** so the eyebrow, title and
+buttons sit in the same place on Check, Sessions and Strategy. All three are site width (Check's
+1240px override is gone). `.gc-hero__grid`: text column plus a 360px right column (stat pills on
+Check and Sessions; a price pill over the report image on Strategy). Each hero keeps a one-sentence
+intro (`.gc-hero__lede`); the rest of Sessions' and Strategy's intro moved, word for word, into a
+`.hero-follow` band directly under the hero (George's choice). `.gc-hero__copy` has a fixed
+min-height per width tier (29rem from 1340px, 31rem from 1260px, 37.5rem from 861px) with the
+buttons pinned to its bottom, so heights and button positions match. Re-measure the tiers if a
+hero title or button label changes. Sessions' pills ("£120 per session", "60 minutes, on a video
+call", "1 short written summary afterwards") restate facts already on that page.
+`styles.css` → `v=73`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
