@@ -1259,6 +1259,9 @@ the image edge between 861 and 1339px. Below 860px the image goes full width wit
 ("It's delivered as a written report…") is no longer on the page. No page uses `.hero-follow` now;
 its CSS is deleted.
 
+**7 Oct 2026: Check's "See an example report"** is now a `.btn--outline` like the second CTA on
+Sessions/Strategy (was a text link); the unused `.gc-hero__link` CSS is deleted.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
