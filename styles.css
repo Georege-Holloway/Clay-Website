@@ -570,10 +570,6 @@ details[open] .chev{transform:rotate(-135deg)}
 .gc-hero__price{position:absolute;left:-1.25rem;bottom:1.5rem;width:max-content;max-width:300px}
 .gc-hero__price li{box-shadow:0 .75rem 1.5rem rgba(0,0,0,.3)}
 @media (min-width:861px) and (max-width:1339px){.gc-hero__price{left:1rem}}
-/* The rest of a hero intro, in a short band straight under the hero. */
-.hero-follow{padding-block:clamp(2.5rem,5vw,3.5rem)}
-.hero-follow p{max-width:62ch;margin:0;font-size:1.1875rem;line-height:1.6;color:var(--ink)}
-.hero-follow p + p{margin-top:1rem}
 /* Same text-column height on all three pages at each width, so the buttons line up. The tiers
    follow where titles and button rows wrap; re-measure if a hero title or button label changes. */
 @media (min-width:861px){.gc-hero__copy{min-height:37.5rem}}

@@ -1255,6 +1255,10 @@ height. The £1,200 pill (`.gc-hero__price`) overlaps the image's bottom-left co
 the image edge between 861 and 1339px. Below 860px the image goes full width with the pill under it.
 `styles.css` → `v=74`.
 
+**7 Oct 2026: Strategy's `.hero-follow` band removed too** (George), so its second intro sentence
+("It's delivered as a written report…") is no longer on the page. No page uses `.hero-follow` now;
+its CSS is deleted.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
