@@ -1278,6 +1278,11 @@ eyebrow line; the pair is nudged left, and Strategy's text column is capped (`.g
 46rem) so the image sits about 40px from the text on wide screens. Below 860px the pill wraps.
 `styles.css` → `v=79`. Same branch: Sessions' "How it works" title gained `.h2-flat` (it was a bare `h2`, smaller than the other section titles), with `.gp-split .h2-flat{margin-bottom:1.5rem}`; `v=80`.
 
+**7 Oct 2026: Home's phone-only comparison cards (`.compare-card`) restyled (George).** Everything
+centred, each label (`dt`) above its text (`dd`) instead of side by side, a hairline between rows,
+button centred. These cards only show below 860px; the desktop `.compare` table is untouched.
+`styles.css` → `v=81`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
