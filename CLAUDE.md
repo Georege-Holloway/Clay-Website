@@ -1224,6 +1224,13 @@ Six items wrap at laptop widths, so: nav labels are `white-space:nowrap`; gaps t
 nav rules moved out of the 860px block into their own `@media (max-width:1000px)`). Everything
 else still switches at 860px. `styles.css` → `v=71`.
 
+**7 Oct 2026: Growth Sessions and Growth Strategy heroes restyled to match Growth Check** (George
+prefers it). The Check hero's look is now a shared component in `styles.css`, `.gc-hero` (added to
+a `.gp-hero`): two decorative circles (spans as the hero's first children), a mist pill tag
+`.gc-hero__tag`, larger cream H1, mist body text, and peach prices with their details on the line
+below. New tokens: `--sage-mid`, `--sage-ink`, `--sage-mist`, `--peach`. Content, CTAs and the
+Strategy report image are unchanged; Approach's hero still uses plain `.gp-hero`. `styles.css` → `v=72`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
