@@ -1199,6 +1199,12 @@ notes above. Copy is the handover's, verbatim.
   with a shared `name` (one open at a time, first open) so answers are in the HTML on load.
   "See an example report" now jumps to the on-page preview (`#report`), not the missing PDF.
 
+**7 Oct 2026: Growth Check launch prep.** Tool's growth-check-v2 merged to therapy-builder `main`
+(George pushed). `_redirects` now proxies to production (`therapy-web-builder.netlify.app`);
+`noindex` removed and `/growth-check` added to `sitemap.xml`. `privacy.html` gained Growth Check
+collection, lawful basis (report: legitimate interest; tips: consent), Supabase as processor and a
+two-year retention line, all subject to George's approval. Still not in the nav (1024px wrap).
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
