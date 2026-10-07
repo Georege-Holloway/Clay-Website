@@ -1283,6 +1283,19 @@ centred, each label (`dt`) above its text (`dd`) instead of side by side, a hair
 button centred. These cards only show below 860px; the desktop `.compare` table is untouched.
 `styles.css` → `v=81`.
 
+**7 Oct 2026: PostHog counts decliners cookielessly (George chose this).** The PostHog head
+snippet (all 21 pages, and the quiz page in therapy-builder) now loads once a choice exists:
+Accept runs PostHog with cookies as before; Decline runs it with `cookieless_mode: 'always'`
+(distinct ID `$posthog_cookieless`, nothing stored on the device, PostHog hashes IP + user agent
+with a daily salt server-side). No choice yet: nothing loads. `nav.js` starts it cookieless on a
+first-visit Decline; an accepted visitor who declines via Cookie settings is opted out for the
+rest of that page and cookieless from the next. Requires "Cookieless server hash mode" in the
+PostHog project, switched on (stateful) on 7 Oct. Cookieless events get no GeoIP. Banner text and
+`privacy.html` (PostHog bullet, processor line, lawful basis, Cookies section) updated to match.
+PostHog dashboard "Growth Check" (id 1004281) holds the quiz funnel, daily completions,
+referrer breakdown and per-question drop-off. **Session replay is on in the PostHog project**
+although the privacy notice assumes it is off: flagged to George, not changed.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia

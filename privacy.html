@@ -29,19 +29,25 @@
 </script>
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="mu yu bu Su init Vu Gu zu Uu Ku il Wu Yu ju rh oh ah uh hh dh capture getExtension Zu pu gh calculateEventProperties ph register register_once register_for_session unregister unregister_for_session Hu mh getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync wh identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset kh shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty yh ih createPersonProfile setInternalOrTestUser bh xu Cu opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing th debug nl Os getPageViewId captureTraceFeedback captureTraceMetric Du".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    // Consent-gated, like GA4 above: PostHog is only initialised once the visitor has
-    // accepted the banner (nav.js), so before that it loads nothing and stores nothing.
-    window.clayPosthogInit = function () {
+    // Consent-gated, like GA4 above (Oct 2026). Nothing loads until the visitor chooses on the
+    // banner (nav.js). Accepted: PostHog runs normally, with its own cookie. Declined: PostHog
+    // runs in cookieless mode, storing nothing on the device; PostHog counts the visit with a
+    // daily-salted hash on its servers, so decliners are counted but never recognised across
+    // days. Needs "Cookieless server hash mode" on in the PostHog project (it is).
+    window.clayPosthogInit = function (choice) {
       if (window.clayPosthogStarted) return;
       window.clayPosthogStarted = true;
-      posthog.init('phc_wBrpYj3GSVLMSCezZpEZa89NvT4Xop6dwKvShv2cJS8X', {
+      var config = {
           api_host: 'https://eu.i.posthog.com',
           defaults: '2026-05-30',
           person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
-      })
+      };
+      if (choice === 'denied') config.cookieless_mode = 'always';
+      posthog.init('phc_wBrpYj3GSVLMSCezZpEZa89NvT4Xop6dwKvShv2cJS8X', config);
     };
     try {
-      if (localStorage.getItem('clay-consent') === 'granted') clayPosthogInit();
+      var clayConsent = localStorage.getItem('clay-consent');
+      if (clayConsent === 'granted' || clayConsent === 'denied') clayPosthogInit(clayConsent);
     } catch (e) {}
 </script>
 <link rel="icon" type="image/png" sizes="144x144" href="/assets/favicon.png">
@@ -120,7 +126,7 @@
         <ul>
           <li>Standard server logs from our hosting provider, Netlify, including IP address and browser type, used for security and to keep the site running.</li>
           <li>Google Analytics (GA4), but only if you accept it. When you first visit, a banner asks whether you are happy for us to use it. Nothing is stored and no analytics cookies are set unless you accept, and if you decline we do not measure your visit at all. If you accept, we collect the pages you view, roughly where in the world you are, the type of device and browser you are using, and how you arrived at the site.</li>
-          <li>PostHog, on the same terms: only if you accept on the banner, and nothing is stored or sent unless you do. If you accept, it records the pages you view, the buttons and links you click, and whether you open a booking calendar, book a call or send an enquiry. It never records what you type into our forms.</li>
+          <li>PostHog, once you have made a choice on the banner. If you accept, it uses a cookie and records the pages you view, the buttons and links you click, and whether you open a booking calendar, book a call or send an enquiry. If you decline, it stores nothing on your device and only counts your visit anonymously: PostHog works out a temporary ID on its own servers from your IP address and browser details, mixed with a random value that changes every day and is then deleted, so you cannot be recognised from one day to the next and your IP address is not kept. Either way, on the Growth Check it records how far you get, which branch of questions you were given and the general category of your result, never your answers. It never records what you type into our forms.</li>
         </ul>
 
         <h2>Why we use it, and our lawful basis</h2>
@@ -129,6 +135,7 @@
           <li><strong>To deliver our services</strong> &mdash; on the basis of performing our contract with you.</li>
           <li><strong>To create and send your Growth Check report</strong>: on the basis of our legitimate interest in providing the free assessment you asked for.</li>
           <li><strong>To send you occasional practical tips</strong>: only if you ticked the box on the Growth Check, on the basis of your consent. You can unsubscribe at any time.</li>
+          <li><strong>To understand how the site is used</strong>: on the basis of your consent where you accept analytics cookies, and our legitimate interest in counting visits anonymously where you decline.</li>
           <li><strong>To keep records and meet legal obligations</strong> &mdash; on the basis of legal obligation.</li>
         </ul>
         <p>We do not sell your information, and we do not use it for advertising.</p>
@@ -143,7 +150,7 @@
           <li><strong>Resend</strong> &mdash; transactional email, including sending your Growth Check report.</li>
           <li><strong>Supabase</strong>: secure database storage for Growth Check answers and contact details.</li>
           <li><strong>Google</strong> &mdash; Google Analytics, only where you have accepted analytics cookies, and Google Meet, which hosts the video calls and provides the joining link.</li>
-          <li><strong>PostHog</strong>: website analytics, only where you have accepted analytics cookies. Data is held in PostHog's EU region.</li>
+          <li><strong>PostHog</strong>: website analytics, with cookies where you have accepted them and anonymously, without cookies, where you have declined. Data is held in PostHog's EU region.</li>
         </ul>
         <p>Some of these providers are based outside the UK. Where that is the case, transfers are protected by appropriate safeguards such as standard contractual clauses. We do not share your personal data with any other third parties.</p>
 
@@ -155,7 +162,7 @@
         <p>If you are unhappy with how we have handled your data, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk">ico.org.uk</a>.</p>
 
         <h2 id="cookies">Cookies</h2>
-        <p>The only non-essential cookies this site sets are from Google Analytics and PostHog, and they are set only if you accept them. On your first visit a banner asks you to choose. Until you accept, both are switched off and store nothing on your device. If you decline, they stay off.</p>
+        <p>The only non-essential cookies this site sets are from Google Analytics and PostHog, and they are set only if you accept them. On your first visit a banner asks you to choose. Until you choose, both are switched off and store nothing on your device. If you decline, no cookies are set: Google Analytics stays off, and PostHog only counts your visit anonymously, as described above, without storing anything on your device.</p>
         <p>Your choice is remembered in your browser's local storage so you are not asked again on every page. You can change your choice at any time using the Cookie settings link in the footer of every page. To change your mind, clear this site's data in your browser settings and the banner will appear again on your next visit.</p>
         <p>We set no advertising cookies and do not use the site for advertising.</p>
 
