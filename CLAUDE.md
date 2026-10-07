@@ -1262,6 +1262,14 @@ its CSS is deleted.
 **7 Oct 2026: Check's "See an example report"** is now a `.btn--outline` like the second CTA on
 Sessions/Strategy (was a text link); the unused `.gc-hero__link` CSS is deleted.
 
+**7 Oct 2026: Strategy hero image and pill reworked (George).** New `assets/growth-strategy-report-sheets.png`
+(1100x1287): the report sheets cut out of the old cream-backed `growth-strategy-report-cover.png`
+(kept, no longer used) with a transparent background; its shadow is a CSS `drop-shadow`, no radius.
+The £1,200 pill now sits under the image on one line, exactly the image's width (`width:0;
+min-width:100%` so it never widens the figure); the image gives up `--gc-pill-h` plus the gap to
+make room, and the pair is vertically centred in its column. Hero heights unchanged.
+`styles.css` → `v=78`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
