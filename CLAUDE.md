@@ -1270,6 +1270,14 @@ min-width:100%` so it never widens the figure); the image gives up `--gc-pill-h`
 make room, and the pair is vertically centred in its column. Hero heights unchanged.
 `styles.css` → `v=78`.
 
+**7 Oct 2026: Strategy hero tweaks (George).** Sheets cut-out redone: the first pass keyed on
+brightness and turned the grey shadowed bottom edges of the lower sheets transparent; it now keys on
+warmth (cream ground is warm, paper and its grey edges are neutral). The £1,200 pill is the hero
+buttons' height (57px) and sits level with them; the image above rises `--gc-lift` (4rem) above the
+eyebrow line; the pair is nudged left, and Strategy's text column is capped (`.gc-hero__grid--snug`,
+46rem) so the image sits about 40px from the text on wide screens. Below 860px the pill wraps.
+`styles.css` → `v=79`. Same branch: Sessions' "How it works" title gained `.h2-flat` (it was a bare `h2`, smaller than the other section titles), with `.gp-split .h2-flat{margin-bottom:1.5rem}`; `v=80`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
