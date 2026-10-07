@@ -592,6 +592,7 @@ details[open] .chev{transform:rotate(-135deg)}
 
 /* ---- two-column split with a small side callout (How it works / single objective) ---- */
 .gp-split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.5rem);align-items:start}
+.gp-split .h2-flat{margin-bottom:1.5rem}
 .gp-side{background:var(--surface);border-radius:var(--radius-card);padding:1.75rem;font-weight:600;font-size:1.0625rem;align-self:start}
 .gp-tint--peach .gp-side,.gp-tint--cream .gp-side{background:#fff}
 

@@ -1276,7 +1276,7 @@ warmth (cream ground is warm, paper and its grey edges are neutral). The £1,200
 buttons' height (57px) and sits level with them; the image above rises `--gc-lift` (4rem) above the
 eyebrow line; the pair is nudged left, and Strategy's text column is capped (`.gc-hero__grid--snug`,
 46rem) so the image sits about 40px from the text on wide screens. Below 860px the pill wraps.
-`styles.css` → `v=79`.
+`styles.css` → `v=79`. Same branch: Sessions' "How it works" title gained `.h2-flat` (it was a bare `h2`, smaller than the other section titles), with `.gp-split .h2-flat{margin-bottom:1.5rem}`; `v=80`.
 
 ### Known outstanding work
 
