@@ -1248,6 +1248,13 @@ up… Growth Sessions are an hour set aside to focus on your business…"); Sess
 band is gone (it sat oddly). Strategy still has its band. Hero heights and button positions
 re-measured, unchanged.
 
+**7 Oct 2026: Strategy hero image made bigger again.** `.gc-hero__media` is a size container
+(`container-type:size`) and the report image is sized from it (`max-height:100cqh`, up to 440px wide,
+allowed into the column gap), so it fills the text column's height without changing the hero's
+height. The £1,200 pill (`.gc-hero__price`) overlaps the image's bottom-left corner; it tucks inside
+the image edge between 861 and 1339px. Below 860px the image goes full width with the pill under it.
+`styles.css` → `v=74`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
