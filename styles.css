@@ -459,12 +459,16 @@ fieldset{border:0;padding:0;margin:0}
 .compare--mobile{display:none;margin-top:clamp(3rem,6vw,4.5rem)}
 .compare-card{border:2px solid var(--col);border-radius:var(--radius-card);overflow:hidden;margin-bottom:1.25rem}
 .compare-card:last-child{margin-bottom:0}
+/* Phone-only cards (the desktop table is .compare). Centred, with each label above its text
+   (George, Oct 2026), and a hairline between rows. */
+.compare-card{text-align:center}
 .compare-card h3{margin:0;padding:1.1rem 1.5rem;background:var(--col);color:var(--bg);font-size:1.375rem}
-.compare-card dl{margin:0;padding:1.5rem 1.5rem 0;display:grid;gap:.9rem}
-.compare-card dl div{display:flex;justify-content:space-between;gap:1.25rem}
-.compare-card dt{color:var(--ink-muted);text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;flex-shrink:0;padding-top:.2rem}
-.compare-card dd{margin:0;text-align:right;font-size:.9375rem}
-.compare-card .btn{margin:1.5rem}
+.compare-card dl{margin:0;padding:.5rem 1.5rem 0;display:grid}
+.compare-card dl div{display:flex;flex-direction:column;align-items:center;gap:.35rem;padding:1rem 0;border-bottom:1px solid var(--rule)}
+.compare-card dl div:last-child{border-bottom:0}
+.compare-card dt{color:var(--ink-muted);text-transform:uppercase;font-size:.75rem;letter-spacing:.08em}
+.compare-card dd{margin:0;font-size:1rem;line-height:1.5;max-width:30ch;text-wrap:balance}
+.compare-card .btn{display:table;margin:.75rem auto 1.75rem}
 
 /* Text for screen readers only (e.g. the row labels inside each comparison card, which sighted
    readers get from the shared label column instead). */
