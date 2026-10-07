@@ -1218,6 +1218,12 @@ under Growth Strategy's "What gets looked at", a `.note` under Home's comparison
 sentence in the comparison article's Clay section. Listing card, sitemap and `.html` 301 added.
 `styles.css` untouched.
 
+**7 Oct 2026: Growth Check added to the main nav, sitewide** (after Growth Strategy; 21 pages).
+Six items wrap at laptop widths, so: nav labels are `white-space:nowrap`; gaps tighten between
+1001 and 1180px; and the hamburger menu now takes over at **1000px**, not the sitewide 860px (the
+nav rules moved out of the 860px block into their own `@media (max-width:1000px)`). Everything
+else still switches at 860px. `styles.css` → `v=71`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
