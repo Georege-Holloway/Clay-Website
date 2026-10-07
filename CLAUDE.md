@@ -1243,6 +1243,11 @@ hero title or button label changes. Sessions' pills ("£120 per session", "60 mi
 call", "1 short written summary afterwards") restate facts already on that page.
 `styles.css` → `v=73`.
 
+**7 Oct 2026: Sessions hero intro rewritten by George**, two sentences ("Running a practice throws
+up… Growth Sessions are an hour set aside to focus on your business…"); Sessions' `.hero-follow`
+band is gone (it sat oddly). Strategy still has its band. Hero heights and button positions
+re-measured, unchanged.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
