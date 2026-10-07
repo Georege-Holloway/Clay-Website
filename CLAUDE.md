@@ -1170,6 +1170,40 @@ including a pop-up open, no cookies or `ph_` storage left, GA4 `denied`; re-acce
 page and after a reload both resume capturing. Events captured in the ~3s *before* a Reject
 can still be sent in PostHog's next batch; they were captured with consent.
 
+**Oct 2026 (5th): Growth Check landing page rebuilt, branch `growth-check-page`, NOT live.**
+Per `growth-check-page-handover.md` (parent folder). Supersedes the Sep 2026 "12-question quiz"
+notes above. Copy is the handover's, verbatim.
+- **Page-scoped stylesheet `growth-check.css`**, every rule under `body.gc-page`. Exception to
+  "one stylesheet", because the handover required `styles.css` untouched. Fold it in later if wanted.
+- **Still preview-only:** `noindex`, out of `sitemap.xml`, both marked `TODO: remove at launch`.
+- **Tool proxy in `_redirects`:** `/growth-check/start` and `/growth-check/api/*` proxy (200)
+  to the v2 branch deploy of therapy-web-builder; swap the host on both lines at launch.
+  Netlify ignores redirect rules on `/.netlify/` paths (confirmed on the deploy preview), so
+  the tool has to call `/growth-check/api/<function>` when served from this domain.
+- **FAQPage JSON-LD** is generated from the same strings as the visible FAQ; keep them identical.
+  Home's `ProfessionalService` gained `"@id": ".../#organization"`, which this page references.
+- **PostHog events** (`growth_check_*_click`) via `data-gc-event`, a window capture listener
+  (nav.js stops propagation at the document for Cal.com triggers) and nav.js's `phCapture`.
+- **Not in the nav:** at 1024px a sixth item wraps three labels onto two lines.
+- Links added: Home `#pathway` note, Growth Sessions ("What people bring"), Growth Strategy
+  (after "Who it's for"), and both resource articles the handover named.
+- **6 Oct: content cut down (George's copy, verbatim).** "Can and can't", "Who's behind it"
+  (and Phil's testimonial) are gone; "What it is" is a short unheaded band under the hero;
+  the six areas are a compact two-column list; FAQ is five questions (JSON-LD matches).
+- **6 Oct: redesigned per `Growth Check page redesign.zip`** (parent folder; Claude Design
+  mock, high fidelity). Two-column hero with stat pills, six area cards, a tilted static preview
+  of the real report (fictional "James"; bands follow the report's rule, Early < 4.0), price-kicker
+  cards, "Questions" with a single-column FAQ. The mock's copy replaced the previous version
+  (new H1 and lede; the hero microcopy and "What it is" band are gone). Fraunces kept, not the
+  mock's Caprasimo; header, footer and CTA band are the site's own. FAQ stays native `<details>`
+  with a shared `name` (one open at a time, first open) so answers are in the HTML on load.
+  "See an example report" now jumps to the on-page preview (`#report`), not the missing PDF.
+
+**7 Oct 2026: Growth Check launch prep.** Tool's growth-check-v2 merged to therapy-builder `main`
+(George pushed). `_redirects` now proxies to production (`therapy-web-builder.netlify.app`);
+`noindex` removed and `/growth-check` added to `sitemap.xml`. `privacy.html` gained Growth Check
+collection, lawful basis (report: legitimate interest; tips: consent), Supabase as processor and a
+two-year retention line, all subject to George's approval. Still not in the nav (1024px wrap).
 **Oct 2026 (6th): new article, `/resources/one-off-marketing-help-for-therapists`.** From George's
 "page draft" PDF (parent folder), written to answer "who offers one-off marketing help, not a
 retainer?" in AI-assistant tests. Copy is the draft's, with its three `[Confirm]` items resolved by
