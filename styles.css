@@ -530,10 +530,6 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-hero__actions{margin-top:clamp(1.5rem,3vw,2rem);display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem}
 .gp-hero .btn--outline{border-color:#fff;color:#fff}
 .gp-hero .btn--outline:hover{background:#fff;color:var(--sage-deep)}
-.gp-hero__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(2rem,4vw,4rem)}
-.gp-hero__grid .hero2-cols{grid-template-columns:1fr}
-.gp-hero__figure{position:relative}
-.gp-hero__figure img{position:absolute;top:0;right:0;width:auto;height:auto;max-width:100%;max-height:100%;border-radius:var(--radius-card);display:block;box-shadow:0 1.5rem 3rem rgba(0,0,0,.25)}
 .gp-hero h1.gp-hero__title--wide{max-width:26ch}
 .gp-hero__kicker{color:#fff;font-size:1.25rem;font-weight:600;margin-bottom:1rem}
 .gp-hero__intro{color:rgba(255,255,255,.82);font-size:1.125rem;max-width:62ch;margin:0}
@@ -548,13 +544,39 @@ details[open] .chev{transform:rotate(-135deg)}
 .gc-hero__circle--sage{right:-140px;top:-120px;width:520px;height:520px;background:var(--sage-mid)}
 .gc-hero__circle--accent{right:120px;bottom:-180px;width:300px;height:300px;background:var(--terracotta);opacity:.9}
 .gc-hero__tag{display:inline-block;margin:0 0 1.5rem;padding:.45rem .9rem;border-radius:var(--radius-pill);background:var(--sage-mist);color:var(--sage-ink);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-.gc-hero h1{font-size:clamp(2.5rem,5.4vw,4.25rem);line-height:1.04;max-width:14em;color:var(--bg);margin-bottom:1.5rem}
+.gc-hero h1{font-size:clamp(2.5rem,5.4vw,4.25rem);line-height:1.04;max-width:13em;color:var(--bg);margin-bottom:1.5rem}
 .gc-hero__lede{font-size:1.1875rem;line-height:1.6;max-width:34em;margin:0;color:var(--sage-mist);text-wrap:pretty}
 .gc-hero .hero2-cols p,.gc-hero .hero2-cols p:first-child{color:var(--sage-mist);font-size:1.1875rem;line-height:1.6;text-wrap:pretty}
 .gc-hero .price-card__price{color:var(--peach);line-height:1.3}
 .gc-hero .price-card__price span{display:block;margin-top:.35rem;color:var(--sage-mist)}
 .gc-hero__link{color:var(--bg);text-decoration:underline;text-underline-offset:3px;font-size:.9375rem}
 .gc-hero__link:hover{color:#fff}
+/* Layout, identical on all three pages so the eyebrow, title, intro and buttons land in the same
+   place when moving between them: copy left (one-sentence intro, buttons pinned to the bottom of a
+   fixed-height column), stats or media right. */
+.gc-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,360px);gap:clamp(2.5rem,5vw,3.5rem);align-items:center}
+.gc-hero__copy{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
+.gc-hero__copy > *{margin:0}
+.gc-hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem;margin-top:auto}
+.gc-stats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:360px;justify-self:end}
+.gc-stats li{display:flex;align-items:center;gap:1rem;background:var(--sage-ink);border-radius:var(--radius-pill);padding:.875rem 1.375rem;font-size:.9375rem;line-height:1.35;color:var(--sage-mist)}
+.gc-stats__num{flex:none;min-width:4.25rem;font-family:var(--display);font-variation-settings:var(--display-vf);font-weight:600;font-size:1.875rem;line-height:1;color:var(--peach)}
+.gc-hero__media{justify-self:end;width:100%;max-width:360px;display:flex;flex-direction:column;gap:1rem}
+.gc-hero__media img{display:block;width:auto;max-width:100%;max-height:300px;align-self:flex-end;border-radius:var(--radius-card);box-shadow:0 1.5rem 3rem rgba(0,0,0,.25)}
+/* The rest of a hero intro, in a short band straight under the hero. */
+.hero-follow{padding-block:clamp(2.5rem,5vw,3.5rem)}
+.hero-follow p{max-width:62ch;margin:0;font-size:1.1875rem;line-height:1.6;color:var(--ink)}
+.hero-follow p + p{margin-top:1rem}
+/* Same text-column height on all three pages at each width, so the buttons line up. The tiers
+   follow where titles and button rows wrap; re-measure if a hero title or button label changes. */
+@media (min-width:861px){.gc-hero__copy{min-height:37.5rem}}
+@media (min-width:1260px){.gc-hero__copy{min-height:31rem}}
+@media (min-width:1340px){.gc-hero__copy{min-height:29rem}}
+@media (max-width:860px){
+  .gc-hero__grid{grid-template-columns:minmax(0,1fr)}
+  .gc-stats,.gc-hero__media{justify-self:start}
+  .gc-hero__media img{align-self:flex-start}
+}
 
 /* ---- tinted section bands ---- */
 .gp-tint--peach{background:var(--terracotta-tint)}
@@ -755,8 +777,6 @@ details[open] .chev{transform:rotate(-135deg)}
   .hero3 h1{white-space:normal}
 
   /* ---- growth-sessions / growth-strategy redesign, mobile ---- */
-  .gp-hero__grid{grid-template-columns:1fr}
-  .gp-hero__figure img{position:static;width:100%;height:auto}
   .gp-split{grid-template-columns:1fr}
   .gp-table__row{grid-template-columns:2.25rem 1fr}
   .gp-table__row--labelled{grid-template-columns:1fr;gap:.35rem}
