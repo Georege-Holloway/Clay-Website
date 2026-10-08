@@ -1296,6 +1296,24 @@ PostHog dashboard "Growth Check" (id 1004281) holds the quiz funnel, daily compl
 referrer breakdown and per-question drop-off. **Session replay is on in the PostHog project**
 although the privacy notice assumes it is off: flagged to George, not changed.
 
+**8 Oct 2026: PostHog also counts visitors who haven't chosen yet, cookielessly (George).**
+Visitors who ignored the banner were invisible: on 7 Oct Resend sent ~15 Growth Check reports while
+PostHog logged 3 completions, mostly WhatsApp traffic on phones that never answered the banner. The
+head snippet (21 pages here, plus `growth-check.html` in therapy-builder) now starts PostHog in
+cookieless mode when no choice is stored, **on the live domain only** (`clayconsulting.co.uk`
+hostnames), so local and netlify.app previews still send nothing until someone chooses. Anything
+short of an Accept also sets `disable_session_recording: true`, which the privacy notice already
+promised for decliners ("nothing is recorded") but the config never enforced while replay is on in
+the project. `window.clayPosthogMode` ('cookies'/'cookieless') tells `nav.js` what is running:
+Accept on a page that started cookieless leaves it cookieless for that page (PostHog can't switch
+mid-page) and the next page starts with cookies; Decline on a cookieless page does nothing (it keeps
+counting); the accepted-then-declined path is unchanged. Banner text ("Until you accept, PostHog just
+counts the visit anonymously…") and `privacy.html` (PostHog bullet, lawful basis, processor line,
+Cookies section) updated to cover "not yet chosen". Verified in a browser with PostHog's script
+stubbed: first visit inits cookieless with replay off and no cookies; Accept then next page inits
+with cookies; Decline keeps cookieless with no opt-out call. GA4 is untouched: still nothing until
+Accept.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia

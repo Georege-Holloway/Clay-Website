@@ -49,10 +49,9 @@ document.addEventListener('click', function (e) {
   }
 }, true);
 
-// PostHog capture, only once the visitor has made a choice on the banner and PostHog has
-// started (with cookies if they accepted, cookieless if they declined). Before that the head
-// snippet's stub would queue calls and replay them after the choice, which would send events
-// from before the visitor had chosen.
+// PostHog capture, only once PostHog has started (with cookies if they accepted, cookieless
+// if they declined or haven't chosen yet). Before init the head snippet's stub would queue
+// calls and replay them later, so nothing is captured until it is running.
 function phCapture(name, props) {
   if (!window.clayPosthogStarted || typeof posthog === 'undefined') return;
   posthog.capture(name, props);
@@ -104,10 +103,10 @@ function phCapture(name, props) {
 //
 // GA4 and PostHog set non-essential cookies, which under UK PECR need consent before they
 // are set. The gtag snippet in each page's head defaults analytics_storage to 'denied' and
-// re-applies a stored acceptance before config. The PostHog snippet loads nothing until a
-// choice is stored: with cookies on Accept, and in cookieless mode (nothing stored on the
-// device) on Decline, so declined visits are still counted anonymously (Oct 2026). Nothing
-// is stored by either tool until someone accepts here. The banner builds
+// re-applies a stored acceptance before config. The PostHog snippet runs with cookies after
+// an Accept, and in cookieless mode (nothing stored on the device, no replay) on Decline or
+// before any choice, so those visits are still counted anonymously (Oct 2026). Nothing is
+// stored by either tool until someone accepts here. The banner builds
 // itself when no choice has been recorded yet, and the footer's "Cookie settings" link
 // ([data-cookie-settings]) reopens it at any time, showing the current choice, since
 // withdrawing consent has to be as easy as giving it.
@@ -131,8 +130,12 @@ function phCapture(name, props) {
     if (typeof gtag === 'function') {
       gtag('consent', 'update', {analytics_storage: choice === 'granted' ? 'granted' : 'denied'});
     }
+    var cookieless = window.clayPosthogStarted && window.clayPosthogMode === 'cookieless';
     if (choice === 'granted') {
-      if (typeof clayPosthogInit === 'function') clayPosthogInit();
+      // Already counting cookielessly (no choice yet when the page loaded): PostHog can't switch
+      // mode mid-page, so this page stays cookieless and the next one starts with cookies.
+      if (cookieless) return;
+      if (typeof clayPosthogInit === 'function') clayPosthogInit('granted');
       if (window.clayPosthogStarted) {
         posthog.set_config({disable_persistence: false});
         posthog.opt_in_capturing();
@@ -143,12 +146,13 @@ function phCapture(name, props) {
       // stopping it flushes a last $snapshot. disable_persistence removes PostHog's cookie and
       // storage and stops the still-running instance writing them back, which it otherwise does
       // within seconds. From the next page it starts in cookieless mode (head snippet).
-      if (window.clayPosthogStarted) {
+      // Already cookieless (no choice yet): nothing to stop, it keeps counting anonymously.
+      if (window.clayPosthogStarted && !cookieless) {
         posthog.opt_out_capturing();
         posthog.set_config({disable_persistence: true});
         posthog.stopSessionRecording();
-      } else if (typeof clayPosthogInit === 'function') {
-        // Not running yet (first visit): start it cookieless, so this visit is counted
+      } else if (!window.clayPosthogStarted && typeof clayPosthogInit === 'function') {
+        // Not running yet (e.g. a preview host): start it cookieless, so this visit is counted
         // anonymously without anything being stored on the device.
         clayPosthogInit('denied');
       }
@@ -208,7 +212,7 @@ function phCapture(name, props) {
     wrap.innerHTML =
       '<div class="consent__inner">' +
         '<p class="consent__text">Clay uses Google Analytics and PostHog to see which pages ' +
-        'people actually find useful. They only set cookies if you accept. If you decline, ' +
+        'people actually find useful. They only set cookies if you accept. Until you accept, ' +
         'PostHog just counts the visit anonymously, with nothing stored on your device. ' +
         '<a href="/privacy">Read the privacy policy</a>.' + status + '</p>' +
         '<div class="consent__actions">' +
