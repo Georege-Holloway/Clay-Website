@@ -1311,9 +1311,12 @@ although the privacy notice assumes it is off: flagged to George, not changed.
       browsers would have kept showing the old placeholder no matter what the PNG contained.
       Checked legible at 16/24/32/48px. Netlify serves the file `max-age=0, must-revalidate`,
       so no cache-busting query was needed.
-- [ ] `/assets/og-image.jpg` is still a placeholder (blush background, ink monogram) so
-      nothing 404s. Swap for a real version when George has one — this is the social-share
-      card, 1200×630, so the favicon crop above is not a substitute.
+- [x] **Social-share image replaced (8 Oct 2026).** The Squarespace-era placeholder
+      `og-image.jpg` (blush, Georgia text) is deleted; `assets/og-image-2026.jpg` (1200×630,
+      `--bg` cream, `clay-logo-hero.png` centred, tagline in Figtree `--ink-soft`) is the
+      `og:image`/`twitter:image` on all 17 pages that carry OG tags. **New filename on
+      purpose:** WhatsApp, LinkedIn and Facebook cache preview images by URL, so any future
+      replacement should also get a new name, not overwrite this one.
       `george-holloway.jpg` is in, cropped from `IMG_7253.jpeg` — reselect the crop if needed.
 - [ ] Blog post dates (`resources.html` and each article) are **still placeholders**, not
       real publish dates — update when George confirms the real ones. As of 17 Sep 2026
