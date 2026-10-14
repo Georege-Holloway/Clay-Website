@@ -46,6 +46,8 @@
 
   /* ---- shape ---- */
   --radius-card:24px;
+  /* Resources article column, shared by the body and its hero (widened from 68ch, Oct 2026). */
+  --article-w:66rem;
   --radius-pill:999px;
 
   /* ---- type ----
@@ -300,7 +302,7 @@ fieldset{border:0;padding:0;margin:0}
 .post-card:hover .post-card__more{text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- article body ---------- */
-.article{max-width:68ch;margin-inline:auto;font-size:1.125rem}
+.article{max-width:var(--article-w);margin-inline:auto;font-size:1.125rem}
 .article h2{font-size:clamp(1.6rem,2.4vw,2.1rem);font-weight:600;margin:2.75rem 0 1rem}
 .article h3{font-size:1.3rem;font-weight:600;margin:2rem 0 .7rem}
 .article ul,.article ol{padding-left:1.35rem;display:grid;gap:.7rem;margin:0 0 1.2em}
@@ -605,8 +607,8 @@ details[open] .chev{transform:rotate(-135deg)}
 
 /* Light hero (Oct 2026): Resources, the articles and Contact. The Growth hero's cream version:
    same circles and pill tag (reuses .gc-hero__circle/.gc-hero__tag), in tints on --bg, with
-   dark text, left-aligned. Articles put the copy on the article's own 68ch column so the title
-   lines up with the text below it. */
+   dark text, left-aligned. Articles centre the copy on a column 14rem wider than the article body
+   (George: the title can run a little wider than the text). */
 .lhero{position:relative;overflow:hidden;background:var(--bg);padding-block:clamp(4rem,8vw,6.5rem)}
 .lhero > .shell{position:relative}
 .lhero .gc-hero__circle--sage{background:var(--sage-tint)}
@@ -621,7 +623,7 @@ details[open] .chev{transform:rotate(-135deg)}
 /* Centred variant (Contact, Resources). */
 .lhero--centred .lhero__copy{align-items:center;text-align:center;margin-inline:auto}
 .lhero--centred .lhero__actions{justify-content:center}
-.lhero--article .lhero__copy{max-width:68ch;margin-inline:auto;font-size:1.125rem}
+.lhero--article .lhero__copy{max-width:calc(var(--article-w) + 14rem);margin-inline:auto;font-size:1.125rem}
 .lhero--article h1{font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.08;max-width:none}
 @media (max-width:860px){
   .lhero .gc-hero__circle--sage{width:300px;height:300px;right:-150px;top:-140px}
@@ -801,6 +803,7 @@ details[open] .chev{transform:rotate(-135deg)}
   .nav__links-contact{display:block}
 }
 @media (max-width:860px){
+  .article th,.article td{padding:.6rem .65rem}
   .gs-split{grid-template-columns:1fr;gap:2.5rem}
   .gs-note,.gs-note--tilt-right{transform:rotate(-1deg)}
   .thesis,.quote{max-width:none}

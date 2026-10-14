@@ -1339,6 +1339,12 @@ heroes stay left-aligned on the article column. `v=83`.
 Same day: Approach's hero now carries `.gc-hero` (circles, cream H1 at the Growth heroes' size,
 mist body text), still no eyebrow and still centred, but across the full shell width like the
 sections below (`.gp-hero__centred` is no longer `fit-content`; the H1 has no max-width). `v=84`.
+Same day: **article column widened from 68ch (784px) to `--article-w` 66rem (1056px)** to shorten
+the pages (George). Measured at 1440px: articles are 7 to 11% shorter. Full shell width was tested
+and only saves another 4 to 7% (about 180 characters a line), so it wasn't used. The article hero
+copy is centred on a column 14rem wider than the body (George: it can be wider), so titles take
+fewer lines. Also fixed a pre-existing 4px overflow at 375px from the comparison table in
+`one-off-marketing-help-for-therapists` (tighter cell padding below 860px). `v=85`.
 
 ### Known outstanding work
 
