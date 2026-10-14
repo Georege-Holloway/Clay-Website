@@ -545,10 +545,12 @@ details[open] .chev{transform:rotate(-135deg)}
 .gp-hero__actions{margin-top:clamp(1.5rem,3vw,2rem);display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem}
 .gp-hero .btn--outline{border-color:#fff;color:#fff}
 .gp-hero .btn--outline:hover{background:#fff;color:var(--sage-deep)}
-.gp-hero h1.gp-hero__title--wide{max-width:26ch}
-.gp-hero__kicker{color:#fff;font-size:1.25rem;font-weight:600;margin-bottom:1rem}
-.gp-hero__intro{color:rgba(255,255,255,.82);font-size:1.125rem;max-width:62ch;margin:0}
-.gp-hero__centred{width:fit-content;max-width:100%;margin-inline:auto;text-align:center}
+/* Approach hero: .gc-hero colours, type and circles, text centred across the full shell width
+   so it runs as wide as the sections below (George, 14 Oct 2026). */
+.gp-hero h1.gp-hero__title--wide{max-width:none}
+.gp-hero__kicker{color:var(--bg);font-size:1.25rem;font-weight:600;margin-bottom:1rem}
+.gp-hero__intro{color:var(--sage-mist);font-size:1.1875rem;line-height:1.6;margin:0}
+.gp-hero__centred{text-align:center}
 .gp-hero__centred h1,.gp-hero__centred .gp-hero__intro{margin-inline:auto;text-wrap:balance}
 /* Growth Check hero treatment (Oct 2026), shared by Growth Check, Sessions and Strategy:
    decorative circles, pill tag, larger cream heading, mist body text, peach figures.

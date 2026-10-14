@@ -1336,6 +1336,9 @@ article's 68ch column so the title lines up with the body; the date and author s
 `styles.css` → `v=82`.
 Same day: Contact's and Resources' heroes are centred (`.lhero--centred`, George); the articles'
 heroes stay left-aligned on the article column. `v=83`.
+Same day: Approach's hero now carries `.gc-hero` (circles, cream H1 at the Growth heroes' size,
+mist body text), still no eyebrow and still centred, but across the full shell width like the
+sections below (`.gp-hero__centred` is no longer `fit-content`; the H1 has no max-width). `v=84`.
 
 ### Known outstanding work
 
