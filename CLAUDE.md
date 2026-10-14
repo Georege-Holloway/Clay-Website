@@ -1334,6 +1334,8 @@ article's 68ch column so the title lines up with the body; the date and author s
   bordered `.form--panel`, same as Growth Strategy's enquiry form. `.contact--book` CSS is deleted.
 - `.phero`, `.post` and `.section--stone` stay: `privacy.html` and `build.html` still use them.
 `styles.css` → `v=82`.
+Same day: Contact's and Resources' heroes are centred (`.lhero--centred`, George); the articles'
+heroes stay left-aligned on the article column. `v=83`.
 
 ### Known outstanding work
 
