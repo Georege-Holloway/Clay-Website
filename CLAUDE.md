@@ -1345,6 +1345,9 @@ and only saves another 4 to 7% (about 180 characters a line), so it wasn't used.
 copy is centred on a column 14rem wider than the body (George: it can be wider), so titles take
 fewer lines. Also fixed a pre-existing 4px overflow at 375px from the comparison table in
 `one-off-marketing-help-for-therapists` (tighter cell padding below 860px). `v=85`.
+Then: article heroes are centred (tag, title, date), and the title uses `text-wrap:pretty` instead
+of the sitewide `balance`, so its first line fills the 1280px column and overhangs the 1056px text
+equally on both sides (George). `v=86`.
 
 ### Known outstanding work
 

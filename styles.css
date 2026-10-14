@@ -607,8 +607,8 @@ details[open] .chev{transform:rotate(-135deg)}
 
 /* Light hero (Oct 2026): Resources, the articles and Contact. The Growth hero's cream version:
    same circles and pill tag (reuses .gc-hero__circle/.gc-hero__tag), in tints on --bg, with
-   dark text, left-aligned. Articles centre the copy on a column 14rem wider than the article body
-   (George: the title can run a little wider than the text). */
+   dark text, left-aligned. Articles centre the copy, text included, on a column 14rem wider than
+   the article body, and the title wraps to fill it rather than balancing (George). */
 .lhero{position:relative;overflow:hidden;background:var(--bg);padding-block:clamp(4rem,8vw,6.5rem)}
 .lhero > .shell{position:relative}
 .lhero .gc-hero__circle--sage{background:var(--sage-tint)}
@@ -624,7 +624,8 @@ details[open] .chev{transform:rotate(-135deg)}
 .lhero--centred .lhero__copy{align-items:center;text-align:center;margin-inline:auto}
 .lhero--centred .lhero__actions{justify-content:center}
 .lhero--article .lhero__copy{max-width:calc(var(--article-w) + 14rem);margin-inline:auto;font-size:1.125rem}
-.lhero--article h1{font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.08;max-width:none}
+.lhero--article .lhero__copy{align-items:center;text-align:center}
+.lhero--article h1{font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.08;max-width:none;text-wrap:pretty}
 @media (max-width:860px){
   .lhero .gc-hero__circle--sage{width:300px;height:300px;right:-150px;top:-140px}
   .lhero .gc-hero__circle--accent{width:200px;height:200px;right:-40px;bottom:-130px}
