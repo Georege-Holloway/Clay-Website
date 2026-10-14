@@ -1351,6 +1351,8 @@ equally on both sides (George). `v=86`.
 Then: every article has a `.back-link` "← Back to resources" at the top (in the hero, above the
 pill) and the bottom (`.article__back`, last child of `.article`, with a rule above). A new article
 needs both copied in. `v=87`.
+Then: the bottom back link is centred, and Resources' hero is widened with `.lhero--wide` (title column
+1280px like the articles, intro 1056px), so the H1 sits on one line on wide screens. `v=88`.
 
 ### Known outstanding work
 

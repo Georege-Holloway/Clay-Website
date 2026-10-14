@@ -316,7 +316,7 @@ fieldset{border:0;padding:0;margin:0}
 .back-link{font-size:.9375rem;font-weight:600;color:var(--terracotta-deep);text-decoration:none}
 .back-link:hover,.article .back-link:hover{text-decoration:underline;text-underline-offset:3px}
 .article .back-link{text-decoration:none}
-.article__back{margin:clamp(2.5rem,5vw,3.5rem) 0 0;padding-top:1.75rem;border-top:1px solid var(--rule)}
+.article__back{margin:clamp(2.5rem,5vw,3.5rem) 0 0;padding-top:1.75rem;border-top:1px solid var(--rule);text-align:center}
 
 /* ---------- article callout / toc boxes ---------- */
 .callout{background:var(--sage-tint);border-radius:var(--radius-card);padding:clamp(1.5rem,3vw,2rem);margin:2rem 0}
@@ -631,6 +631,10 @@ details[open] .chev{transform:rotate(-135deg)}
 .lhero--centred .lhero__actions{justify-content:center}
 .lhero--article .lhero__copy{max-width:calc(var(--article-w) + 14rem);margin-inline:auto;font-size:1.125rem}
 .lhero--article .lhero__copy{align-items:center;text-align:center}
+/* Wide variant (Resources): same 1280px title column as the articles, intro as wide as their text. */
+.lhero--wide .lhero__copy{max-width:calc(var(--article-w) + 14rem)}
+.lhero--wide h1{max-width:none;text-wrap:pretty}
+.lhero--wide .lhero__lede{max-width:var(--article-w)}
 .lhero--article h1{font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.08;max-width:none;text-wrap:pretty}
 @media (max-width:860px){
   .lhero .gc-hero__circle--sage{width:300px;height:300px;right:-150px;top:-140px}
