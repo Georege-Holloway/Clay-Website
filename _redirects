@@ -50,6 +50,8 @@
 # Growth Check short link for the supervisors canvas (Oct 2026). 302, not 301, so browsers
 # don't cache it and the target/UTMs can be changed later.
 /check-s  /growth-check/start?utm_source=supervisors&utm_medium=canvas&utm_campaign=growth-check-launch&utm_content=quiz  302
+# Referral short link for email (Oct 2026), same reasoning.
+/check-r  /growth-check/start?utm_source=referral&utm_medium=email&utm_campaign=growth-check-launch&utm_content=quiz  302
 
 # Growth Check tool, served on the Clay domain (live Oct 2026). The tool lives in the
 # therapy-builder repo (production: therapy-web-builder.netlify.app); these proxy rewrites
