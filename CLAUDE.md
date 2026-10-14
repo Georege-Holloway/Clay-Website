@@ -1314,6 +1314,27 @@ stubbed: first visit inits cookieless with replay off and no cookies; Accept the
 with cookies; Decline keeps cookieless with no opt-out call. GA4 is untouched: still nothing until
 Accept.
 
+**14 Oct 2026: Resources, all nine articles and Contact moved onto the new look** (George: the
+grey heroes and outlined article boxes were old styling). George chose a **cream** hero over the
+dark green one, so these pages get a new `.lhero`: the Growth hero's circles and pill tag (reusing
+`.gc-hero__circle`/`.gc-hero__tag`) recoloured to `--sage-tint`/`--terracotta-tint` on `--bg`, with
+a dark sage tag and ink heading, left-aligned. `.lhero--article` puts the hero copy on the
+article's 68ch column so the title lines up with the body; the date and author sit in
+`.lhero__meta`. Other changes:
+- **Resources listing:** cards are `.gp-card.post-card` on a sand band: date as the terracotta
+  pill, "Read article →" pinned to the bottom (`aria-hidden`; the title is the only link, stretched
+  over the card with `::after`), gentle lift on hover. H1 is now "Guides for the business side of
+  therapy" with "Resources" as the tag (was a bare "Resources" H1).
+- **Articles:** body on `--surface` (`gp-tint--cream`); `.callout` is sage-tint and `.toc`/table
+  headers sand, no ink borders.
+- **Closing "Not sure what's right for you?"** on Resources and the articles is now the terracotta
+  `gp-cta-band`, like the Growth pages.
+- **Contact:** the booking block is the hero (same Cal.com button) plus a new "Send a message
+  instead" outline button jumping to `#enquiry`; the enquiry section is on sand. The form keeps the
+  bordered `.form--panel`, same as Growth Strategy's enquiry form. `.contact--book` CSS is deleted.
+- `.phero`, `.post` and `.section--stone` stay: `privacy.html` and `build.html` still use them.
+`styles.css` → `v=82`.
+
 ### Known outstanding work
 
 - [x] **Favicon done (17 Sep 2026).** The placeholder `favicon.svg` (blush square, Georgia
@@ -1345,7 +1366,7 @@ Accept.
       `how-to-set-up-a-therapy-practice-uk` at 27 Aug 2026, was deliberately left alone:
       it's a genuinely researched rebuild and carries `datePublished`/`dateModified` in
       its JSON-LD. Each date lives in two places that must stay in sync — the `<time>` in
-      `resources.html`'s card and the one in the article's own `.phero__kicker`.
+      `resources.html`'s card and the one in the article's own `.lhero__meta` (was `.phero__kicker`).
 - [ ] Blog post images were deliberately left out during migration — add back later.
 - [ ] Privacy policy content is filled in — merged from the reviewed copy live on the
       Squarespace site (data collected, retention, rights) with corrected technical facts
@@ -1432,7 +1453,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=68`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=82`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

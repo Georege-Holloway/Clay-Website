@@ -81,7 +81,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/styles.css?v=81">
+<link rel="stylesheet" href="/styles.css?v=82">
 </head>
 <body>
 
@@ -118,24 +118,30 @@
 
 <main id="main">
 
-  <section class="contact contact--book">
+  <section class="lhero">
+    <span class="gc-hero__circle gc-hero__circle--sage" aria-hidden="true"></span>
+    <span class="gc-hero__circle gc-hero__circle--accent" aria-hidden="true"></span>
     <div class="shell">
-      <div class="contact__intro">
-        <h1 class="contact-title">Let&rsquo;s talk it through.</h1>
-        <p>Book a free 30-minute call and pick a time that suits you.</p>
+      <div class="lhero__copy">
+        <p class="gc-hero__tag">Contact</p>
+        <h1>Let&rsquo;s talk it through.</h1>
+        <p class="lhero__lede">Book a free 30-minute call and pick a time that suits you.</p>
+        <div class="lhero__actions">
+          <button
+            type="button"
+            class="btn btn--accent"
+            data-attr="cta-free-call"
+            data-cal-namespace="30min"
+            data-cal-link="clay-consulting-ws6xph/30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+          >Book my free call</button>
+          <a class="btn btn--outline" href="#enquiry">Send a message instead</a>
+        </div>
       </div>
-      <button
-        type="button"
-        class="btn btn--accent"
-        data-attr="cta-free-call"
-        data-cal-namespace="30min"
-        data-cal-link="clay-consulting-ws6xph/30min"
-        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-      >Book my free call</button>
     </div>
   </section>
 
-  <section class="contact contact--enquiry">
+  <section class="contact contact--enquiry" id="enquiry">
     <div class="shell">
       <div class="contact__grid">
 
