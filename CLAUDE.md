@@ -1353,6 +1353,8 @@ pill) and the bottom (`.article__back`, last child of `.article`, with a rule ab
 needs both copied in. `v=87`.
 Then: the bottom back link is centred, and Resources' hero is widened with `.lhero--wide` (title column
 1280px like the articles, intro 1056px), so the H1 sits on one line on wide screens. `v=88`.
+Then: Home's green `.quote-band` ("Most therapy training ends at the clinic door") has double its
+vertical padding, `clamp(3.5rem,7vw,5.125rem)` (82px at desktop, 56px on phones) (George). `v=89`.
 
 ### Known outstanding work
 
