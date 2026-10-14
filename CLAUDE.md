@@ -1348,6 +1348,9 @@ fewer lines. Also fixed a pre-existing 4px overflow at 375px from the comparison
 Then: article heroes are centred (tag, title, date), and the title uses `text-wrap:pretty` instead
 of the sitewide `balance`, so its first line fills the 1280px column and overhangs the 1056px text
 equally on both sides (George). `v=86`.
+Then: every article has a `.back-link` "← Back to resources" at the top (in the hero, above the
+pill) and the bottom (`.article__back`, last child of `.article`, with a rule above). A new article
+needs both copied in. `v=87`.
 
 ### Known outstanding work
 
