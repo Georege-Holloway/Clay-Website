@@ -1358,6 +1358,9 @@ vertical padding, `clamp(3.5rem,7vw,5.125rem)` (82px at desktop, 56px on phones)
 15 Oct: Home's "What we cover" title and closing pill, and the "Frequently asked questions" title,
 are centred (`.cover-section`, `.home-faq` on those sections; George). Approach's pill and the
 Growth pages' FAQ titles stay left. `v=90`.
+Then made sitewide (George): every `.cover-close` pill (Home, Approach) and every FAQ title directly
+above a `.faq2` (Home, Growth Sessions, Growth Strategy, Build) are centred; `.home-faq` removed.
+Growth Check's "Questions" heading sits in a left column beside its list, so it stays left. `v=91`.
 
 ### Known outstanding work
 
@@ -1477,7 +1480,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=90`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=91`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product
