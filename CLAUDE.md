@@ -1361,6 +1361,7 @@ Growth pages' FAQ titles stay left. `v=90`.
 Then made sitewide (George): every `.cover-close` pill (Home, Approach) and every FAQ title directly
 above a `.faq2` (Home, Growth Sessions, Growth Strategy, Build) are centred; `.home-faq` removed.
 Growth Check's "Questions" heading sits in a left column beside its list, so it stays left. `v=91`.
+Approach's "How we work" title and intro line are centred too (`.gp-intro--centred`, HTML only).
 
 ### Known outstanding work
 
