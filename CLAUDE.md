@@ -1362,6 +1362,8 @@ Then made sitewide (George): every `.cover-close` pill (Home, Approach) and ever
 above a `.faq2` (Home, Growth Sessions, Growth Strategy, Build) are centred; `.home-faq` removed.
 Growth Check's "Questions" heading sits in a left column beside its list, so it stays left. `v=91`.
 Approach's "How we work" title and intro line are centred too (`.gp-intro--centred`, HTML only).
+Home's "What we cover" title is now `.h-section` (same size as "Ways to work together"), not
+`.h2-flat`; `.cover-section .h-section{margin-bottom:0}` keeps the gap to the cards. `v=92`.
 
 ### Known outstanding work
 
@@ -1481,7 +1483,7 @@ written to disk, not discovered after. The two `.contact-title` headings keep `w
 **Cache-busting `styles.css`:** `netlify.toml` caches `/styles.css` for a year
 (`max-age=31536000`). Every page links to it as `/styles.css?v=N`. **Whenever you edit
 `styles.css`, bump `?v=N` to `?v=N+1` on every page that links it** — otherwise returning
-visitors keep serving their old cached copy indefinitely. Current version: `v=91`.
+visitors keep serving their old cached copy indefinitely. Current version: `v=92`.
 
 **Sep 2026: GEO visibility recovery.** The Sep 8 title/description fix over-corrected: "grow" and
 "marketing" as ordinary descriptive words got removed along with Build/Launch/Grow as product

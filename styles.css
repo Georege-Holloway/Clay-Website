@@ -449,9 +449,12 @@ fieldset{border:0;padding:0;margin:0}
 .cover-card p:not(.cover-item__num){margin:0;color:var(--ink-soft);font-size:1.0625rem;line-height:1.65}
 .cover-close{display:inline-block;margin:clamp(1.5rem,3vw,2.25rem) 0 0;padding:1rem 1.75rem;border-radius:var(--radius-pill);background:var(--sand);font-size:1.0625rem;color:var(--ink)}
 .cover-cards--4{grid-template-columns:repeat(2,minmax(0,1fr))}
-/* Centred sitewide (George, Oct 2026): every FAQ title above a .faq2, every .cover-close pill,
-   and Home's What we cover title. Growth Check's side-by-side "Questions" heading isn't a .faq2. */
-.cover-section .h2-flat,.h2-flat:has(+ .faq2){text-align:center}
+/* Centred sitewide (George, Oct 2026): every FAQ title above a .faq2 and every .cover-close pill.
+   Growth Check's side-by-side "Questions" heading isn't a .faq2. Home's What we cover title is an
+   .h-section (already centred, same size as Ways to work together); .cover-cards' own top margin
+   keeps the gap, so the heading's is dropped. */
+.h2-flat:has(+ .faq2){text-align:center}
+.cover-section .h-section{margin-bottom:0}
 .cover-close{display:block;width:fit-content;max-width:100%;margin-inline:auto;text-align:center}
 .split-feature--photo-left{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start}
 .split-feature__figure{margin:0}
